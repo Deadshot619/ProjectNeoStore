@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_page_padding">50dp</dimen>
+    <dimen name="MarginTopMaterialInputLayout">16dp</dimen>
+    <dimen name="MarginTopFirstElement">50dp</dimen>
+    <dimen name="MarginTopAppName">90dp</dimen>
+</resources>
