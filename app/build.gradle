@@ -30,6 +30,7 @@ android {
 dependencies {
     def nav_version_ktx = "2.1.0-alpha06"
     def lifecycle_version = "2.0.0"
+    def retrofit_version = "2.6.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -48,5 +49,11 @@ dependencies {
 
     //ViewModel & LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+    //GSON convertor
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 }
 //apply plugin: "androidx.navigation.safeargs"
