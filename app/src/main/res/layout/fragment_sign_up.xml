@@ -6,6 +6,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/layout"
         tools:context="com.deadshot.android.projectneostore.ui.signUp.SignUpFragment">
 
+    <data>
+        <variable
+                name="signUpViewModel"
+                type="com.deadshot.android.projectneostore.ui.signUp.SignUpViewModel"/>
+    </data>
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -13,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" tools:ignore="ExtraText">
+                android:layout_height="wrap_content"
+                tools:ignore="ExtraText">
 
             //Appname "Store"
             <TextView
@@ -243,7 +250,8 @@
                     app:layout_constraintStart_toStartOf="@+id/et_phoneInputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/cb_termsAndConditions"
                     app:layout_constraintHorizontal_bias="0.0"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"/>
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
+            android:onClick="@{() -> signUpViewModel.onSignUpBtnClick()}"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

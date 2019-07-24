@@ -11,12 +11,13 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentSignUpBinding
+import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.utils.toastShort
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment(), AuthListener {
+    private lateinit var signUpViewModel: SignUpViewModel
 
-    private lateinit var viewModel: SignUpViewModel
     private lateinit var binding: FragmentSignUpBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,8 +27,26 @@ class SignUpFragment : Fragment() {
             DataBindingUtil
                 .inflate(inflater, R.layout.fragment_sign_up, container, false)
 
-        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
+        signUpViewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
+
+        binding.setLifecycleOwner(this)
+
+        binding.signUpViewModel = signUpViewModel
+
+        signUpViewModel.authListener = this
 
         return binding.root
+    }
+
+    override fun onStarted() {
+        toastShort("SignUp Started")
+    }
+
+    override fun onSuccess() {
+        toastShort("SignUpSuccess")
+    }
+
+    override fun onFailure(message: String) {
+        toastShort(message)
     }
 }
