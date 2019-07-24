@@ -1,4 +1,4 @@
-package com.deadshot.android.projectneostore.ui.SignUp
+package com.deadshot.android.projectneostore.ui.signUp
 
 
 import android.os.Bundle

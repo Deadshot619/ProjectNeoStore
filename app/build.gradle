@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
+
 
 
 android {
@@ -58,5 +61,6 @@ dependencies {
 
     //GSON convertor
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+
 }
-//apply plugin: "androidx.navigation.safeargs"

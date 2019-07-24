@@ -4,7 +4,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/layout"
-        tools:context="com.deadshot.android.projectneostore.ui.SignUp.SignUpFragment">
+        tools:context="com.deadshot.android.projectneostore.ui.signUp.SignUpFragment">
 
     <ScrollView
             android:layout_width="match_parent"
