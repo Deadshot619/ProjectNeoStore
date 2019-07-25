@@ -3,7 +3,8 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/layout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layout"
         tools:context="com.deadshot.android.projectneostore.ui.signUp.SignUpFragment">
 
     <data>
@@ -72,7 +73,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/InnerMaterialEditText"
-                        android:inputType="textPersonName"/>
+                        android:inputType="textPersonName"
+                        android:text="@={signUpViewModel.firstName}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             //Second Name
@@ -95,7 +97,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/InnerMaterialEditText"
-                        android:inputType="textPersonName"/>
+                        android:inputType="textPersonName"
+                        android:text="@={signUpViewModel.lastName}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             //Email id
@@ -119,7 +122,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/InnerMaterialEditText"
-                        android:inputType="textPersonName"/>
+                        android:inputType="textPersonName"
+                        android:text="@={signUpViewModel.emailId}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             //Password
@@ -145,7 +149,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        style="@style/InnerMaterialEditText"/>
+                        style="@style/InnerMaterialEditText"
+                        android:text="@={signUpViewModel.password}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             //Confirm Password
@@ -171,7 +176,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        style="@style/InnerMaterialEditText"/>
+                        style="@style/InnerMaterialEditText"
+                        android:text="@={signUpViewModel.confirmPassword}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             //Gender
@@ -181,23 +187,27 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="@+id/et_confirmPasswordInputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/et_confirmPasswordInputLayout"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout" android:id="@+id/rg_gender"
-                    android:checkedButton="@id/rb_male"
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
+                    android:id="@+id/rg_gender"
                     app:layout_constraintStart_toStartOf="@+id/et_confirmPasswordInputLayout">
                 <com.google.android.material.radiobutton.MaterialRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/male"
                         android:id="@+id/rb_male"
-                        style="@style/customMaterialRadioButtonText" android:layout_weight="1"
-                        android:textSize="18sp" android:gravity="center|center_horizontal"/>
+                        style="@style/customMaterialRadioButtonText"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:gravity="center|center_horizontal"
+                        android:onClick="@{() -> signUpViewModel.onGenderMaleRadioBtnClick()}"/>
                 <com.google.android.material.radiobutton.MaterialRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/female"
                         style="@style/customMaterialRadioButtonText"
                         android:id="@+id/rb_female" android:layout_weight="1" android:textSize="18sp"
-                        android:gravity="center|center_horizontal"/>
+                        android:gravity="center|center_horizontal"
+                        android:onClick="@{() -> signUpViewModel.onGenderFemaleRadioBtnClick()}"/>
             </RadioGroup>
 
             //Phone Number
@@ -222,9 +232,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/InnerMaterialEditText"
-                        android:inputType="phone"/>
+                        android:inputType="phone"
+                        android:text="@={signUpViewModel.phoneNumber}" android:digits="0123456789+"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            //Terms and conditions
             <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/cb_termsAndConditions"
                     android:textColor="#ffffff"
@@ -235,7 +247,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="@+id/et_phoneInputLayout"
                     app:layout_constraintEnd_toEndOf="@+id/et_phoneInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout"/>
+                    app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout"
+                    android:onClick="@{() -> signUpViewModel.onTcClick()}"/>
 
             //Register button
             <com.google.android.material.button.MaterialButton

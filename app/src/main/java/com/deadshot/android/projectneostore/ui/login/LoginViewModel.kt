@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.User
 import com.deadshot.android.projectneostore.network.LoginApi
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.utils.isEmailValid
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,11 +23,13 @@ class LoginViewModel : ViewModel(){
 
     fun onLoginButtonClick(){
         authListener?.onStarted()
-        if (email.isNullOrEmpty() || password.isNullOrEmpty()){
-            authListener?.onFailure("Invalid Email or Password $email $password")
-            return
-        }else{
-            checkLogin()
+        when {
+            email.isNullOrEmpty() || password.isNullOrEmpty() -> {
+                authListener?.onFailure("Invalid Email or Password $email $password")
+                return
+            }
+            !isEmailValid(email!!) -> authListener?.onFailure("Invalid Email")
+            else -> checkLogin()
         }
     }
 
