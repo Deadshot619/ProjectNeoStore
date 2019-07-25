@@ -43,6 +43,8 @@ class LoginViewModel : ViewModel(){
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if(response.isSuccessful){
                     authListener?.onSuccess()
+                    authListener?.onFailure(response.body()?.data!!.username)
+
                     _loginCheck.value = true
                 }else{
                     authListener?.onFailure("Login Unsuccessful")
@@ -51,6 +53,9 @@ class LoginViewModel : ViewModel(){
         })
     }
 
+    /**
+     *  Change login listener value
+     */
     fun loginDone(){
         _loginCheck.value = false
     }

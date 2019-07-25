@@ -29,7 +29,7 @@ class SignUpFragment : Fragment(), AuthListener {
 
         signUpViewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         binding.signUpViewModel = signUpViewModel
 
