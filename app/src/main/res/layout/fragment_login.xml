@@ -22,7 +22,8 @@
                 tools:ignore="ExtraText"
                 tools:context="com.deadshot.android.projectneostore.ui.login.LoginFragment"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp" android:paddingTop="16dp" android:layout_gravity="center">
+                android:paddingEnd="16dp" android:paddingTop="16dp" android:layout_gravity="center"
+        android:theme="@style/AppTheme">
 
             //Appname "Store"
             <TextView

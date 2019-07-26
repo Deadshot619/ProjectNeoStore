@@ -2,19 +2,19 @@ package com.deadshot.android.projectneostore.ui.login
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.deadshot.android.projectneostore.LoginFlowActivity
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentLoginBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.homeScreen.HomeScreenFragment
 import com.deadshot.android.projectneostore.utils.toastShort
 import timber.log.Timber
 
@@ -24,12 +24,19 @@ class LoginFragment : Fragment(), AuthListener {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Adding Timber to fragment
         Timber.plant(Timber.DebugTree())
+
+        /**
+         * hide action bar
+         */
+        (activity as LoginFlowActivity).supportActionBar?.hide()
 
         // Inflate the layout for this fragment
         binding =
@@ -51,10 +58,13 @@ class LoginFragment : Fragment(), AuthListener {
 
         loginViewModel.loginCheck.observe(this, Observer {
             if (it){
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
+//                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToStoreFlowNavigation())
                 loginViewModel.loginDone()
             }
         })
+
+//        activity?.actionBar?.hide()
         return binding.root
     }
 

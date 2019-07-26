@@ -7,12 +7,15 @@
               android:label="fragment_login" tools:layout="@layout/fragment_login">
         <action android:id="@+id/action_loginFragment2_to_signUpFragment2" app:destination="@id/signUpFragment2"
                 app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"/>
+                app:popEnterAnim="@anim/slide_in_left" app:popUpTo="@+id/loginFragment2"
+                app:enterAnim="@anim/slide_in_right" app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_loginFragment2_to_store_flow_navigation"
+                app:destination="@id/store_flow_navigation" app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:popUpTo="@+id/loginFragment2" app:popUpToInclusive="true"/>
     </fragment>
     <fragment android:id="@+id/signUpFragment2" android:name="com.deadshot.android.projectneostore.ui.signUp.SignUpFragment"
-              android:label="fragment_sign_up" tools:layout="@layout/fragment_sign_up">
-        <action android:id="@+id/action_signUpFragment2_pop" app:popUpTo="@id/signUpFragment2"
-                app:popUpToInclusive="true" app:exitAnim="@anim/slide_out_right" app:enterAnim="@anim/slide_in_left"
-                app:popEnterAnim="@anim/slide_out_right"/>
-    </fragment>
+              android:label="fragment_sign_up" tools:layout="@layout/fragment_sign_up"/>
+    <include app:graph="@navigation/store_flow_navigation"/>
 </navigation>
