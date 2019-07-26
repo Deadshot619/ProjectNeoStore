@@ -22,7 +22,7 @@
                 tools:ignore="ExtraText"
                 tools:context="com.deadshot.android.projectneostore.ui.login.LoginFragment"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:paddingEnd="16dp" android:paddingTop="16dp" android:layout_gravity="center">
 
             //Appname "Store"
             <TextView
@@ -36,7 +36,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="@dimen/MarginTopAppName"/>
+            />
 
             //Appname "Neo"
             <TextView

@@ -11,12 +11,12 @@
             tools:context=".LoginFlowActivity">
 
         <fragment
-                android:id="@+id/myNavHostLoginFlowFragment"
+                android:id="@+id/myNavHostMainFragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/login_flow_navigation"/>
+                app:navGraph="@navigation/main_navigation"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
