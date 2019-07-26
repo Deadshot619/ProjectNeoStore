@@ -12,6 +12,7 @@
         <item name="android:focusable">true</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
     <style name="InnerMaterialEditText">
         <item name="android:textColorHint">#DEFFFFFF</item>
         <item name="android:textColor">#DEFFFFFF</item>
@@ -20,6 +21,7 @@
         <item name="android:textColorHighlight">#00BCD4</item>
         <item name="android:inputType">text</item>
     </style>
+
     <style name="LoginSignupStyle">
         <item name="android:padding">@dimen/login_page_padding</item>
         <item name="android:background">@color/colorPrimary</item>
@@ -39,6 +41,7 @@
         <item name="android:layout_marginTop">@dimen/MarginTopFirstElement</item>
         <item name="android:textColorHint" tools:ignore="DuplicateDefinition">#33FFFFFF</item>
     </style>
+
     <style name="TextSyleAppName">
         <item name="android:textSize">49sp</item>
         <item name="android:textStyle">bold</item>

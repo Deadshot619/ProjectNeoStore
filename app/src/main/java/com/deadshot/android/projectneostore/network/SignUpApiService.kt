@@ -13,17 +13,22 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-interface LoginApiService{
+interface SignUpApiService{
     @FormUrlEncoded
-    @POST("users/login")
-    fun checkLogin(
+    @POST("users/register")
+    fun doSignUp(
+        @Field("first_name") first_name: String,
+        @Field("last_name") last_name: String,
         @Field("email") email: String,
-        @Field("password") password: String
+        @Field("password") password: String,
+        @Field("confirm_password") confirm_password: String,
+        @Field("gender") gender: String,
+        @Field("phone_no") phone_no: Number
     ): Call<User>
 }
 
-object LoginApi{
-    val retrofitService: LoginApiService by lazy {
-        retrofit.create(LoginApiService::class.java)
+object SignUpApi{
+    val retrofitService: SignUpApiService by lazy {
+        retrofit.create(SignUpApiService::class.java)
     }
 }

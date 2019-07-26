@@ -13,6 +13,7 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentSignUpBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.toastShort
+import timber.log.Timber
 
 class SignUpFragment : Fragment(), AuthListener {
     private lateinit var signUpViewModel: SignUpViewModel
@@ -22,6 +23,9 @@ class SignUpFragment : Fragment(), AuthListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Adding Timber to fragment
+        Timber.plant(Timber.DebugTree())
+
         // Inflate the layout for this fragment
         binding=
             DataBindingUtil

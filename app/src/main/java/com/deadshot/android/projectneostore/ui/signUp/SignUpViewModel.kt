@@ -1,8 +1,14 @@
 package com.deadshot.android.projectneostore.ui.signUp
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.deadshot.android.projectneostore.models.User
+import com.deadshot.android.projectneostore.network.SignUpApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
+import retrofit2.Call
+import retrofit2.Response
 import java.util.regex.Pattern
 
 class SignUpViewModel : ViewModel(){
@@ -17,10 +23,15 @@ class SignUpViewModel : ViewModel(){
     var termsAndConditions: Boolean = false
     var authListener: AuthListener? = null
 
+    private val _signUpCheck = MutableLiveData<Boolean>()
+    val signUpCheck: LiveData<Boolean>
+        get() = _signUpCheck
+
     fun onSignUpBtnClick(){
         if (checkFieldsFilled() && checkFieldsCorrect())
             onSignUp()
     }
+
 
     /**
      * Check if fields are not empty
@@ -78,15 +89,48 @@ class SignUpViewModel : ViewModel(){
     }
 
     private fun onSignUp() {
-        authListener?.onFailure("Signup Done")
+//        authListener?.onFailure("Signup Done")
+        SignUpApi.retrofitService
+            .doSignUp(firstName!!, lastName!!, emailId!!, password!!, confirmPassword!!, gender!!, phoneNumber!!.toBigDecimal())
+            .enqueue(object: retrofit2.Callback<User>{
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    _signUpCheck.value = false
+                    authListener?.onFailure("Failed : " + t.message!!)
+                }
+
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    if (response.isSuccessful){
+                        when {
+                            response.body()!!.status == 200 -> {
+                                authListener?.onFailure(response.body()!!.message)
+                                authListener?.onFailure(response.body()!!.user_msg)
+                            }
+                            response.body()!!.status == 500 -> {
+                                authListener?.onFailure(response.body()!!.message)
+                                authListener?.onFailure(response.body()!!.user_msg)
+                            }
+                            response.body()!!.status == 404 -> {
+                                authListener?.onFailure(response.body()!!.message)
+                                authListener?.onFailure(response.body()!!.user_msg)
+                            }
+                            else -> {
+                                authListener?.onSuccess()
+                                authListener?.onFailure(response.body()!!.message)
+                                authListener?.onFailure(response.body()!!.user_msg)
+                            }
+                        }
+                    }
+                }
+
+            })
     }
+
 
     /**
      * Sets Gender to 'M'
      */
     fun onGenderMaleRadioBtnClick(){
         gender = "M"
-        authListener?.onFailure("Male Clicked")
     }
 
     /**
@@ -94,7 +138,6 @@ class SignUpViewModel : ViewModel(){
      */
     fun onGenderFemaleRadioBtnClick(){
         gender = "F"
-        authListener?.onFailure("Female Clicked")
     }
 
     /**

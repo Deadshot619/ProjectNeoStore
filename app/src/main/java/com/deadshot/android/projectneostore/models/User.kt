@@ -1,7 +1,8 @@
 package com.deadshot.android.projectneostore.models
 
 data class User(
-    var email: String,
+    var status: Int,
     var data: UserDataResponse,
     var message: String,
-    var user_msg: String)
+    var user_msg: String
+)

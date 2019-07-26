@@ -14,12 +14,14 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            style="@style/LoginSignupStyle" android:padding="0dp">
+            style="@style/LoginSignupStyle"
+            android:padding="0dp">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:ignore="ExtraText"
-                tools:context="com.deadshot.android.projectneostore.ui.login.LoginFragment" android:paddingStart="16dp"
+                tools:context="com.deadshot.android.projectneostore.ui.login.LoginFragment"
+                android:paddingStart="16dp"
                 android:paddingEnd="16dp">
 
             //Appname "Store"

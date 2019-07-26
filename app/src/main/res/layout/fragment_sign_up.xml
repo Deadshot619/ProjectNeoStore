@@ -16,12 +16,15 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="0dp"
             style="@style/LoginSignupStyle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="ExtraText">
+                tools:ignore="ExtraText"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
 
             //Appname "Store"
             <TextView
@@ -233,7 +236,8 @@
                         android:layout_height="match_parent"
                         style="@style/InnerMaterialEditText"
                         android:inputType="phone"
-                        android:text="@={signUpViewModel.phoneNumber}" android:digits="0123456789+"/>
+                        android:text="@={signUpViewModel.phoneNumber}"
+                        android:digits="0123456789"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             //Terms and conditions

@@ -10,6 +10,7 @@ import com.deadshot.android.projectneostore.utils.isEmailValid
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class LoginViewModel : ViewModel(){
 
@@ -42,9 +43,7 @@ class LoginViewModel : ViewModel(){
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if(response.isSuccessful){
-                    authListener?.onSuccess()
-                    authListener?.onFailure(response.body()?.data!!.username)
-
+                    authListener?.onFailure(response.body()!!.message)
                     _loginCheck.value = true
                 }else{
                     authListener?.onFailure("Login Unsuccessful")
