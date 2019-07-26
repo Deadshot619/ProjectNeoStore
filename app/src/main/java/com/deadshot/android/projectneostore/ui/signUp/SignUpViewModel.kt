@@ -9,6 +9,7 @@ import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
 import retrofit2.Call
 import retrofit2.Response
+import timber.log.Timber
 import java.util.regex.Pattern
 
 class SignUpViewModel : ViewModel(){
@@ -105,20 +106,25 @@ class SignUpViewModel : ViewModel(){
                                 authListener?.onFailure(response.body()!!.message)
                                 authListener?.onFailure(response.body()!!.user_msg)
                             }
-                            response.body()!!.status == 500 -> {
-                                authListener?.onFailure(response.body()!!.message)
-                                authListener?.onFailure(response.body()!!.user_msg)
-                            }
-                            response.body()!!.status == 404 -> {
-                                authListener?.onFailure(response.body()!!.message)
-                                authListener?.onFailure(response.body()!!.user_msg)
-                            }
                             else -> {
-                                authListener?.onSuccess()
                                 authListener?.onFailure(response.body()!!.message)
                                 authListener?.onFailure(response.body()!!.user_msg)
                             }
                         }
+                    }else{
+//                        when{
+//                            response.body()!!.status == 500 -> {
+//                                authListener?.onFailure(response.body()!!.message)
+//                                authListener?.onFailure(response.body()!!.user_msg)
+//                            }
+//                            response.body()!!.status == 404 -> {
+//                                authListener?.onFailure(response.body()!!.message)
+//                                authListener?.onFailure(response.body()!!.user_msg)
+//                            }
+//                        }
+                        authListener?.onFailure("SignUp Unsuccessful")
+                        authListener?.onFailure("Error ${response.code()} : ${response.message()}")
+                        Timber.i("Error ${response.code()} : ${response.message()}")
                     }
                 }
 

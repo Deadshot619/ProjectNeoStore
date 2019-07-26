@@ -36,7 +36,7 @@ class LoginFragment : Fragment(), AuthListener {
             DataBindingUtil
                 .inflate(inflater, R.layout.fragment_login, container, false)
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         //get ViewModel
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
@@ -50,7 +50,7 @@ class LoginFragment : Fragment(), AuthListener {
         )
 
         loginViewModel.loginCheck.observe(this, Observer {
-            if (it == true){
+            if (it){
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
                 loginViewModel.loginDone()
             }

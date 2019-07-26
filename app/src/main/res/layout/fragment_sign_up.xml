@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 tools:ignore="ExtraText"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:paddingEnd="16dp" android:paddingTop="16dp">
 
             //Appname "Store"
             <TextView
@@ -268,7 +268,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cb_termsAndConditions"
                     app:layout_constraintHorizontal_bias="0.0"
                     android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-            android:onClick="@{() -> signUpViewModel.onSignUpBtnClick()}"/>
+                    android:onClick="@{() -> signUpViewModel.onSignUpBtnClick()}"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

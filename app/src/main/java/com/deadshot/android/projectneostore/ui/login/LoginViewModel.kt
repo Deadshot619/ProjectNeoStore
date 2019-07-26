@@ -44,9 +44,11 @@ class LoginViewModel : ViewModel(){
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if(response.isSuccessful){
                     authListener?.onFailure(response.body()!!.message)
+                    Timber.i(response.toString())
                     _loginCheck.value = true
                 }else{
                     authListener?.onFailure("Login Unsuccessful")
+                    Timber.i("Error ${response.code()} : ${response.message()}")
                 }
             }
         })
