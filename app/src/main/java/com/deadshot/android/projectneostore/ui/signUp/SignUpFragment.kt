@@ -26,13 +26,6 @@ class SignUpFragment : Fragment(), AuthListener {
     ): View? {
         // Adding Timber to fragment
         Timber.plant(Timber.DebugTree())
-
-        /**
-         * hide action bar
-         */
-//        (activity as LoginFlowActivity).supportActionBar?.hide()
-
-
         // Inflate the layout for this fragment
         binding=
             DataBindingUtil
