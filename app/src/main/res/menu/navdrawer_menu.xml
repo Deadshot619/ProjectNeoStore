@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/title_my_cart" android:id="@+id/myCart"
+          android:icon="@drawable/ic_shopping_cart_black_24dp"/>
+    <item android:id="@+id/tables" android:title="@string/title_tables" android:icon="@drawable/table"/>
+    <item android:title="@string/title_sofas" android:id="@+id/sofas" android:icon="@drawable/sofa"/>
+    <item android:title="@string/title_chairs" android:id="@+id/chairs" android:icon="@drawable/chair"/>
+    <item android:title="@string/title_cupboards" android:id="@+id/cupboards" android:icon="@drawable/cupboard"/>
+    <item android:title="@string/title_my_account" android:id="@+id/myAccount"
+          android:icon="@drawable/ic_person_black_24dp"/>
+    <item android:title="@string/title_store_locator" android:id="@+id/storeLocator"
+          android:icon="@drawable/ic_pin_drop_black_24dp"/>
+    <item android:title="@string/title_my_orders" android:id="@+id/myOrders"/>
+    <item android:title="@string/title_logout" android:id="@+id/logout" android:icon="@drawable/logout_icon"/>
+</menu>
