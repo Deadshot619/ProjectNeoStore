@@ -21,6 +21,10 @@
     <string name="termsAndConditions"><![CDATA[I agree to Terms & Conditions]]></string>
     <string name="register">Register</string>
     <string name="search">Search</string>
+    <string name="cd_tables">Tables Tab</string>
+    <string name="cd_sofas">Sofas Tab</string>
+    <string name="cd_chairs">Chairs Tab</string>
+    <string name="cd_cupboards">Cupboards Tab</string>
 
 
 </resources>

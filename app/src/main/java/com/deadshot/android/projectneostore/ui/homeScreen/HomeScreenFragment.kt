@@ -1,7 +1,6 @@
 package com.deadshot.android.projectneostore.ui.homeScreen
 
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -12,8 +11,6 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentHomeScreenBinding
 import com.smarteist.autoimageslider.IndicatorAnimations
 import com.smarteist.autoimageslider.SliderAnimations
-import com.smarteist.autoimageslider.SliderView
-import com.smarteist.autoimageslider.SliderViewAdapter
 import timber.log.Timber
 
 class HomeScreenFragment : Fragment() {
@@ -25,7 +22,7 @@ class HomeScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Adding Timber to fragment
+        // Add Timber to fragment
         Timber.plant(Timber.DebugTree())
         /**
          * show action bar
@@ -40,7 +37,7 @@ class HomeScreenFragment : Fragment() {
         setHasOptionsMenu(true)
 
         /**
-         *  Setup
+         *  Setup auto image SliderView
          */
         val sliderView = binding.imageSlider
         val adapter = HomeScreenSliderAdapter()
