@@ -65,5 +65,8 @@ dependencies {
     //Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
 
+    //Image Slider
+    implementation 'com.github.smarteist:autoimageslider:1.3.2'
+
 
 }

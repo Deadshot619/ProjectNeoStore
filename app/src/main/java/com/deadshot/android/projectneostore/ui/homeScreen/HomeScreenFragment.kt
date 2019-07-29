@@ -1,6 +1,7 @@
 package com.deadshot.android.projectneostore.ui.homeScreen
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -9,6 +10,10 @@ import com.deadshot.android.projectneostore.LoginFlowActivity
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentHomeScreenBinding
+import com.smarteist.autoimageslider.IndicatorAnimations
+import com.smarteist.autoimageslider.SliderAnimations
+import com.smarteist.autoimageslider.SliderView
+import com.smarteist.autoimageslider.SliderViewAdapter
 import timber.log.Timber
 
 class HomeScreenFragment : Fragment() {
@@ -33,6 +38,15 @@ class HomeScreenFragment : Fragment() {
         binding.lifecycleOwner = this
 
         setHasOptionsMenu(true)
+
+        /**
+         *
+         */
+        val sliderView = binding.imageSlider
+        val adapter = HomeScreenSliderAdapter()
+        sliderView.sliderAdapter = adapter
+        sliderView.setIndicatorAnimation(IndicatorAnimations.WORM)//set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
         return binding.root
     }
 
