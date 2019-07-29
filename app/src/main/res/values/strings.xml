@@ -20,6 +20,7 @@
     <string name="phone">Phone No.</string>
     <string name="termsAndConditions"><![CDATA[I agree to Terms & Conditions]]></string>
     <string name="register">Register</string>
+    <string name="search">Search</string>
 
 
 </resources>

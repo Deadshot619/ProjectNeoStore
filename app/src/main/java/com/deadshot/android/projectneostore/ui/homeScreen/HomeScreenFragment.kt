@@ -40,13 +40,15 @@ class HomeScreenFragment : Fragment() {
         setHasOptionsMenu(true)
 
         /**
-         *
+         *  Setup
          */
         val sliderView = binding.imageSlider
         val adapter = HomeScreenSliderAdapter()
-        sliderView.sliderAdapter = adapter
-        sliderView.setIndicatorAnimation(IndicatorAnimations.WORM)//set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
-        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+        sliderView.run {
+            sliderAdapter = adapter
+            setIndicatorAnimation(IndicatorAnimations.WORM)
+            setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+        }
         return binding.root
     }
 
