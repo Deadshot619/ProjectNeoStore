@@ -38,6 +38,7 @@
     <string name="cd_userImage"/>
     <string name="userRealName">John Doe</string>
     <string name="userEmail">JohnDoe@gmail.com</string>
+    <string name="dob">Date of Birth</string>
 
 
 </resources>

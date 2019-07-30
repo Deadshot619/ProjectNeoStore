@@ -122,6 +122,7 @@
                     app:helperTextTextColor="#99FFFFFF"
                     app:boxBackgroundColor="#33FFFFFF">
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_emailIdInputTextLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         style="@style/InnerMaterialEditText"
