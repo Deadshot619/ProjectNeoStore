@@ -144,7 +144,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_dobInputTextLayout_"
+                    android:id="@+id/et_dobInputTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="01/09/1949" android:enabled="false"/>

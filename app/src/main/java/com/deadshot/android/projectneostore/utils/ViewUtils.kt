@@ -1,6 +1,6 @@
 package com.deadshot.android.projectneostore.utils
 
-import android.content.Context
+import android.text.Editable
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
@@ -16,3 +16,5 @@ fun Fragment.toastLong(message: String){
 fun isEmailValid(email: String): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
+
+fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)

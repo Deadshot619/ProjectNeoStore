@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.User
+import com.deadshot.android.projectneostore.network.AccessToken.access_token
 import com.deadshot.android.projectneostore.network.LoginApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
@@ -42,10 +43,13 @@ class LoginViewModel : ViewModel(){
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                //login successful
                 if(response.isSuccessful){
                     authListener?.onFailure(response.body()!!.message)
                     Timber.i(response.toString())
                     _loginCheck.value = true
+                    access_token = response.body()!!.data.access_token
+                    Timber.i(access_token)
                 }else{
                     authListener?.onFailure("Login Unsuccessful")
                     Timber.i("Error ${response.code()} : ${response.message()}")
