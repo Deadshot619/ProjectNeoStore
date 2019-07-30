@@ -6,4 +6,7 @@
     <fragment android:id="@+id/homeScreenFragment"
               android:name="com.deadshot.android.projectneostore.ui.homeScreen.HomeScreenFragment"
               android:label="@string/app_name"/>
+    <fragment android:id="@+id/myAccountFragment"
+              android:name="com.deadshot.android.projectneostore.ui.myAccount.MyAccountFragment"
+              android:label="@string/title_my_account"/>
 </navigation>

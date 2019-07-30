@@ -8,7 +8,7 @@
     <item android:title="@string/title_sofas" android:id="@+id/sofas" android:icon="@drawable/sofa"/>
     <item android:title="@string/title_chairs" android:id="@+id/chairs" android:icon="@drawable/chair"/>
     <item android:title="@string/title_cupboards" android:id="@+id/cupboards" android:icon="@drawable/cupboard"/>
-    <item android:title="@string/title_my_account" android:id="@+id/myAccount"
+    <item android:title="@string/title_my_account" android:id="@+id/myAccountFragment"
           android:icon="@drawable/ic_person_white_24dp"/>
     <item android:title="@string/title_store_locator" android:id="@+id/storeLocator"
           android:icon="@drawable/ic_pin_drop_black_24dp"/>

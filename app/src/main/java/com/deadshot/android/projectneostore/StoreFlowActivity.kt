@@ -19,11 +19,24 @@ class StoreFlowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_store_flow)
 
+        /**
+         * add Drawer Layout
+         */
         drawerLayout = binding.drawerLayout
         val navController = this.findNavController(R.id.myNavHostStoreFlowFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
+
+        /**
+         * Code to hide Nav Drawer in destinations other than start destination
+         */
+        navController.addOnDestinationChangedListener { controller, destination, _ ->
+            if (destination.id == controller.graph.startDestination)
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            else
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

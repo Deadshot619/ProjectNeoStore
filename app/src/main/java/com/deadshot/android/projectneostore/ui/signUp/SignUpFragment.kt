@@ -18,8 +18,8 @@ import timber.log.Timber
 
 class SignUpFragment : Fragment(), AuthListener {
     private lateinit var signUpViewModel: SignUpViewModel
-
     private lateinit var binding: FragmentSignUpBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
