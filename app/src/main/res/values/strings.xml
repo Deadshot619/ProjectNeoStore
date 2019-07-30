@@ -34,6 +34,10 @@
     <string name="title_store_locator">Store Locator</string>
     <string name="title_my_orders">My Orders</string>
     <string name="title_logout">Logout</string>
+    <string name="userImage">User Image</string>
+    <string name="cd_userImage"/>
+    <string name="userRealName">John Doe</string>
+    <string name="userEmail">JohnDoe@gmail.com</string>
 
 
 </resources>
