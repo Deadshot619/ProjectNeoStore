@@ -59,8 +59,10 @@ class LoginFragment : Fragment(), AuthListener {
         loginViewModel.loginCheck.observe(this, Observer {
             if (it){
 //                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToStoreFlowNavigation())
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToStoreFlowActivity())
                 loginViewModel.loginDone()
+                //Manually popping off Login Flow Activity
+                (activity as LoginFlowActivity).finish()
             }
         })
 
