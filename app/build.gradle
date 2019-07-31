@@ -70,5 +70,6 @@ dependencies {
     //Image Slider
     implementation "com.github.smarteist:autoimageslider:$image_slider_version"
 
-
+    //Paper db
+    implementation 'io.paperdb:paperdb:2.6'
 }

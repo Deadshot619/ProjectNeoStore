@@ -3,12 +3,11 @@ package com.deadshot.android.projectneostore.ui.homeScreen
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.deadshot.android.projectneostore.LoginFlowActivity
-
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentHomeScreenBinding
 import com.smarteist.autoimageslider.IndicatorAnimations
@@ -20,21 +19,20 @@ class HomeScreenFragment : Fragment() {
     private lateinit var binding : FragmentHomeScreenBinding
     private lateinit var homeScreenViewModel: HomeScreenViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Add Timber to fragment
         Timber.plant(Timber.DebugTree())
-        /**
-         * show action bar
-         */
-//        (activity as LoginFlowActivity).supportActionBar?.show()
-
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_screen, container, false)
         binding.lifecycleOwner = this
+
+        homeScreenViewModel = ViewModelProviders.of(this).get(HomeScreenViewModel::class.java)
+        binding.homeScreenViewModel = homeScreenViewModel
 
         setHasOptionsMenu(true)
 

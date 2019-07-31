@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.deadshot.android.projectneostore.databinding.ActivityStoreFlowBinding
+import io.paperdb.Paper
 
 class StoreFlowActivity : AppCompatActivity() {
 
@@ -18,6 +19,7 @@ class StoreFlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_store_flow)
+        Paper.init(applicationContext)
 
         /**
          * add Drawer Layout

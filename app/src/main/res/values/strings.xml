@@ -40,5 +40,7 @@
     <string name="userEmail">JohnDoe@gmail.com</string>
     <string name="dob">Date of Birth</string>
 
+    <string name="default_value">Not Available</string>
+
 
 </resources>

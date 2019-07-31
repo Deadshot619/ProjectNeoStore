@@ -1,6 +1,7 @@
 package com.deadshot.android.projectneostore.ui.login
 
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import com.deadshot.android.projectneostore.LoginFlowActivity
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentLoginBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
-import com.deadshot.android.projectneostore.utils.toastShort
+import com.deadshot.android.projectneostore.utils.*
 import timber.log.Timber
 
 
@@ -23,6 +24,8 @@ class LoginFragment : Fragment(), AuthListener {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
+
+
 
 
 
@@ -58,7 +61,6 @@ class LoginFragment : Fragment(), AuthListener {
 
         loginViewModel.loginCheck.observe(this, Observer {
             if (it){
-//                findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToStoreFlowActivity())
                 loginViewModel.loginDone()
                 //Manually popping off Login Flow Activity
@@ -66,8 +68,36 @@ class LoginFragment : Fragment(), AuthListener {
             }
         })
 
+        loginViewModel.userData.observe(this, Observer {
+            if (it != null){
+                saveData(firstName = it.first_name,
+                    lastName = it.last_name,
+                    email = it.email,
+                    phone = it.phone_no.toString(),
+                    accessToken = it.access_token,
+                    dob = (it.dob ?: getString(R.string.default_value)).toString()
+                )
+            }
+        })
+
 //        activity?.actionBar?.hide()
         return binding.root
+    }
+
+    /**
+     *  Save data in Shared Preferences
+     */
+    fun saveData(firstName: String, lastName: String, email: String, phone: String, accessToken: String, dob: String){
+        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
+        with(sharedPreferences.edit()){
+            putString(FIRST_NAME, firstName)
+            putString(LAST_NAME, lastName)
+            putString(EMAIL, email)
+            putString(PHONE_NUMBER, phone)
+            putString(ACCESS_TOKEN, accessToken)
+            putString(DOB, dob)
+            apply()
+        }
     }
 
     override fun onStarted() {

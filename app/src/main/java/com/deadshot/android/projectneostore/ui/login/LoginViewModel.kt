@@ -1,13 +1,16 @@
 package com.deadshot.android.projectneostore.ui.login
 
+import android.app.Activity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.User
+import com.deadshot.android.projectneostore.models.UserDataResponse
 import com.deadshot.android.projectneostore.network.AccessToken.access_token
 import com.deadshot.android.projectneostore.network.LoginApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
+import io.paperdb.Paper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,6 +21,9 @@ class LoginViewModel : ViewModel(){
     var email: String? = null
     var password: String? = null
     var authListener: AuthListener? = null
+    private val _userData = MutableLiveData<UserDataResponse>()
+    val userData: LiveData<UserDataResponse>
+        get() = _userData
 
     private val _loginCheck = MutableLiveData<Boolean>()
     val loginCheck: LiveData<Boolean>
@@ -45,11 +51,9 @@ class LoginViewModel : ViewModel(){
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 //login successful
                 if(response.isSuccessful){
-                    authListener?.onFailure(response.body()!!.message)
-                    Timber.i(response.toString())
+                    _userData.value = response.body()!!.data
                     _loginCheck.value = true
-                    access_token = response.body()!!.data.access_token
-                    Timber.i(access_token)
+                    Timber.i("User Data : ${_userData.value}")
                 }else{
                     authListener?.onFailure("Login Unsuccessful")
                     Timber.i("Error ${response.code()} : ${response.message()}")

@@ -57,6 +57,7 @@
                 android:textColorHint="@color/colorPrimary" app:helperTextEnabled="false">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_FirstNameInputEditLayout"
+                    android:text="@{myAccountViewModel.first_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="John" android:enabled="false"/>
@@ -79,6 +80,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_LastNameInputEditLayout"
+                    android:text="@{myAccountViewModel.last_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="Doe" android:enabled="false"/>
@@ -101,6 +103,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_emailIdInputTextLayout"
+                    android:text="@{myAccountViewModel.email_id}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="JohnDoe@gmail.com" android:enabled="false"/>
@@ -123,6 +126,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_phoneInputEditLayout"
+                    android:text="@{myAccountViewModel.phone_number}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="9876543210" android:enabled="false"/>
@@ -145,6 +149,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_dobInputTextLayout"
+                    android:text="@{myAccountViewModel.dob}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="01/09/1949" android:enabled="false"/>
