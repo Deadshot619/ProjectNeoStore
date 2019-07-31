@@ -44,6 +44,7 @@
     <string name="default_value">Not Available</string>
     <string name="btn_edit_profile">EDIT PROFILE</string>
     <string name="btn_reset_password">RESET PASSWORD</string>
+    <string name="btn_submit">Submit</string>
 
 
 </resources>
