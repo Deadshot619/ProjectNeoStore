@@ -136,22 +136,24 @@
                 android:id="@+id/et_dobInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 app:boxStrokeColor="@color/colorPrimary"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:boxBackgroundMode="filled"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_date_range_24dp"
+                app:endIconContentDescription="@string/custom_content_desc"
                 android:hint="@string/dob"
                 android:textColorHint="@color/colorPrimary"
                 app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_dobInputTextLayout"
                     android:text="@{editProfileViewModel.dob}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:text="01-09-1949" android:enabled="true"/>
+                    android:layout_height="wrap_content"
+                    tools:text="01-09-1949" android:inputType="date" android:focusable="false" android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         //Submit Button

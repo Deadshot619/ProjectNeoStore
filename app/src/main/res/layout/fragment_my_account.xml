@@ -61,7 +61,7 @@
                     android:text="@{myAccountViewModel.first_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="John" android:enabled="false"/>
+                    tools:text="John" android:focusable="false" android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         //Last Name
@@ -84,7 +84,7 @@
                     android:text="@{myAccountViewModel.last_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="Doe" android:enabled="false"/>
+                    tools:text="Doe" android:focusable="false" android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         //Email
@@ -107,7 +107,7 @@
                     android:text="@{myAccountViewModel.email_id}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="JohnDoe@gmail.com" android:enabled="false"/>
+                    tools:text="JohnDoe@gmail.com" android:focusable="false" android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         //Phone Number
@@ -130,7 +130,7 @@
                     android:text="@{myAccountViewModel.phone_number}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="9876543210" android:enabled="false"/>
+                    tools:text="9876543210" android:focusable="false" android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         //DOB
@@ -153,7 +153,7 @@
                     android:text="@{myAccountViewModel.dob}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="01/09/1949" android:enabled="false"/>
+                    tools:text="01/09/1949" android:focusable="false" android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton

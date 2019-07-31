@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 
 class EditProfileViewModel : ViewModel(){
 
-    val first_name: String = ""
-    val last_name: String = ""
-    val email_id: String = ""
-    val phone_number: String = ""
-    val dob: String = ""
+    var first_name: String = ""
+    var last_name: String = ""
+    var email_id: String = ""
+    var phone_number: String = ""
+    var dob: String = ""
 }

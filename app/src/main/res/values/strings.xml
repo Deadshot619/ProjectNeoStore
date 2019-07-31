@@ -40,6 +40,7 @@
     <string name="userRealName">John Doe</string>
     <string name="userEmail">JohnDoe@gmail.com</string>
     <string name="dob">Date of Birth</string>
+    <string name="custom_content_desc">Date Picker</string>
 
     <string name="default_value">Not Available</string>
     <string name="btn_edit_profile">EDIT PROFILE</string>
