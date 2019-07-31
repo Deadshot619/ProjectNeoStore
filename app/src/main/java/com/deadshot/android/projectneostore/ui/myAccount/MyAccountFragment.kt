@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentMyAccountBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
@@ -43,6 +46,13 @@ class MyAccountFragment : Fragment(), AuthListener {
 
         binding.lifecycleOwner = this
         binding.myAccountViewModel = myAccountViewModel
+
+        myAccountViewModel.navigateEditProfileCheck.observe(this, Observer {
+            if (it) {
+                findNavController().navigate(MyAccountFragmentDirections.actionMyAccountFragmentToEditProfileFragment())
+                myAccountViewModel.navigateDone()
+            }
+        })
 
         myAccountViewModel.authListener = this
         return binding.root

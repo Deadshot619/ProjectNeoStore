@@ -26,7 +26,9 @@ class LoginFragment : Fragment(), AuthListener {
     private lateinit var binding: FragmentLoginBinding
 
 
-
+    //TODO(Make this use in auto_login)
+    private var email: String? = null
+    private var password: String? = null
 
 
     override fun onCreateView(
@@ -53,10 +55,12 @@ class LoginFragment : Fragment(), AuthListener {
 
         binding.loginViewModel = loginViewModel
 
+
+
         loginViewModel.authListener = this
 
         binding.tvLoginPageSignUp.setOnClickListener (
-            Navigation.createNavigateOnClickListener(R.id.action_loginFragment2_to_signUpFragment2)
+            Navigation.createNavigateOnClickListener(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
         )
 
         loginViewModel.loginCheck.observe(this, Observer {
@@ -80,7 +84,6 @@ class LoginFragment : Fragment(), AuthListener {
             }
         })
 
-//        activity?.actionBar?.hide()
         return binding.root
     }
 
@@ -99,6 +102,18 @@ class LoginFragment : Fragment(), AuthListener {
             apply()
         }
     }
+
+
+    //TODO(Make this use in auto_login)
+    /**
+     * Load data from shared preferences
+     */
+    fun loadData(){
+        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
+        email = sharedPreferences.getString(EMAIL, getString(R.string.default_value))
+        password = sharedPreferences.getString(PASSWORD, getString(R.string.default_value))
+    }
+
 
     override fun onStarted() {
         toastShort("Login Started")

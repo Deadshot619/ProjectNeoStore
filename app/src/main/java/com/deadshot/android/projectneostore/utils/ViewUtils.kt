@@ -11,6 +11,7 @@ val EMAIL = "email_id"
 val PHONE_NUMBER = "phone_number"
 val ACCESS_TOKEN = "access_token"
 val DOB = "date_of_birth"
+val PASSWORD = "password"
 
 fun Fragment.toastShort(message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

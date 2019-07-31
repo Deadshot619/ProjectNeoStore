@@ -41,7 +41,7 @@ class LoginViewModel : ViewModel(){
         }
     }
 
-    private fun checkLogin(){
+    fun checkLogin(){
         LoginApi.retrofitService.checkLogin(email!!, password!!).enqueue(object: Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
                 _loginCheck.value = false
