@@ -8,10 +8,4 @@ import timber.log.Timber
 
 class HomeScreenViewModel : ViewModel(){
 
-    var authListener: AuthListener? = null
-
-    init {
-//        val user: User = Paper.book().read("user_db")
-//        Timber.i("Home Screen " + user.toString())
-    }
 }
