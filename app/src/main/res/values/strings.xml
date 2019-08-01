@@ -35,6 +35,7 @@
     <string name="title_store_locator">Store Locator</string>
     <string name="title_my_orders">My Orders</string>
     <string name="title_logout">Logout</string>
+    <string name="title_reset_password">Reset Password</string>
     <string name="userImage">User Image</string>
     <string name="cd_userImage"/>
     <string name="userRealName">John Doe</string>
@@ -46,6 +47,11 @@
     <string name="btn_edit_profile">EDIT PROFILE</string>
     <string name="btn_reset_password">RESET PASSWORD</string>
     <string name="btn_submit">Submit</string>
+    <string name="old_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="btn_reset">Reset</string>
+    <string name="btn_save">Save</string>
 
 
 </resources>

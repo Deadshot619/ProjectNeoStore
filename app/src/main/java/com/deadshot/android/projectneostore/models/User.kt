@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class User(
     @SerializedName("status") var status: Int,
-    @SerializedName("data") var data: UserDataResponse,
+    @SerializedName("data") var data: UserDataResponse?,
     @SerializedName("message") var message: String,
     @SerializedName("user_msg") var user_msg: String
 )

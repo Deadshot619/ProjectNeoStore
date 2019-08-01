@@ -63,7 +63,7 @@ class EditProfileFragment : Fragment(), AuthListener {
             val day = c.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(   activity as StoreFlowActivity, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-                editProfileViewModel.dob = "$mDay-$mMonth-$mYear"
+                editProfileViewModel.dob = "$mDay-${mMonth+1}-$mYear"
                 binding.invalidateAll()
             },year, month, day)
 

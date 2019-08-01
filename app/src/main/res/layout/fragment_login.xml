@@ -101,7 +101,8 @@
                     app:hintTextColor="#DBFFFFFF"
                     app:passwordToggleEnabled="true"
                     app:helperTextTextColor="@android:color/white"
-                    app:boxBackgroundMode="outline" app:counterEnabled="false" app:boxBackgroundColor="#33FFFFFF">
+                    app:boxBackgroundMode="outline" app:counterEnabled="false" app:boxBackgroundColor="#33FFFFFF"
+                    app:passwordToggleTint="@android:color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordInputEditLayout"

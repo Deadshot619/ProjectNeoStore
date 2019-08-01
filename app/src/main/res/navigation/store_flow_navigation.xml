@@ -36,5 +36,5 @@
     </fragment>
     <fragment android:id="@+id/resetPasswordFragment"
               android:name="com.deadshot.android.projectneostore.ui.resetPassword.ResetPasswordFragment"
-              android:label="ResetPasswordFragment"/>
+              android:label="@string/title_reset_password"/>
 </navigation>

@@ -14,10 +14,12 @@
             android:usesCleartextTraffic="true">
         <activity
                 android:name=".StoreFlowActivity"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme_2">
         </activity>
         <activity
                 android:name=".LoginFlowActivity"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme_2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

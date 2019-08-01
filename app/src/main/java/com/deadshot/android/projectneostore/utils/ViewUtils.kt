@@ -35,12 +35,18 @@ fun isEmailValid(email: String): Boolean {
     return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
 
-
 /**
  * Check if password is valid
  */
 fun isPasswordValid(password: String?, confirmPassword: String?): Boolean {
     return password.equals(confirmPassword)
+}
+
+/**
+ * Check if password contains 0-9, a-z, A-Z
+ */
+fun isPasswordContainCharacter(password: String?): Boolean{
+    return Pattern.matches("[a-zA-Z0-9]+", password)
 }
 
 /**

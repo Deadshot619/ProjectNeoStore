@@ -56,7 +56,6 @@ class EditProfileViewModel(
         ).enqueue(object : retrofit2.Callback<UpdateUser>{
             override fun onFailure(call: Call<UpdateUser>, t: Throwable) {
                 authListener?.onFailure("Failed : ${t.message}")
-                authListener?.onFailure("Failed : ${t.message}")
             }
 
             override fun onResponse(call: Call<UpdateUser>, response: Response<UpdateUser>) {

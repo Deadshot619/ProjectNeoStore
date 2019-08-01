@@ -30,7 +30,6 @@ class LoginViewModel : ViewModel(){
             get() = _loginCheck
 
     fun onLoginButtonClick(){
-        authListener?.onStarted()
         when {
             email.isNullOrEmpty() || password.isNullOrEmpty() -> {
                 authListener?.onFailure("Invalid Email or Password $email $password")

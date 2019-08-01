@@ -147,7 +147,8 @@
                     app:layout_constraintStart_toStartOf="@+id/et_EmailIdInputLayout"
                     app:layout_constraintEnd_toEndOf="@+id/et_EmailIdInputLayout"
                     android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_EmailIdInputLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/et_EmailIdInputLayout"
+                    app:passwordToggleTint="@android:color/white">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordInputEditLayout"
                         android:layout_width="match_parent"
@@ -161,7 +162,7 @@
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/comnfirmPassword"
+                    android:hint="@string/confirm_password"
                     app:counterTextColor="@android:color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:textColorHint="#DBFFFFFF"
@@ -174,7 +175,8 @@
                     android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
                     app:layout_constraintStart_toStartOf="@+id/et_passwordInputLayout"
                     app:layout_constraintEnd_toEndOf="@+id/et_passwordInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_passwordInputLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/et_passwordInputLayout"
+                    app:passwordToggleTint="@android:color/white">
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_confirmPasswordInputEditLayout"
                         android:layout_width="match_parent"
