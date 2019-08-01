@@ -4,10 +4,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 
-class EditProfileModelFactory : ViewModelProvider.Factory{
+class EditProfileModelFactory(
+    private val firstName: String,
+    private val lastName: String,
+    private val email: String,
+    private val phone: String,
+    private val dob: String?,
+    private val access_token: String
+) : ViewModelProvider.Factory{
     override fun <T: ViewModel?> create(modelClass: Class<T>): T{
         if (modelClass.isAssignableFrom(EditProfileViewModel::class.java)){
-            return EditProfileViewModel() as T
+            return EditProfileViewModel(
+                firstName,
+                lastName,
+                email,
+                phone,
+                dob,
+                access_token
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

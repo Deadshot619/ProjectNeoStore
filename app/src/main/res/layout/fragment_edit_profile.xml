@@ -56,7 +56,7 @@
                 android:textColorHint="@color/colorPrimary" app:helperTextEnabled="false">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_FirstNameInputEditLayout"
-                    android:text="@{editProfileViewModel.first_name}"
+                    android:text="@={editProfileViewModel.first_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="John" android:enabled="true"/>
@@ -79,7 +79,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_LastNameInputEditLayout"
-                    android:text="@{editProfileViewModel.last_name}"
+                    android:text="@={editProfileViewModel.last_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="Doe" android:enabled="true"/>
@@ -102,7 +102,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_emailIdInputTextLayout"
-                    android:text="@{editProfileViewModel.email_id}"
+                    android:text="@={editProfileViewModel.email_id}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="JohnDoe@gmail.com" android:enabled="true"/>
@@ -125,7 +125,7 @@
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_phoneInputEditLayout"
-                    android:text="@{editProfileViewModel.phone_number}"
+                    android:text="@={editProfileViewModel.phone_number}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:text="9876543210" android:enabled="true"/>
@@ -150,7 +150,7 @@
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_dobInputTextLayout"
-                    android:text="@{editProfileViewModel.dob}"
+                    android:text="@={editProfileViewModel.dob}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="01-09-1949" android:inputType="date" android:focusable="false" android:enabled="true"/>
@@ -161,6 +161,7 @@
                 android:id="@+id/btn_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> editProfileViewModel.onSubmit()}"
                 app:layout_constraintEnd_toEndOf="@+id/et_dobInputLayout" android:layout_marginEnd="8dp"
                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/et_dobInputLayout"
                 android:text="@string/btn_submit" style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>

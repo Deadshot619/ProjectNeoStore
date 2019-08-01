@@ -1,6 +1,6 @@
 package com.deadshot.android.projectneostore.network
 
-import com.deadshot.android.projectneostore.models.User
+import com.deadshot.android.projectneostore.models.UpdateUser
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -16,9 +16,9 @@ interface UpdateAccountApiService {
         @Field("last_name") last_name: String,
         @Field("email") email: String,
         @Field("dob") dob: String,
-        @Field("profile_pic") profile_pic: String,
+        @Field("profile_pic") profile_pic: String?,
         @Field("phone_no") phone_no: Number
-    ): Call<User>
+    ): Call<UpdateUser>
 }
 
 object UpdateAccountApi{

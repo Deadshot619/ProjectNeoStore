@@ -119,7 +119,7 @@ class LoginFragment : Fragment(), AuthListener {
         toastShort("Login Started")
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(message: String) {
         toastShort("Login Success")
     }
 

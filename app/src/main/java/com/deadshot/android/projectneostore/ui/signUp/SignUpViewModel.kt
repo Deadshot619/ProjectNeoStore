@@ -7,6 +7,7 @@ import com.deadshot.android.projectneostore.models.User
 import com.deadshot.android.projectneostore.network.SignUpApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
+import com.deadshot.android.projectneostore.utils.isValidMobile
 import retrofit2.Call
 import retrofit2.Response
 import timber.log.Timber
@@ -158,12 +159,5 @@ class SignUpViewModel : ViewModel(){
      */
     private fun isPasswordValid(password: String?, confirmPassword: String?): Boolean {
         return password.equals(confirmPassword)
-    }
-
-    /**
-     * Check if Mobile Number is valid
-     */
-    private fun isValidMobile(phone: String): Boolean{
-            return !Pattern.matches("[a-zA-Z]+", phone) && phone.length in 7..13
     }
 }

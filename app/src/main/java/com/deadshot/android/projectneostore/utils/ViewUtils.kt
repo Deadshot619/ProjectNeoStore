@@ -3,6 +3,7 @@ package com.deadshot.android.projectneostore.utils
 import android.text.Editable
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import java.util.regex.Pattern
 
 val SHARED_PREFERENCE = "shared_preferences"
 val FIRST_NAME= "first_name"
@@ -27,3 +28,10 @@ fun isEmailValid(email: String): Boolean {
 }
 
 fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
+
+/**
+ * Check if Mobile Number is valid
+ */
+fun isValidMobile(phone: String): Boolean{
+    return !Pattern.matches("[a-zA-Z]+", phone) && phone.length in 7..13
+}

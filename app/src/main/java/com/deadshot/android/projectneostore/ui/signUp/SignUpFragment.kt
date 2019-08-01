@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.deadshot.android.projectneostore.LoginFlowActivity
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentSignUpBinding
@@ -46,7 +45,7 @@ class SignUpFragment : Fragment(), AuthListener {
         toastShort("SignUp Started")
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(message: String) {
         toastShort("SignUpSuccess")
     }
 

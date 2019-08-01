@@ -48,6 +48,7 @@ class StoreFlowActivity : AppCompatActivity() {
         with(binding.navView.getHeaderView(0)){
             tv_userRealName.text = "${firstName.capitalize()} ${lastName.capitalize()}"
             tv_userEmail.text = email
+            invalidate()
         }
         
         /**
