@@ -25,11 +25,9 @@ class LoginFragment : Fragment(), AuthListener {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
 
-
     //TODO(Make this use in auto_login)
     private var email: String? = null
     private var password: String? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,7 +72,8 @@ class LoginFragment : Fragment(), AuthListener {
 
         loginViewModel.userData.observe(this, Observer {
             if (it != null){
-                saveData(firstName = it.first_name,
+                saveData(
+                    firstName = it.first_name,
                     lastName = it.last_name,
                     email = it.email,
                     phone = it.phone_no.toString(),

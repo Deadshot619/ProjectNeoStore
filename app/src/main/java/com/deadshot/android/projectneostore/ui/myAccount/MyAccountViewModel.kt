@@ -24,12 +24,24 @@ class MyAccountViewModel(
     val navigateEditProfileCheck: LiveData<Boolean>
         get() = _navigateEditProfileCheck
 
+    private val _navigateResetPasswordCheck = MutableLiveData<Boolean>()
+    val navigateResetPasswordCheck: LiveData<Boolean>
+        get() = _navigateResetPasswordCheck
+
     fun onClickEditProfile(){
         _navigateEditProfileCheck.value = true
     }
 
-    fun navigateDone() {
+    fun onClickResetPassword(){
+        _navigateResetPasswordCheck.value = true
+    }
+
+    fun navigateEditProfileDone() {
         _navigateEditProfileCheck.value = false
+    }
+
+    fun navigateResetPasswordDone() {
+        _navigateResetPasswordCheck.value = false
     }
 
 }

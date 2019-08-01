@@ -7,6 +7,7 @@ import com.deadshot.android.projectneostore.models.UpdateUser
 import com.deadshot.android.projectneostore.network.UpdateAccountApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
+import com.deadshot.android.projectneostore.utils.isNameValid
 import com.deadshot.android.projectneostore.utils.isValidMobile
 import retrofit2.Call
 import retrofit2.Response
@@ -106,14 +107,24 @@ class EditProfileViewModel(
      * Check if fields are correctly filled
      */
     private fun checkFieldsCorrect(): Boolean{
-        return if (!isEmailValid(email_id)) {
-            authListener?.onFailure("Email ID Invalid")
-            false
-        }else if(!isValidMobile(phone_number)){
-            authListener?.onFailure("Invalid Phone Number")
-            false
-        }else{
-            true
+        when {
+            !isNameValid(first_name) -> {
+                authListener?.onFailure("First Name Invalid")
+                return false
+            }
+            !isNameValid(last_name) -> {
+                authListener?.onFailure("Last Name Invalid")
+                return false
+            }
+            !isEmailValid(email_id) -> {
+                authListener?.onFailure("Email ID Invalid")
+                return false
+            }
+            !isValidMobile(phone_number) -> {
+                authListener?.onFailure("Invalid Phone Number")
+                return false
+            }
+            else -> return true
         }
     }
 

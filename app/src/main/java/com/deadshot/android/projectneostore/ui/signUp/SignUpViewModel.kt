@@ -7,11 +7,12 @@ import com.deadshot.android.projectneostore.models.User
 import com.deadshot.android.projectneostore.network.SignUpApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
+import com.deadshot.android.projectneostore.utils.isNameValid
+import com.deadshot.android.projectneostore.utils.isPasswordValid
 import com.deadshot.android.projectneostore.utils.isValidMobile
 import retrofit2.Call
 import retrofit2.Response
 import timber.log.Timber
-import java.util.regex.Pattern
 
 class SignUpViewModel : ViewModel(){
 
@@ -76,17 +77,28 @@ class SignUpViewModel : ViewModel(){
      * Check if fields are correctly filled
      */
     private fun checkFieldsCorrect(): Boolean{
-        return if (!isEmailValid(emailId!!)) {
-            authListener?.onFailure("Email ID Invalid")
-            false
-        }else if (!isPasswordValid(password, confirmPassword)){
-            authListener?.onFailure("Passwords do not match")
-            false
-        }else if(!isValidMobile(phoneNumber!!)){
-            authListener?.onFailure("Invalid Phone Number")
-            false
-        }else{
-            true
+        when {
+            !isNameValid(firstName!!) -> {
+                authListener?.onFailure("First name Invalid")
+                return false
+            }
+            !isNameValid(lastName!!) -> {
+                authListener?.onFailure("Last name Invalid")
+                return false
+            }
+            !isEmailValid(emailId!!) -> {
+                authListener?.onFailure("Email ID Invalid")
+                return false
+            }
+            !isPasswordValid(password, confirmPassword) -> {
+                authListener?.onFailure("Passwords do not match")
+                return false
+            }
+            !isValidMobile(phoneNumber!!) -> {
+                authListener?.onFailure("Invalid Phone Number")
+                return false
+            }
+            else -> return true
         }
     }
 
@@ -104,25 +116,23 @@ class SignUpViewModel : ViewModel(){
                     if (response.isSuccessful){
                         when {
                             response.body()!!.status == 200 -> {
-                                authListener?.onFailure(response.body()!!.message)
-                                authListener?.onFailure(response.body()!!.user_msg)
+                                authListener?.onSuccess(response.body()!!.user_msg)
                             }
                             else -> {
-                                authListener?.onFailure(response.body()!!.message)
                                 authListener?.onFailure(response.body()!!.user_msg)
                             }
                         }
                     }else{
-//                        when{
-//                            response.body()!!.status == 500 -> {
+                        when{
+                            response.body()!!.status == 500 -> {
 //                                authListener?.onFailure(response.body()!!.message)
-//                                authListener?.onFailure(response.body()!!.user_msg)
-//                            }
-//                            response.body()!!.status == 404 -> {
+                                authListener?.onFailure(response.body()!!.user_msg)
+                            }
+                            response.body()!!.status == 404 -> {
 //                                authListener?.onFailure(response.body()!!.message)
-//                                authListener?.onFailure(response.body()!!.user_msg)
-//                            }
-//                        }
+                                authListener?.onFailure(response.body()!!.user_msg)
+                            }
+                        }
                         authListener?.onFailure("SignUp Unsuccessful")
                         authListener?.onFailure("Error ${response.code()} : ${response.message()}")
                         Timber.i("Error ${response.code()} : ${response.message()}")
@@ -152,12 +162,5 @@ class SignUpViewModel : ViewModel(){
      */
     fun onTcClick(){
         termsAndConditions = !termsAndConditions
-    }
-
-    /**
-     * Check if password is valid
-     */
-    private fun isPasswordValid(password: String?, confirmPassword: String?): Boolean {
-        return password.equals(confirmPassword)
     }
 }

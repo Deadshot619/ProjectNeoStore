@@ -33,6 +33,7 @@ class StoreFlowActivity : AppCompatActivity() {
         Paper.init(applicationContext)
 
         loadData()
+
         /**
          * add Drawer Layout
          */

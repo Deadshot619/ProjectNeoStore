@@ -172,6 +172,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_edit_profile"
                 android:text="@string/btn_reset_password"
+                android:onClick="@{() -> myAccountViewModel.onClickResetPassword()}"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 app:layout_constraintEnd_toStartOf="@+id/btn_edit_profile" android:layout_marginEnd="8dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

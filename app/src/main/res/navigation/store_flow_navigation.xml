@@ -13,6 +13,10 @@
                 app:destination="@id/editProfileFragment" app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/myAccountFragment"/>
+        <action android:id="@+id/action_myAccountFragment_to_resetPasswordFragment"
+                app:destination="@id/resetPasswordFragment" app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/myAccountFragment"/>
     </fragment>
     <fragment android:id="@+id/editProfileFragment"
               android:name="com.deadshot.android.projectneostore.ui.editProfile.EditProfileFragment"
@@ -30,4 +34,7 @@
                 app:exitAnim="@anim/slide_out_right" app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/homeScreenFragment"/>
     </fragment>
+    <fragment android:id="@+id/resetPasswordFragment"
+              android:name="com.deadshot.android.projectneostore.ui.resetPassword.ResetPasswordFragment"
+              android:label="ResetPasswordFragment"/>
 </navigation>

@@ -54,7 +54,14 @@ class MyAccountFragment : Fragment(), AuthListener {
                 findNavController().navigate(MyAccountFragmentDirections.actionMyAccountFragmentToEditProfileFragment(
                     email, dob, firstName, lastName, phone, access_token
                 ))
-                myAccountViewModel.navigateDone()
+                myAccountViewModel.navigateEditProfileDone()
+            }
+        })
+
+        myAccountViewModel.navigateResetPasswordCheck.observe(this, Observer {
+            if (it){
+                findNavController().navigate(MyAccountFragmentDirections.actionMyAccountFragmentToResetPasswordFragment())
+                myAccountViewModel.navigateResetPasswordDone()
             }
         })
 
