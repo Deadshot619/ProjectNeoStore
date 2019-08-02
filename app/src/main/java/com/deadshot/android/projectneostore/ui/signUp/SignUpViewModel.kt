@@ -10,6 +10,10 @@ import com.deadshot.android.projectneostore.utils.isEmailValid
 import com.deadshot.android.projectneostore.utils.isNameValid
 import com.deadshot.android.projectneostore.utils.isPasswordValid
 import com.deadshot.android.projectneostore.utils.isValidMobile
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 import timber.log.Timber
@@ -29,6 +33,9 @@ class SignUpViewModel : ViewModel(){
     private val _signUpCheck = MutableLiveData<Boolean>()
     val signUpCheck: LiveData<Boolean>
         get() = _signUpCheck
+
+    private val viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     fun onSignUpBtnClick(){
         if (checkFieldsFilled() && checkFieldsCorrect())
@@ -103,43 +110,21 @@ class SignUpViewModel : ViewModel(){
     }
 
     private fun onSignUp() {
-//        authListener?.onFailure("Signup Done")
-        SignUpApi.retrofitService
-            .doSignUp(firstName!!, lastName!!, emailId!!, password!!, confirmPassword!!, gender!!, phoneNumber!!.toBigDecimal())
-            .enqueue(object: retrofit2.Callback<User>{
-                override fun onFailure(call: Call<User>, t: Throwable) {
-                    _signUpCheck.value = false
-                    authListener?.onFailure("Failed : " + t.message!!)
+        coroutineScope.launch {
+            val getPropertiesDeferred = SignUpApi.retrofitService
+                .doSignUp(firstName!!, lastName!!, emailId!!, password!!, confirmPassword!!, gender!!, phoneNumber!!.toBigDecimal())
+            try {
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200){
+                    authListener?.onSuccess(listResult.user_msg)
+                }else{
+                    authListener?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                 }
-
-                override fun onResponse(call: Call<User>, response: Response<User>) {
-                    if (response.isSuccessful){
-                        when {
-                            response.body()!!.status == 200 -> {
-                                authListener?.onSuccess(response.body()!!.user_msg)
-                            }
-                            else -> {
-                                authListener?.onFailure(response.body()!!.user_msg)
-                            }
-                        }
-                    }else{
-                        when{
-                            response.body()!!.status == 500 -> {
-//                                authListener?.onFailure(response.body()!!.message)
-                                authListener?.onFailure(response.body()!!.user_msg)
-                            }
-                            response.body()!!.status == 404 -> {
-//                                authListener?.onFailure(response.body()!!.message)
-                                authListener?.onFailure(response.body()!!.user_msg)
-                            }
-                        }
-                        authListener?.onFailure("SignUp Unsuccessful")
-                        authListener?.onFailure("Error ${response.code()} : ${response.message()}")
-                        Timber.i("Error ${response.code()} : ${response.message()}")
-                    }
-                }
-
-            })
+            }catch (t: Throwable){
+                authListener?.onFailure("Failure : ${t.message}")
+                Timber.i("Failure : ${t.message}")
+            }
+        }
     }
 
 
@@ -162,5 +147,14 @@ class SignUpViewModel : ViewModel(){
      */
     fun onTcClick(){
         termsAndConditions = !termsAndConditions
+    }
+
+    fun signUpDone(){
+        _signUpCheck.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

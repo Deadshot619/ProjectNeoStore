@@ -3,7 +3,6 @@ package com.deadshot.android.projectneostore.ui.resetPassword
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.deadshot.android.projectneostore.models.User
 import com.deadshot.android.projectneostore.network.ResetPasswordApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isPasswordContainCharacter
@@ -12,12 +11,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import timber.log.Timber
 
-class ResetPasswordViewModel(val accessToken: String) : ViewModel(){
+class ResetPasswordViewModel(private val accessToken: String) : ViewModel(){
     var oldPassword = ""
     var newPassword = ""
     var confirmPassword = ""
@@ -69,6 +65,9 @@ class ResetPasswordViewModel(val accessToken: String) : ViewModel(){
         _checkResetPasswordSuccessful.value = false
     }
 
+    /**
+     * Check if fields contains correct characters
+     */
     private fun checkCharacters(): Boolean{
         return when{
             !isPasswordContainCharacter(oldPassword) || !isPasswordContainCharacter(newPassword) || !isPasswordContainCharacter(confirmPassword) -> {
