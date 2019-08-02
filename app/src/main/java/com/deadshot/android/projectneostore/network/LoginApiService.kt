@@ -1,6 +1,7 @@
 package com.deadshot.android.projectneostore.network
 
 import com.deadshot.android.projectneostore.models.User
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -12,7 +13,7 @@ interface LoginApiService{
     fun checkLogin(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Call<User>
+    ): Deferred<User>
 }
 
 object LoginApi{

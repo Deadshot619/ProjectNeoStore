@@ -8,6 +8,10 @@ import com.deadshot.android.projectneostore.models.UserDataResponse
 import com.deadshot.android.projectneostore.network.LoginApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +30,9 @@ class LoginViewModel : ViewModel(){
     val loginCheck: LiveData<Boolean>
             get() = _loginCheck
 
+    private val viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
     fun onLoginButtonClick(){
         when {
             email.isNullOrEmpty() || password.isNullOrEmpty() -> {
@@ -38,24 +45,23 @@ class LoginViewModel : ViewModel(){
     }
 
     fun checkLogin(){
-        LoginApi.retrofitService.checkLogin(email!!, password!!).enqueue(object: Callback<User> {
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                _loginCheck.value = false
-                authListener?.onFailure("Failed : " + t.message!!)
-            }
-
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                //login successful
-                if(response.isSuccessful){
-                    _userData.value = response.body()!!.data
+        coroutineScope.launch {
+            val getPropertiesDeferred = LoginApi.retrofitService.checkLogin(email!!, password!!)
+            try {
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200){
+                    _userData.value = listResult.data
                     _loginCheck.value = true
-                    Timber.i("User Data : ${_userData.value}")
+                    authListener?.onSuccess("${listResult.user_msg}")
                 }else{
-                    authListener?.onFailure("Login Unsuccessful")
-                    Timber.i("Error ${response.code()} : ${response.message()}")
+                    authListener?.onFailure("Login Unsuccessful\nError ${listResult.status} : ${listResult.user_msg}")
+                    Timber.i("Error ${listResult.status} : ${listResult.message}")
                 }
+            }catch (t: Throwable){
+                    authListener?.onFailure("Failure : ${t.message}")
+                    Timber.i("Failure : ${t.message}")
             }
-        })
+        }
     }
 
     /**
@@ -63,5 +69,10 @@ class LoginViewModel : ViewModel(){
      */
     fun loginDone(){
         _loginCheck.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
