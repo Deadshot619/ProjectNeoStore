@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentResetPasswordBinding
@@ -47,11 +48,12 @@ class ResetPasswordFragment : Fragment(), AuthListener {
         //Set ViewModel
         binding.resetPasswordViewModel = resetPasswordViewModel
 
-//        resetPasswordViewModel.checkResetPasswordSuccessful.observe(this, Observer {
-//            if (it){
-//
-//            }
-//        })
+        resetPasswordViewModel.checkResetPasswordSuccessful.observe(this, Observer {
+            if (it){
+                findNavController().navigate(ResetPasswordFragmentDirections.actionResetPasswordFragmentToMyAccountFragment())
+                resetPasswordViewModel.resetDone()
+            }
+        })
 
         resetPasswordViewModel.authListener = this
         return binding.root

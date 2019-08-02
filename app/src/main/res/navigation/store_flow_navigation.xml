@@ -36,5 +36,10 @@
     </fragment>
     <fragment android:id="@+id/resetPasswordFragment"
               android:name="com.deadshot.android.projectneostore.ui.resetPassword.ResetPasswordFragment"
-              android:label="@string/title_reset_password"/>
+              android:label="@string/title_reset_password">
+        <action android:id="@+id/action_resetPasswordFragment_to_myAccountFragment"
+                app:destination="@id/myAccountFragment" app:popUpTo="@+id/homeScreenFragment"
+                app:enterAnim="@anim/slide_in_left" app:exitAnim="@anim/slide_out_right"
+                app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 </navigation>

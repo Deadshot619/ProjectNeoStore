@@ -55,7 +55,7 @@ class EditProfileViewModel(
     private fun updateUserData() {
 
         coroutineScope.launch {
-            var getPropertiesDeferred = UpdateAccountApi.retrofitService.updateAccount(
+            val getPropertiesDeferred = UpdateAccountApi.retrofitService.updateAccount(
                 access_token = access_token,
                 first_name = first_name,
                 last_name = last_name,

@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.User
-import com.deadshot.android.projectneostore.network.AccessToken.access_token
 import com.deadshot.android.projectneostore.network.ResetPasswordApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isPasswordContainCharacter
 import com.deadshot.android.projectneostore.utils.isPasswordValid
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +27,11 @@ class ResetPasswordViewModel(val accessToken: String) : ViewModel(){
     val checkResetPasswordSuccessful: LiveData<Boolean>
         get() = _checkResetPasswordSuccessful
 
+    /**
+     * Set Job & coroutine scope
+     */
+    private var viewModelJob = Job()
+    private var coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     fun onClickSave(){
         if (checkFieldsFilled() && checkFieldsCorrect() && checkCharacters()){
@@ -32,38 +40,29 @@ class ResetPasswordViewModel(val accessToken: String) : ViewModel(){
     }
 
     private fun resetPassword() {
-        ResetPasswordApi.retrofitService.makePasswordReset(
-            access_token = accessToken,
-            old_password = oldPassword,
-            new_password = newPassword,
-            confirm_password = confirmPassword
-        ).enqueue(object: Callback<User>{
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                authListener?.onFailure("Failed : ${t.message}")
-            }
+        coroutineScope.launch {
+            val getPropertiesDeferred = ResetPasswordApi.retrofitService.makePasswordReset(
+                access_token = accessToken,
+                old_password = oldPassword,
+                new_password = newPassword,
+                confirm_password = confirmPassword
+            )
 
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                if (response.isSuccessful){
-                    when{
-                        response.body()!!.status == 500 || response.body()!!.status == 400 || response.body()!!.status == 404  ->{
-                            authListener?.onFailure(response.body()!!.user_msg)
-                            return
-                        }
-                        response.body()!!.status == 200 ->{
-                            authListener?.onSuccess(response.body()!!.user_msg)
-                            _checkResetPasswordSuccessful.value =  true
-                            return
-                        }
-                        else -> {
-                            authListener?.onFailure(response.body()!!.user_msg)
-                        }
+            try {
+                val listResult = getPropertiesDeferred.await()
+                when {
+                    listResult.status == 200 -> {
+                        authListener?.onSuccess(listResult.user_msg)
+                        _checkResetPasswordSuccessful.value =  true
                     }
-                }else{
-                    Timber.i("Error ${response.code()} : ${response.message()}")
+                    listResult.status == 500 || listResult.status == 400 || listResult.status == 404 -> authListener?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                    else -> authListener?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                 }
+            }catch (t: Throwable){
+                authListener?.onFailure("Failure : ${t.message}")
+                Timber.i("Failure : ${t.message}")
             }
-
-        })
+        }
     }
 
     fun resetDone(){
