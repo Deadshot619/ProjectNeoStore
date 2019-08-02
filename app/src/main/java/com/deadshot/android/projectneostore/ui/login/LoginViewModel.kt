@@ -1,16 +1,13 @@
 package com.deadshot.android.projectneostore.ui.login
 
-import android.app.Activity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.User
 import com.deadshot.android.projectneostore.models.UserDataResponse
-import com.deadshot.android.projectneostore.network.AccessToken.access_token
 import com.deadshot.android.projectneostore.network.LoginApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
-import io.paperdb.Paper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

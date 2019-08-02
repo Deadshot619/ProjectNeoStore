@@ -107,4 +107,9 @@ class ResetPasswordViewModel(private val accessToken: String) : ViewModel(){
             else -> true
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
 }
