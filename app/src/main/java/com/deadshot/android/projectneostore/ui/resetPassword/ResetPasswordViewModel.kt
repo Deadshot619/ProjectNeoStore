@@ -45,9 +45,14 @@ class ResetPasswordViewModel(val accessToken: String) : ViewModel(){
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful){
                     when{
+                        response.body()!!.status == 500 || response.body()!!.status == 400 || response.body()!!.status == 404  ->{
+                            authListener?.onFailure(response.body()!!.user_msg)
+                            return
+                        }
                         response.body()!!.status == 200 ->{
                             authListener?.onSuccess(response.body()!!.user_msg)
                             _checkResetPasswordSuccessful.value =  true
+                            return
                         }
                         else -> {
                             authListener?.onFailure(response.body()!!.user_msg)

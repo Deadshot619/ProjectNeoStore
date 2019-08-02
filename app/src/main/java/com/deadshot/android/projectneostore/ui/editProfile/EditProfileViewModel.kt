@@ -9,6 +9,10 @@ import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
 import com.deadshot.android.projectneostore.utils.isNameValid
 import com.deadshot.android.projectneostore.utils.isValidMobile
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 import timber.log.Timber
@@ -35,6 +39,10 @@ class EditProfileViewModel(
 
     var authListener: AuthListener? = null
 
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+
     fun onSubmit(){
         if (checkFieldsFilled())
             if (checkFieldsCorrect())
@@ -45,36 +53,33 @@ class EditProfileViewModel(
      * Update User Data
      */
     private fun updateUserData() {
-        UpdateAccountApi.retrofitService.updateAccount(
-            access_token = access_token,
-            first_name = first_name,
-            last_name = last_name,
-            email = email_id,
-            phone_no = phone_number.toBigDecimal(),
-            dob = dob,
-            profile_pic = ""
-        ).enqueue(object : retrofit2.Callback<UpdateUser>{
-            override fun onFailure(call: Call<UpdateUser>, t: Throwable) {
-                authListener?.onFailure("Failed : ${t.message}")
-            }
 
-            override fun onResponse(call: Call<UpdateUser>, response: Response<UpdateUser>) {
-                if (response.isSuccessful){
-                    when{
-                        response.body()!!.status == 200 ->{
-                            authListener?.onSuccess(response.body()!!.user_msg)
-                            _checkUpdateSuccessful.value =  true
-                        }
-                        else -> {
-                        authListener?.onFailure(response.body()!!.user_msg)
-                        }
-                    }
-                }else{
-                    Timber.i("Error ${response.code()} : ${response.message()}")
+        coroutineScope.launch {
+            var getPropertiesDeferred = UpdateAccountApi.retrofitService.updateAccount(
+                access_token = access_token,
+                first_name = first_name,
+                last_name = last_name,
+                email = email_id,
+                phone_no = phone_number.toBigDecimal(),
+                dob = dob,
+                profile_pic = ""
+            )
+            try {
+                /**
+                 * - Calling await returns result from a network call when value is ready.
+                 *  - await() : nonblocking, doesn't block UI
+                 */
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200) {
+                    authListener?.onSuccess(listResult.user_msg)
+                    _checkUpdateSuccessful.value =  true
+                }else {
+                    authListener?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                 }
+            }catch (t: Throwable){
+                Timber.i("Failure : ${t.message}")
             }
-
-        })
+        }
     }
 
     /**
@@ -129,5 +134,10 @@ class EditProfileViewModel(
 
     fun updateDone(){
         _checkUpdateSuccessful.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
