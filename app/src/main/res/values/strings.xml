@@ -53,5 +53,6 @@
     <string name="btn_reset">Reset</string>
     <string name="btn_save">Save</string>
 
+    <string name="flow_my_account">MyAccountFlow</string>
 
 </resources>

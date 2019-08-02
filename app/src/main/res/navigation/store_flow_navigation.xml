@@ -6,40 +6,43 @@
     <fragment android:id="@+id/homeScreenFragment"
               android:name="com.deadshot.android.projectneostore.ui.homeScreen.HomeScreenFragment"
               android:label="@string/app_name"/>
-    <fragment android:id="@+id/myAccountFragment"
-              android:name="com.deadshot.android.projectneostore.ui.myAccount.MyAccountFragment"
-              android:label="@string/title_my_account">
-        <action android:id="@+id/action_myAccountFragment_to_editProfileFragment"
-                app:destination="@id/editProfileFragment" app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/myAccountFragment"/>
-        <action android:id="@+id/action_myAccountFragment_to_resetPasswordFragment"
-                app:destination="@id/resetPasswordFragment" app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/myAccountFragment"/>
-    </fragment>
-    <fragment android:id="@+id/editProfileFragment"
-              android:name="com.deadshot.android.projectneostore.ui.editProfile.EditProfileFragment"
-              android:label="@string/title_edit_profle">
-        <argument android:name="email" app:argType="string"/>
-        <argument android:name="dob" app:argType="string" app:nullable="true"/>
-        <argument android:name="firstName" app:argType="string"/>
-        <argument android:name="lastName" app:argType="string"/>
-        <argument android:name="phone" app:argType="string"/>
-        <argument android:name="profile_pic" app:argType="string" app:nullable="true"
-                  android:defaultValue="Not Available"/>
-        <argument android:name="access_token" app:argType="string"/>
-        <action android:id="@+id/action_editProfileFragment_to_myAccountFragment"
-                app:destination="@id/myAccountFragment" app:enterAnim="@anim/slide_in_left"
-                app:exitAnim="@anim/slide_out_right" app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/homeScreenFragment"/>
-    </fragment>
-    <fragment android:id="@+id/resetPasswordFragment"
-              android:name="com.deadshot.android.projectneostore.ui.resetPassword.ResetPasswordFragment"
-              android:label="@string/title_reset_password">
-        <action android:id="@+id/action_resetPasswordFragment_to_myAccountFragment"
-                app:destination="@id/myAccountFragment" app:popUpTo="@+id/homeScreenFragment"
-                app:enterAnim="@anim/slide_in_left" app:exitAnim="@anim/slide_out_right"
-                app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
-    </fragment>
+    <navigation android:id="@+id/myAccountFlow" app:startDestination="@id/myAccountFragment"
+                android:label="@string/flow_my_account">
+        <fragment android:id="@+id/myAccountFragment"
+                  android:name="com.deadshot.android.projectneostore.ui.myAccount.MyAccountFragment"
+                  android:label="@string/title_my_account">
+            <action android:id="@+id/action_myAccountFragment_to_editProfileFragment"
+                    app:destination="@id/editProfileFragment" app:enterAnim="@anim/slide_in_right"
+                    app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                    app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/myAccountFragment"/>
+            <action android:id="@+id/action_myAccountFragment_to_resetPasswordFragment"
+                    app:destination="@id/resetPasswordFragment" app:enterAnim="@anim/slide_in_right"
+                    app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                    app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/myAccountFragment"/>
+        </fragment>
+        <fragment android:id="@+id/editProfileFragment"
+                  android:name="com.deadshot.android.projectneostore.ui.editProfile.EditProfileFragment"
+                  android:label="@string/title_edit_profle">
+            <argument android:name="email" app:argType="string"/>
+            <argument android:name="dob" app:argType="string" app:nullable="true"/>
+            <argument android:name="firstName" app:argType="string"/>
+            <argument android:name="lastName" app:argType="string"/>
+            <argument android:name="phone" app:argType="string"/>
+            <argument android:name="profile_pic" app:argType="string" app:nullable="true"
+                      android:defaultValue="Not Available"/>
+            <argument android:name="access_token" app:argType="string"/>
+            <action android:id="@+id/action_editProfileFragment_to_myAccountFragment"
+                    app:destination="@id/myAccountFragment" app:enterAnim="@anim/slide_in_left"
+                    app:exitAnim="@anim/slide_out_right" app:popEnterAnim="@anim/slide_in_left"
+                    app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/homeScreenFragment"/>
+        </fragment>
+        <fragment android:id="@+id/resetPasswordFragment"
+                  android:name="com.deadshot.android.projectneostore.ui.resetPassword.ResetPasswordFragment"
+                  android:label="@string/title_reset_password">
+            <action android:id="@+id/action_resetPasswordFragment_to_myAccountFragment"
+                    app:destination="@id/myAccountFragment" app:popUpTo="@+id/homeScreenFragment"
+                    app:enterAnim="@anim/slide_in_left" app:exitAnim="@anim/slide_out_right"
+                    app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
+        </fragment>
+    </navigation>
 </navigation>
