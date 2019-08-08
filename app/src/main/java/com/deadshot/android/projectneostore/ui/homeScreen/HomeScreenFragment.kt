@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
@@ -64,6 +66,14 @@ class HomeScreenFragment : Fragment() {
             setIndicatorAnimation(IndicatorAnimations.WORM)
             setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
         }
+
+        //Navigate to Tables Screen
+        homeScreenViewModel.navigateToTable.observe(this, Observer {
+            if (it == true){
+                findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToTablesFragment())
+                homeScreenViewModel.navigateToTablesDone()
+            }
+        })
 
         setHasOptionsMenu(true)
         return binding.root

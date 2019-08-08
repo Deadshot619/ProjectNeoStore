@@ -52,5 +52,5 @@
     </navigation>
     <fragment android:id="@+id/tablesFragment"
               android:name="com.deadshot.android.projectneostore.ui.tables.TablesFragment"
-              android:label="TablesFragment"/>
+              android:label="@string/title_tables"/>
 </navigation>
