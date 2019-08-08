@@ -11,6 +11,9 @@
                 type="com.deadshot.android.projectneostore.ui.login.LoginViewModel"/>
     </data>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
+                                                         android:layout_height="match_parent">
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,8 +25,10 @@
                 tools:ignore="ExtraText"
                 tools:context="com.deadshot.android.projectneostore.ui.login.LoginFragment"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp" android:paddingTop="16dp" android:layout_gravity="center"
-        android:theme="@style/AppTheme">
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:layout_gravity="center"
+                android:theme="@style/AppTheme">
 
             //Appname "Store"
             <TextView
@@ -158,4 +163,10 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/progress_bar" tools:visibility="visible"
+                android:layout_gravity="center" android:visibility="gone" android:indeterminate="true"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

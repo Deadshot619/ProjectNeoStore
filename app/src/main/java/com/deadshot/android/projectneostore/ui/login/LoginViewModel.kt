@@ -30,10 +30,15 @@ class LoginViewModel : ViewModel(){
     val loginCheck: LiveData<Boolean>
             get() = _loginCheck
 
+    private val _progressBarStatus = MutableLiveData<Boolean>()
+    val progressBarStatus: LiveData<Boolean>
+        get() = _progressBarStatus
+
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     fun onLoginButtonClick(){
+        _progressBarStatus.value = true
         when {
             email.isNullOrEmpty() || password.isNullOrEmpty() -> {
                 authListener?.onFailure("Invalid Email or Password $email $password")
@@ -61,6 +66,7 @@ class LoginViewModel : ViewModel(){
                     authListener?.onFailure("Failure : ${t.message}")
                     Timber.i("Failure : ${t.message}")
             }
+            _progressBarStatus.value = false
         }
     }
 

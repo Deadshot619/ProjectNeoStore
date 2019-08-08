@@ -1,17 +1,20 @@
 package com.deadshot.android.projectneostore.ui.login
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.transition.Visibility
 import com.deadshot.android.projectneostore.LoginFlowActivity
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentLoginBinding
@@ -29,6 +32,7 @@ class LoginFragment : Fragment(), AuthListener {
     private var email: String? = null
     private var password: String? = null
 
+    @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,6 +71,17 @@ class LoginFragment : Fragment(), AuthListener {
                 loginViewModel.loginDone()
                 //Manually popping off Login Flow Activity
                 (activity as LoginFlowActivity).finish()
+            }
+        })
+
+        loginViewModel.progressBarStatus.observe(this, Observer {
+            if (it){
+                requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                binding.progressBar.visibility = View.VISIBLE
+
+            }else{
+                requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                binding.progressBar.visibility = View.INVISIBLE
             }
         })
 
