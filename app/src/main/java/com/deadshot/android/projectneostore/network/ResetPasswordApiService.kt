@@ -2,7 +2,6 @@ package com.deadshot.android.projectneostore.network
 
 import com.deadshot.android.projectneostore.models.User
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
@@ -21,6 +20,6 @@ interface ResetPasswordApiService {
 
 object ResetPasswordApi{
     val retrofitService: ResetPasswordApiService by lazy {
-        retrofit.create(ResetPasswordApiService::class.java)
+        retrofit_gson.create(ResetPasswordApiService::class.java)
     }
 }

@@ -22,6 +22,6 @@ interface SignUpApiService{
 
 object SignUpApi{
     val retrofitService: SignUpApiService by lazy {
-        retrofit.create(SignUpApiService::class.java)
+        retrofit_gson.create(SignUpApiService::class.java)
     }
 }

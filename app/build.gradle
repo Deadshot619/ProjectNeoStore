@@ -62,8 +62,9 @@ dependencies {
     //ViewModel & LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
-    //Retrofit
+    //Retrofit with Moshi Converter
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     //GSON convertor
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
