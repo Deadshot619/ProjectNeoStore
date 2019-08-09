@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.Adapter.ProductsAdapter
 
 import com.deadshot.android.projectneostore.R
@@ -18,7 +20,12 @@ import timber.log.Timber
 
 class TablesFragment : Fragment() {
 
-    private lateinit var tablesViewModel: TablesViewModel
+    /**
+     * Lazily initialize our [TablesViewModel].
+     */
+    private val tablesViewModel: TablesViewModel by lazy {
+        ViewModelProviders.of(this).get(TablesViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,12 +36,17 @@ class TablesFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val binding = FragmentTablesBinding.inflate(inflater)
-        tablesViewModel = ViewModelProviders.of(this).get(TablesViewModel::class.java)
+
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
+        // Giving the binding access to the TablesViewModel
         binding.tablesViewModel = tablesViewModel
 
+        // Adds divider to each recycler view item
+        binding.recyclerViewProducts.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+
+        // Sets the adapter of the products RecyclerView
         binding.recyclerViewProducts.adapter = ProductsAdapter()
 
         return binding.root

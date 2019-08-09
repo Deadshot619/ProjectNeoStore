@@ -1,8 +1,10 @@
 package com.deadshot.android.projectneostore.models
 
 import com.squareup.moshi.Json
-import java.util.*
 
+/**
+ * The property names of these data class are used by Moshi to match the names of values in JSON.
+ */
 data class ProductList(
     @Json(name = "id") val productId: Int,
     @Json(name = "product_category_id") val productCategoryId: Int,

@@ -9,6 +9,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.deadshot.android.projectneostore.Adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.models.ProductList
 
+/**
+ * Uses the Glide library to load an image by URL into an [ImageView]
+ */
 @BindingAdapter("imgUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?){
     imgUrl?.let {
@@ -22,6 +25,9 @@ fun bindImage(imgView: ImageView, imgUrl: String?){
     }
 }
 
+/**
+* When there is no Products List data (data is null), hide the [RecyclerView], otherwise show it.
+*/
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<ProductList>?){
     val adapter = recyclerView.adapter as ProductsAdapter

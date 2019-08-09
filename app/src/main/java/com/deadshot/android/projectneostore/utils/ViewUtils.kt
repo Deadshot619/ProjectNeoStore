@@ -12,6 +12,10 @@ const val PHONE_NUMBER = "phone_number"
 const val ACCESS_TOKEN = "access_token"
 const val DOB = "date_of_birth"
 const val PASSWORD = "password"
+const val TABLES = 1
+const val SOFAS = 2
+const val CHAIRS = 3
+const val CUPBOARDS = 4
 
 fun Fragment.toastShort(message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

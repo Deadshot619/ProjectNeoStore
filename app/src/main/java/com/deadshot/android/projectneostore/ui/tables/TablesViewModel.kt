@@ -7,6 +7,7 @@ import com.deadshot.android.projectneostore.models.ProductList
 import com.deadshot.android.projectneostore.models.ProductListResponse
 import com.deadshot.android.projectneostore.network.ProductListApi
 import com.deadshot.android.projectneostore.network.ProductListApiService
+import com.deadshot.android.projectneostore.utils.TABLES
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -39,7 +40,7 @@ class TablesViewModel : ViewModel(){
     private fun getProductListProperties(){
         coroutineScope.launch{
             var getPropertiesDeferred = ProductListApi.retrofitService
-                .getProductList(productCategoryId = (1.toString()), limit = null, page = null)
+                .getProductList(productCategoryId = (TABLES.toString()), limit = null, page = null)
             try {
                 var listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
