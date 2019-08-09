@@ -7,14 +7,14 @@
 
     <data>
         <variable
-                name="tablesViewModel"
-                type="com.deadshot.android.projectneostore.ui.tables.TablesViewModel"/>
+                name="productsViewModel"
+                type="com.deadshot.android.projectneostore.ui.products.ProductsViewModel"/>
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.tables.TablesFragment">
+            tools:context=".ui.products.TablesFragment">
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_products"
                 android:layout_width="match_parent"
@@ -22,11 +22,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:listData="@{tablesViewModel.properties}"
+                app:listData="@{productsViewModel.properties}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:listitem="@layout/layout_product"
-                android:paddingStart="16dp" android:paddingEnd="16dp">
+                tools:listitem="@layout/layout_product">
 
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -38,6 +37,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:loadingProductsStatus="@{tablesViewModel.status}" />
+        app:loadingProductsStatus="@{productsViewModel.status}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,30 +1,25 @@
-package com.deadshot.android.projectneostore.ui.tables
-
+package com.deadshot.android.projectneostore.ui.products
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.Adapter.ProductsAdapter
 
-import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentTablesBinding
-import com.deadshot.android.projectneostore.databinding.LayoutProductBinding
 import timber.log.Timber
 
-class TablesFragment : Fragment() {
+class SofasFragment: Fragment() {
 
     /**
-     * Lazily initialize our [TablesViewModel].
+     * Lazily initialize our [ProductsViewModel].
      */
-    private val tablesViewModel: TablesViewModel by lazy {
-        ViewModelProviders.of(this).get(TablesViewModel::class.java)
+    private val productsViewModel: ProductsViewModel by lazy {
+        ViewModelProviders.of(this).get(ProductsViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -40,8 +35,8 @@ class TablesFragment : Fragment() {
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-        // Giving the binding access to the TablesViewModel
-        binding.tablesViewModel = tablesViewModel
+        // Giving the binding access to the ProductsViewModel
+        binding.productsViewModel = productsViewModel
 
         // Adds divider to each recycler view item
         binding.recyclerViewProducts.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))

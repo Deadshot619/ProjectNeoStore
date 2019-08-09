@@ -1,12 +1,10 @@
-package com.deadshot.android.projectneostore.ui.tables
+package com.deadshot.android.projectneostore.ui.products
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.ProductList
-import com.deadshot.android.projectneostore.models.ProductListResponse
 import com.deadshot.android.projectneostore.network.ProductListApi
-import com.deadshot.android.projectneostore.network.ProductListApiService
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
 import com.deadshot.android.projectneostore.utils.TABLES
 import kotlinx.coroutines.CoroutineScope
@@ -14,9 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.lang.Exception
 
-class TablesViewModel : ViewModel(){
+class ProductsViewModel : ViewModel(){
 
     private val _status = MutableLiveData<LoadingProductsStatus>()
     val status: LiveData<LoadingProductsStatus>

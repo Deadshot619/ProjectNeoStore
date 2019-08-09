@@ -68,10 +68,15 @@ class HomeScreenFragment : Fragment() {
         }
 
         //Navigate to Tables Screen
-        homeScreenViewModel.navigateToTable.observe(this, Observer {
-            if (it == true){
-                findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToTablesFragment())
-                homeScreenViewModel.navigateToTablesDone()
+        homeScreenViewModel.navigateToProduct.observe(this, Observer {
+            it?.let {
+                when(it){
+                    EnumProductList.TABLES ->  findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToTablesFragment())
+                    EnumProductList.SOFAS -> findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToSofasFragment2())
+                    EnumProductList.CHAIRS -> findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToChairsFragment2())
+                    EnumProductList.CUPBOARDS -> findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToCupboardsFragment2())
+                }
+                homeScreenViewModel.navigateToProductDone()
             }
         })
 

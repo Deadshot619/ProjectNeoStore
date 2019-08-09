@@ -18,6 +18,7 @@ const val CHAIRS = 3
 const val CUPBOARDS = 4
 
 enum class LoadingProductsStatus{ LOADING, ERROR, DONE }
+enum class EnumProductList{ TABLES, SOFAS, CHAIRS, CUPBOARDS }
 
 fun Fragment.toastShort(message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

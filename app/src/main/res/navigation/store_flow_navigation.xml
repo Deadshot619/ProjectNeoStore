@@ -10,6 +10,22 @@
                 app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"
                 app:popUpTo="@+id/homeScreenFragment"/>
+        <action android:id="@+id/action_homeScreenFragment_to_sofasFragment2" app:destination="@id/sofasFragment"
+                app:popUpTo="@+id/homeScreenFragment" app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_homeScreenFragment_to_cupboardsFragment2"
+                app:destination="@id/cupboardsFragment" app:popUpTo="@+id/homeScreenFragment"
+                app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_homeScreenFragment_to_chairsFragment2" app:destination="@id/chairsFragment"
+                app:popUpTo="@+id/homeScreenFragment" app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_homeScreenFragment_to_tablesFragment2" app:destination="@id/tablesFragment"
+                app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"
+                app:popUpTo="@+id/homeScreenFragment"/>
     </fragment>
     <navigation android:id="@+id/myAccountFlow" app:startDestination="@id/myAccountFragment"
                 android:label="@string/flow_my_account">
@@ -51,6 +67,15 @@
         </fragment>
     </navigation>
     <fragment android:id="@+id/tablesFragment"
-              android:name="com.deadshot.android.projectneostore.ui.tables.TablesFragment"
+              android:name="com.deadshot.android.projectneostore.ui.products.TablesFragment"
               android:label="@string/title_tables"/>
+    <fragment android:id="@+id/chairsFragment"
+              android:name="com.deadshot.android.projectneostore.ui.products.ChairsFragment"
+              android:label="@string/title_chairs"/>
+    <fragment android:id="@+id/cupboardsFragment"
+              android:name="com.deadshot.android.projectneostore.ui.products.CupboardsFragment"
+              android:label="@string/title_cupboards"/>
+    <fragment android:id="@+id/sofasFragment"
+              android:name="com.deadshot.android.projectneostore.ui.products.SofasFragment"
+              android:label="@string/title_sofas"/>
 </navigation>

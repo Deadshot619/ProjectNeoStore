@@ -5,9 +5,9 @@
     <item android:title="@string/title_my_cart" android:id="@+id/myCart"
           android:icon="@drawable/ic_shopping_cart_black_24dp"/>
     <item android:id="@+id/tablesFragment" android:title="@string/title_tables" android:icon="@drawable/table"/>
-    <item android:title="@string/title_sofas" android:id="@+id/sofas" android:icon="@drawable/sofa"/>
-    <item android:title="@string/title_chairs" android:id="@+id/chairs" android:icon="@drawable/chair"/>
-    <item android:title="@string/title_cupboards" android:id="@+id/cupboards" android:icon="@drawable/cupboard"/>
+    <item android:title="@string/title_sofas" android:id="@+id/sofasFragment" android:icon="@drawable/sofa"/>
+    <item android:title="@string/title_chairs" android:id="@+id/chairsFragment" android:icon="@drawable/chair"/>
+    <item android:title="@string/title_cupboards" android:id="@+id/cupboardsFragment" android:icon="@drawable/cupboard"/>
     <item android:title="@string/title_my_account" android:id="@+id/myAccountFlow"
           android:icon="@drawable/ic_person_white_24dp"/>
     <item android:title="@string/title_store_locator" android:id="@+id/storeLocator"
