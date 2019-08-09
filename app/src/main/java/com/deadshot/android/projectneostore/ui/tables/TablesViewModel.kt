@@ -16,14 +16,17 @@ import java.lang.Exception
 
 class TablesViewModel : ViewModel(){
 
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
+    private val _status = MutableLiveData<Int>()
+    val status: LiveData<Int>
         get() = _status
 
     private val _property = MutableLiveData<ProductListResponse>()
     val property: LiveData<ProductListResponse>
         get() = _property
 
+    private val _properties = MutableLiveData<List<ProductList>>()
+    val properties: LiveData<List<ProductList>>
+        get() = _properties
 
     private var viewModelJob = Job()
 
@@ -35,17 +38,18 @@ class TablesViewModel : ViewModel(){
 
     private fun getProductListProperties(){
         coroutineScope.launch{
-            var getPropertiesDeferred = ProductListApi.retrofitService.getProductList(productCategoryId = (2.toString()))
+            var getPropertiesDeferred = ProductListApi.retrofitService
+                .getProductList(productCategoryId = (2.toString()), limit = null, page = null)
             try {
                 var listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
                     _property.value = listResult
+                    _properties.value = listResult.products
                     Timber.i(listResult.products[0].productName)
                 }
                 Timber.i(listResult.toString())
             }catch (t: Throwable){
-                _status.value = t.message
-                Timber.i("Exception : ${_status.value}\n${t.localizedMessage}")
+                Timber.i("Exception : ${t.message}\n${t.localizedMessage}")
             }
         }
     }

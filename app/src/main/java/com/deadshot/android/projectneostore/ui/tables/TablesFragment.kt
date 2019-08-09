@@ -17,7 +17,6 @@ import timber.log.Timber
 
 class TablesFragment : Fragment() {
 
-    private lateinit var binding: LayoutProductBinding
     private lateinit var tablesViewModel: TablesViewModel
 
     override fun onCreateView(
@@ -28,12 +27,12 @@ class TablesFragment : Fragment() {
         Timber.plant(Timber.DebugTree())
 
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.layout_product, container, false)
+        val binding = FragmentTablesBinding.inflate(inflater)
         tablesViewModel = ViewModelProviders.of(this).get(TablesViewModel::class.java)
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-        binding.viewModel = tablesViewModel
+//        binding.= tablesViewModel
 
         return binding.root
     }

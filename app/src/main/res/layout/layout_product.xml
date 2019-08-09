@@ -7,8 +7,8 @@
 
     <data>
         <variable
-                name="viewModel"
-                type="com.deadshot.android.projectneostore.ui.tables.TablesViewModel"/>
+                name="property"
+                type="com.deadshot.android.projectneostore.models.ProductList"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,10 +26,10 @@
                 android:id="@+id/iv_product_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-        app:imgUrl="@{viewModel.property.products[0].productImageUrl}"/>
+        app:imgUrl="@{property.productImageUrl}"/>
 
         <TextView
-                android:text="@{viewModel.property.products[0].productName}"
+                android:text="@{property.productName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_name"
@@ -51,7 +51,7 @@
                 android:textSize="12sp"
                 tools:text="Aaron Table Center"/>
         <TextView
-                android:text="@{String.valueOf(viewModel.property.products[0].price)}"
+                android:text="@{String.valueOf(property.price)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_price"
@@ -67,7 +67,7 @@
                 android:id="@+id/rb_product_rating"
                 android:stepSize="0.5"
                 android:numStars="5"
-                android:rating="@{viewModel.property.products[0].rating}"
+                android:rating="@{property.rating}"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_product_image"
                 app:layout_constraintEnd_toEndOf="parent"

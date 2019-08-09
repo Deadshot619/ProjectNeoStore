@@ -22,8 +22,8 @@ interface ProductListApiService{
     @GET("products/getList")
     fun getProductList(
         @Query("product_category_id") productCategoryId: String,
-        @Query("limit") limit: Number = 1,
-        @Query("page") page: Number = 1
+        @Query("limit") limit: Number?,
+        @Query("page") page: Number?
     ): Deferred<ProductListResponse>
 }
 
