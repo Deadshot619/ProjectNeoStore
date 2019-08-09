@@ -7,6 +7,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+/**
+ * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
+ * full Kotlin compatibility.
+ */
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -17,6 +21,10 @@ internal val retrofit_gson = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+/**
+ * Use the Retrofit builder to build a retrofit_moshi object using a Moshi converter with our Moshi
+ * object.
+ */
 internal val retrofit_moshi = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())

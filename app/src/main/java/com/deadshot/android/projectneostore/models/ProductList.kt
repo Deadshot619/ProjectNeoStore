@@ -1,22 +1,25 @@
 package com.deadshot.android.projectneostore.models
 
+import com.squareup.moshi.Json
 import java.util.*
 
 data class ProductList(
-    val id: Int,
-    val product_category_id: Int,
-    val name: String,
+    @Json(name = "id") val productId: Int,
+    @Json(name = "product_category_id") val productCategoryId: Int,
+    @Json(name = "name") val productName: String,
     val producer: String,
-    val description: String,
-    val cost: Double,
-    val rating: Double,
-    val view_count: Int,
-    val created: Date,
-    val modified: Date,
-    val product_images: String
+    @Json(name = "description") val productDescription: String,
+    @Json(name = "cost") val price: Double,
+    val rating: Int,
+    @Json(name = "view_count") val viewCount: Int,
+    val created: String,
+    val modified: String,
+    @Json(name = "product_images") val productImageUrl: String
 )
 
 data class ProductListResponse(
     val status: Int,
-    val products: List<ProductList>
+    @Json(name = "data") val products: List<ProductList>,
+    val message: String?,
+    val user_msg: String?
 )

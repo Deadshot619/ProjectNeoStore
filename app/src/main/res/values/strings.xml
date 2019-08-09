@@ -55,4 +55,5 @@
 
     <string name="flow_my_account">MyAccountFlow</string>
 
+    <string name="format_price">"Rs %s"</string>
 </resources>

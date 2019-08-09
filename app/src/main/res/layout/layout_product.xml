@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.deadshot.android.projectneostore.ui.tables.TablesViewModel"/>
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,9 +25,11 @@
                 tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/iv_product_image"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+        app:imgUrl="@{viewModel.property.products[0].productImageUrl}"/>
+
         <TextView
-                android:text="TextView"
+                android:text="@{viewModel.property.products[0].productName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_name"
@@ -33,7 +41,7 @@
                 android:textSize="16sp"
                 android:textColor="#000000"/>
         <TextView
-                android:text="TextView"
+                android:text="@{viewModel.property.products[0].producer}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_producer"
@@ -43,7 +51,7 @@
                 android:textSize="12sp"
                 tools:text="Aaron Table Center"/>
         <TextView
-                android:text="TextView"
+                android:text="@{String.valueOf(viewModel.property.products[0].price)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_price"
@@ -59,13 +67,16 @@
                 android:id="@+id/rb_product_rating"
                 android:stepSize="0.5"
                 android:numStars="5"
+                android:rating="@{viewModel.property.products[0].rating}"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_product_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 tools:style="@android:style/Widget.Material.RatingBar.Small"
-                tools:targetApi="lollipop"/>
+                tools:targetApi="lollipop" android:isIndicator="true"
+                android:focusable="auto" android:clickable="false"
+                style="@android:style/Widget.Material.RatingBar.Small"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

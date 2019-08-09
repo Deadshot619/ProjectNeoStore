@@ -7,14 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentTablesBinding
+import com.deadshot.android.projectneostore.databinding.LayoutProductBinding
 import timber.log.Timber
 
 class TablesFragment : Fragment() {
 
-    private lateinit var binding: FragmentTablesBinding
+    private lateinit var binding: LayoutProductBinding
     private lateinit var tablesViewModel: TablesViewModel
 
     override fun onCreateView(
@@ -25,12 +28,12 @@ class TablesFragment : Fragment() {
         Timber.plant(Timber.DebugTree())
 
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tables, container, false)
-
+        binding = DataBindingUtil.inflate(inflater, R.layout.layout_product, container, false)
+        tablesViewModel = ViewModelProviders.of(this).get(TablesViewModel::class.java)
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-
+        binding.viewModel = tablesViewModel
 
         return binding.root
     }
