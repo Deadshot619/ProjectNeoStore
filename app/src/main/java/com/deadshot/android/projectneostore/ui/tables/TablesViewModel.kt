@@ -39,7 +39,7 @@ class TablesViewModel : ViewModel(){
     private fun getProductListProperties(){
         coroutineScope.launch{
             var getPropertiesDeferred = ProductListApi.retrofitService
-                .getProductList(productCategoryId = (2.toString()), limit = null, page = null)
+                .getProductList(productCategoryId = (1.toString()), limit = null, page = null)
             try {
                 var listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){

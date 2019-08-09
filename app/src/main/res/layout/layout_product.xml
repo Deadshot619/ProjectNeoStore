@@ -12,7 +12,6 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
@@ -26,7 +25,7 @@
                 android:id="@+id/iv_product_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-        app:imgUrl="@{property.productImageUrl}"/>
+                app:imgUrl="@{property.productImageUrl}"/>
 
         <TextView
                 android:text="@{property.productName}"
@@ -39,9 +38,10 @@
                 android:layout_marginTop="12dp"
                 tools:text="Table Numero Uno"
                 android:textSize="16sp"
-                android:textColor="#000000"/>
+                android:textColor="#000000"
+        />
         <TextView
-                android:text="@{viewModel.property.products[0].producer}"
+                android:text="@{property.producer}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_producer"
@@ -60,7 +60,9 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 tools:text="Rs. 25,000"
-                app:layout_constraintStart_toStartOf="@+id/tv_product_producer"/>
+                app:layout_constraintStart_toStartOf="@+id/tv_product_producer"
+                app:layout_constraintStart_toEndOf="@+id/iv_product_image"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"/>
         <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,15 +70,14 @@
                 android:stepSize="0.5"
                 android:numStars="5"
                 android:rating="@{property.rating}"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_product_image"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
                 tools:style="@android:style/Widget.Material.RatingBar.Small"
                 tools:targetApi="lollipop" android:isIndicator="true"
                 android:focusable="auto" android:clickable="false"
-                style="@android:style/Widget.Material.RatingBar.Small"/>
+                style="@android:style/Widget.Material.Light.RatingBar.Small"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="1.0"
+        />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

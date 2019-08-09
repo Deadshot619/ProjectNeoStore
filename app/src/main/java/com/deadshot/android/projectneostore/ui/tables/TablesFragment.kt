@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.deadshot.android.projectneostore.Adapter.ProductsAdapter
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentTablesBinding
@@ -32,7 +33,9 @@ class TablesFragment : Fragment() {
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-//        binding.= tablesViewModel
+        binding.tablesViewModel = tablesViewModel
+
+        binding.recyclerViewProducts.adapter = ProductsAdapter()
 
         return binding.root
     }
