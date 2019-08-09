@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.Adapter.ProductsAdapter
 
 import com.deadshot.android.projectneostore.databinding.FragmentTablesBinding
+import com.deadshot.android.projectneostore.utils.TABLES
 import timber.log.Timber
 
 class TablesFragment : Fragment() {
@@ -20,7 +21,10 @@ class TablesFragment : Fragment() {
      * Lazily initialize our [ProductsViewModel].
      */
     private val productsViewModel: ProductsViewModel by lazy {
-        ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        ViewModelProviders.of(this, productsModelFactory).get(ProductsViewModel::class.java)
+    }
+    private val productsModelFactory by lazy {
+        ProductsModelFactory(TABLES)
     }
 
     override fun onCreateView(

@@ -13,8 +13,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class ProductsViewModel : ViewModel(){
+class ProductsViewModel(private val productValue: Int) : ViewModel(){
 
+    /**
+     * Status for Error checking
+     */
     private val _status = MutableLiveData<LoadingProductsStatus>()
     val status: LiveData<LoadingProductsStatus>
         get() = _status
@@ -42,7 +45,7 @@ class ProductsViewModel : ViewModel(){
     private fun getProductListProperties(){
         coroutineScope.launch{
             val getPropertiesDeferred = ProductListApi.retrofitService
-                .getProductList(productCategoryId = (TABLES.toString()), limit = null, page = null)
+                .getProductList(productCategoryId = (productValue.toString()), limit = 100, page = null)
             try {
                 val listResult = getPropertiesDeferred.await()
                 _status.value = LoadingProductsStatus.LOADING

@@ -13,8 +13,8 @@ const val ACCESS_TOKEN = "access_token"
 const val DOB = "date_of_birth"
 const val PASSWORD = "password"
 const val TABLES = 1
-const val SOFAS = 2
-const val CHAIRS = 3
+const val CHAIRS = 2
+const val SOFAS = 3
 const val CUPBOARDS = 4
 
 enum class LoadingProductsStatus{ LOADING, ERROR, DONE }

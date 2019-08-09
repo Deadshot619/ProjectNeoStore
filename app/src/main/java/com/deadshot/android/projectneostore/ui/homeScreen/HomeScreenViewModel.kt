@@ -11,35 +11,25 @@ import timber.log.Timber
 
 class HomeScreenViewModel : ViewModel(){
 
-    //Live data for Navigation to tables
-    private val _navigateToTable = MutableLiveData<Boolean>()
-    val navigateToTable: LiveData<Boolean>
-        get() = _navigateToTable
-
     //Live data for Navigation to products
     private val _navigateToProduct = MutableLiveData<EnumProductList>()
     val navigateToProduct: LiveData<EnumProductList>
         get() = _navigateToProduct
-
-
 
     //called on click of Tables Button
     fun onClickNavigateToTables(){
         _navigateToProduct.value = EnumProductList.TABLES
     }
 
-
     //called on click of Sofas Button
     fun onClickNavigateToSofas(){
         _navigateToProduct.value = EnumProductList.SOFAS
     }
 
-
     //called on click of Cupboards Button
     fun onClickNavigateToCupboards(){
         _navigateToProduct.value = EnumProductList.CUPBOARDS
     }
-
 
     //called on click of Chairs Button
     fun onClickNavigateToChairs(){
