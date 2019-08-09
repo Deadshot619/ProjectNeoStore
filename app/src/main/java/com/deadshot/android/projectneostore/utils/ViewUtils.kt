@@ -17,6 +17,8 @@ const val SOFAS = 2
 const val CHAIRS = 3
 const val CUPBOARDS = 4
 
+enum class LoadingProductsStatus{ LOADING, ERROR, DONE }
+
 fun Fragment.toastShort(message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
