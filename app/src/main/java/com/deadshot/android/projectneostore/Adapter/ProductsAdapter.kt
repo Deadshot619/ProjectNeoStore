@@ -29,7 +29,7 @@ class ProductsAdapter: ListAdapter<ProductList, ProductsAdapter.ProductListViewH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsAdapter.ProductListViewHolder {
-        return ProductListViewHolder(LayoutProductBinding.inflate(LayoutInflater.from(parent.context)))
+        return ProductListViewHolder(LayoutProductBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ProductsAdapter.ProductListViewHolder, position: Int) {
