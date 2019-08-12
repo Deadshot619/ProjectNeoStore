@@ -1,4 +1,4 @@
-package com.deadshot.android.projectneostore.Adapter
+package com.deadshot.android.projectneostore.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

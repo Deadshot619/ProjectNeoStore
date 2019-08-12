@@ -9,11 +9,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.deadshot.android.projectneostore.Adapter.ProductsAdapter
+import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 
 import com.deadshot.android.projectneostore.databinding.FragmentTablesBinding
 import com.deadshot.android.projectneostore.utils.CHAIRS
-import com.deadshot.android.projectneostore.utils.TABLES
 import timber.log.Timber
 
 class ChairsFragment : Fragment() {
