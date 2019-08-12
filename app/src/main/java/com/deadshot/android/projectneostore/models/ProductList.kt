@@ -11,7 +11,7 @@ data class ProductList(
     @Json(name = "name") val productName: String,
     val producer: String,
     @Json(name = "description") val productDescription: String,
-    @Json(name = "cost") val price: Double,
+    @Json(name = "cost") val price: Int,
     val rating: Int,
     @Json(name = "view_count") val viewCount: Int,
     val created: String,

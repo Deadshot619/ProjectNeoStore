@@ -51,7 +51,6 @@ class TablesFragment : Fragment() {
         // Sets the adapter of the products RecyclerView
         binding.recyclerViewProducts.adapter = ProductsAdapter(ProductsAdapter.OnClickListener {
             findNavController().navigate(ChairsFragmentDirections.actionSofasFragmentToProductDetailFragment(it.productId, it.productName))
-            toastLong("${it.productId} : ${it.productName}")
         })
 
         return binding.root

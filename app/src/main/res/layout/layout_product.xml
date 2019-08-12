@@ -52,7 +52,7 @@
                 android:textSize="12sp"
                 tools:text="Aaron Table Center"/>
         <TextView
-                android:text="@{String.valueOf(property.price)}"
+                android:text="@{String.format(@string/display_price, property.price)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_price"

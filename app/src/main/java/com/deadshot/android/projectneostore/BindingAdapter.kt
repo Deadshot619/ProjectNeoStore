@@ -1,5 +1,6 @@
 package com.deadshot.android.projectneostore
 
+import android.app.Application
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
