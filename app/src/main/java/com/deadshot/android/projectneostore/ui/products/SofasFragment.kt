@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
@@ -48,6 +49,7 @@ class SofasFragment: Fragment() {
 
         // Sets the adapter of the products RecyclerView
         binding.recyclerViewProducts.adapter = ProductsAdapter(ProductsAdapter.OnClickListener {
+            findNavController().navigate(ChairsFragmentDirections.actionSofasFragmentToProductDetailFragment(it.productId, it.productName))
             toastLong("${it.productId} : ${it.productName}")
         })
 

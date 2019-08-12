@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.navArgs
 
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentProductDetailBinding
 import com.deadshot.android.projectneostore.ui.products.ProductsModelFactory
 import com.deadshot.android.projectneostore.ui.products.ProductsViewModel
@@ -37,7 +41,10 @@ class ProductDetailFragment : Fragment() {
 
         // Giving the binding access to the ProductsViewModel
 
-
+        val productId = ProductDetailFragmentArgs.fromBundle(arguments!!).productId
+        val productName = ProductDetailFragmentArgs.fromBundle(arguments!!).productName
+        binding.demoText.text = productId.toString()
+        
         return binding.root
     }
 
