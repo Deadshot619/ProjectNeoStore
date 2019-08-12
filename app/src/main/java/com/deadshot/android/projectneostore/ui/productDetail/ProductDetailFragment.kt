@@ -1,5 +1,6 @@
 package com.deadshot.android.projectneostore.ui.productDetail
 
+import android.app.Application
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 
 import com.deadshot.android.projectneostore.R
@@ -28,7 +30,7 @@ class ProductDetailFragment : Fragment() {
     ): View? {
         //Add Timber
         Timber.plant(Timber.DebugTree())
-
+        val application = requireNotNull(activity).application
         // Inflate the layout for this fragment
         val binding = FragmentProductDetailBinding.inflate(inflater)
 
@@ -36,9 +38,17 @@ class ProductDetailFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val args = ProductDetailFragmentArgs.fromBundle(arguments!!)
-        productDetailModelFactory = ProductDetailModelFactory(productId = args.productId)
+        productDetailModelFactory = ProductDetailModelFactory(productId = args.productId, app = application)
         productDetailViewModel =
             ViewModelProviders.of(this, productDetailModelFactory).get(ProductDetailViewModel::class.java)
+
+        binding.productDetailViewModel = productDetailViewModel
+
+        productDetailViewModel.properties.observe(this, Observer {
+            it?.let {
+                binding.property = it
+            }
+        })
 
         return binding.root
     }

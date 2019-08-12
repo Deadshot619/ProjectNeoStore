@@ -3,7 +3,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <variable
+                name="productDetailViewModel"
+                type="com.deadshot.android.projectneostore.ui.productDetail.ProductDetailViewModel"/>
 
+        <variable
+                name="property"
+                type="com.deadshot.android.projectneostore.models.ProductDetail"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="6 Seater Family Diner"
+                    android:text="@{property.productName}"
                     android:textSize="20sp"
                     android:textColor="#262626"
                     android:textStyle="bold"
@@ -34,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Category - Tables"
+                    android:text="@{productDetailViewModel.productCategory}"
                     android:textSize="18sp"
                     android:textColor="#4f4f4f"
                     app:layout_constraintStart_toStartOf="@+id/tv_product_name"
@@ -42,6 +50,7 @@
                     tools:text="Future Furniture Center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{property.producer}"
                     android:textSize="14sp"
                     android:textColor="#4f4f4f"
                     android:id="@+id/tv_product_producer"
@@ -56,6 +65,7 @@
                     android:id="@+id/rb_product_rating"
                     android:stepSize="0.5"
                     android:numStars="5"
+                    android:rating="@{property.rating}"
                     tools:style="@android:style/Widget.Material.RatingBar.Small"
                     tools:targetApi="lollipop" android:isIndicator="true"
                     android:focusable="auto" android:clickable="false"
@@ -82,6 +92,7 @@
                     android:padding="8dp">
 
                 <TextView
+                        android:text="@{productDetailViewModel.productPrice}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="12000" app:layout_constraintStart_toStartOf="parent"
@@ -132,6 +143,7 @@
 
                 <TextView
                         android:layout_width="match_parent"
+                        android:text="@{property.description}"
                         android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/tv_description"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

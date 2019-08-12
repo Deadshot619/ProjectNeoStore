@@ -61,4 +61,7 @@
     <string name="btn_buy_now">Buy Now</string>
     <string name="btn_rate">Rate</string>
     <string name="cd_product_image">Product Image</string>
+
+    <string name="display_category_name">Category - %s</string>
+    <string name="display_price">\u20B9 %,d</string>
 </resources>

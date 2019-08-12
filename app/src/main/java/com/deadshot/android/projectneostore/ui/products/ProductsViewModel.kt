@@ -53,7 +53,7 @@ class ProductsViewModel(private val productValue: Int) : ViewModel(){
                     _status.value = LoadingProductsStatus.DONE
                     _properties.value = listResult.products
                 }else{
-                    _status.value = LoadingProductsStatus.DONE
+                    _status.value = LoadingProductsStatus.ERROR
                 }
             }catch (t: Throwable){
                 Timber.i("Exception : ${t.message}\n${t.localizedMessage}")

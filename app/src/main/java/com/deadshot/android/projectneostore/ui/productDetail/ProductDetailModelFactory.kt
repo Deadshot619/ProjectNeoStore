@@ -1,13 +1,14 @@
 package com.deadshot.android.projectneostore.ui.productDetail
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 
-class ProductDetailModelFactory(private val productId: Int) : ViewModelProvider.Factory{
+class ProductDetailModelFactory(private val productId: Int, private val app: Application) : ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ProductDetailViewModel::class.java)){
-            return ProductDetailViewModel(productId) as T
+            return ProductDetailViewModel(productId, app) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }
