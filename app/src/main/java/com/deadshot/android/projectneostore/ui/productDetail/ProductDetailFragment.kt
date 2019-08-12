@@ -19,12 +19,8 @@ import timber.log.Timber
 
 class ProductDetailFragment : Fragment() {
 
-    /**
-     * Lazily initialize our [ProductDetailViewModel] & [ProductsModelFactory].
-     */
-    private val productDetailViewModel: ProductDetailViewModel by lazy{
-        ViewModelProviders.of(this).get(ProductDetailViewModel::class.java)
-    }
+    private lateinit var productDetailViewModel: ProductDetailViewModel
+    private lateinit var productDetailModelFactory: ProductDetailModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +35,11 @@ class ProductDetailFragment : Fragment() {
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-        // Giving the binding access to the ProductsViewModel
+        val args = ProductDetailFragmentArgs.fromBundle(arguments!!)
+        productDetailModelFactory = ProductDetailModelFactory(productId = args.productId)
+        productDetailViewModel =
+            ViewModelProviders.of(this, productDetailModelFactory).get(ProductDetailViewModel::class.java)
 
-        val productId = ProductDetailFragmentArgs.fromBundle(arguments!!).productId
-        val productName = ProductDetailFragmentArgs.fromBundle(arguments!!).productName
-        binding.demoText.text = productId.toString()
-        
         return binding.root
     }
 
