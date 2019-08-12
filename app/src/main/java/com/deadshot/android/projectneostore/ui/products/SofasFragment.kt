@@ -12,6 +12,7 @@ import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 
 import com.deadshot.android.projectneostore.databinding.FragmentTablesBinding
 import com.deadshot.android.projectneostore.utils.SOFAS
+import com.deadshot.android.projectneostore.utils.toastLong
 import timber.log.Timber
 
 class SofasFragment: Fragment() {
@@ -46,7 +47,9 @@ class SofasFragment: Fragment() {
         binding.recyclerViewProducts.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
 
         // Sets the adapter of the products RecyclerView
-        binding.recyclerViewProducts.adapter = ProductsAdapter()
+        binding.recyclerViewProducts.adapter = ProductsAdapter(ProductsAdapter.OnClickListener {
+            toastLong("${it.productId} : ${it.productName}")
+        })
 
         return binding.root
     }

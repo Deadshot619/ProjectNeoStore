@@ -12,7 +12,7 @@ import com.deadshot.android.projectneostore.models.ProductList
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class ProductsAdapter: ListAdapter<ProductList, ProductsAdapter.ProductListViewHolder>(DiffCallback){
+class ProductsAdapter(private val onClickListener: OnClickListener): ListAdapter<ProductList, ProductsAdapter.ProductListViewHolder>(DiffCallback){
 
     /**
      * The ProductListViewHolder constructor takes the binding variable from the associated
@@ -44,7 +44,7 @@ class ProductsAdapter: ListAdapter<ProductList, ProductsAdapter.ProductListViewH
     /**
      * Create new [RecyclerView] item views (invoked by the layout manager)
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsAdapter.ProductListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         return ProductListViewHolder(LayoutProductBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
@@ -52,8 +52,15 @@ class ProductsAdapter: ListAdapter<ProductList, ProductsAdapter.ProductListViewH
     /**
      * Replaces the contents of a view (invoked by the layout manager)
      */
-    override fun onBindViewHolder(holder: ProductsAdapter.ProductListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
         val productList = getItem(position)
         holder.bind(productList)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(productList)
+        }
+    }
+
+    class OnClickListener(val clickListener: (productList: ProductList) -> Unit){
+        fun onClick(productList: ProductList) = clickListener(productList)
     }
 }
