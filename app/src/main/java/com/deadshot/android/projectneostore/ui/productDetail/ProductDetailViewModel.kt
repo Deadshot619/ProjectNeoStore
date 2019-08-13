@@ -55,6 +55,7 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
     val productPrice = Transformations.map(properties) {
         app.applicationContext.getString(R.string.display_price, it.price)
     }
+
     /**
      * Gets Products information from the ProductList API Retrofit service and updates the
      * [ProductDetail] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
