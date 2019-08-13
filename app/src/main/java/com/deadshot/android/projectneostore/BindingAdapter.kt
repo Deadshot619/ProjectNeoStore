@@ -9,8 +9,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.models.ProductDetail
+import com.deadshot.android.projectneostore.models.ProductImage
 import com.deadshot.android.projectneostore.models.ProductList
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
 import com.deadshot.android.projectneostore.utils.TABLES
@@ -37,6 +39,12 @@ fun bindImage(imgView: ImageView, imgUrl: String?){
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<ProductList>?){
     val adapter = recyclerView.adapter as ProductsAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listProductDetailImage")
+fun bindProductDetailRecyclerView(recyclerView: RecyclerView, data: List<ProductImage>?){
+    val adapter = recyclerView.adapter as ProductDetailAdapter
     adapter.submitList(data)
 }
 

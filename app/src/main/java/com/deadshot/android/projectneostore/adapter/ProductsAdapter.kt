@@ -49,9 +49,9 @@ class ProductsAdapter(private val onClickListener: OnClickListener): ListAdapter
     }
 
 
-    /**
-     * Replaces the contents of a view (invoked by the layout manager)
-     */
+        /**
+         * Replaces the contents of a view (invoked by the layout manager)
+         */
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
         val productList = getItem(position)
         holder.bind(productList)

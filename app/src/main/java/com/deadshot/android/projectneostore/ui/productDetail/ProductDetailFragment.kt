@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
+import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentProductDetailBinding
 import com.deadshot.android.projectneostore.ui.products.ProductsModelFactory
 import com.deadshot.android.projectneostore.ui.products.ProductsViewModel
@@ -49,6 +50,8 @@ class ProductDetailFragment : Fragment() {
                 binding.property = it
             }
         })
+
+        binding.rvProductImages.adapter = ProductDetailAdapter()
 
         return binding.root
     }
