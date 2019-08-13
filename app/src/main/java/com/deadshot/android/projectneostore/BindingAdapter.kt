@@ -1,9 +1,7 @@
 package com.deadshot.android.projectneostore
 
-import android.app.Application
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +9,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
-import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.models.ProductImage
 import com.deadshot.android.projectneostore.models.ProductList
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
-import com.deadshot.android.projectneostore.utils.TABLES
 
 /**
  * Uses the Glide library to load an image by URL into an [ImageView]
@@ -42,6 +38,9 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<ProductList>?){
     adapter.submitList(data)
 }
 
+/**
+ * When there is no Product Image data (data is null), hide the [RecyclerView], otherwise show it.
+ */
 @BindingAdapter("listProductDetailImage")
 fun bindProductDetailRecyclerView(recyclerView: RecyclerView, data: List<ProductImage>?){
     val adapter = recyclerView.adapter as ProductDetailAdapter
@@ -67,6 +66,26 @@ fun bindStatus(statusImageView: ImageView, status: LoadingProductsStatus?) {
         }
         LoadingProductsStatus.DONE -> {
             statusImageView.visibility = View.GONE
+        }
+    }
+}
+
+/**
+ * This binding adapter displays/hides a View.
+ * When display is loading/error it hides the View
+ * When loading is done succesfully, it shows the View
+ */
+@BindingAdapter("showLayout")
+fun bindDetailStatus(layout: View, status: LoadingProductsStatus?){
+    when(status){
+        LoadingProductsStatus.LOADING -> {
+            layout.visibility = View.GONE
+        }
+        LoadingProductsStatus.ERROR -> {
+            layout.visibility = View.GONE
+        }
+        LoadingProductsStatus.DONE -> {
+            layout.visibility = View.VISIBLE
         }
     }
 }

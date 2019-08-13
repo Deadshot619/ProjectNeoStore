@@ -1,25 +1,14 @@
 package com.deadshot.android.projectneostore.ui.productDetail
 
-import android.app.Application
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.navArgs
-
-import com.deadshot.android.projectneostore.R
-import com.deadshot.android.projectneostore.StoreFlowActivity
+import androidx.lifecycle.ViewModelProviders
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
-import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentProductDetailBinding
-import com.deadshot.android.projectneostore.ui.products.ProductsModelFactory
-import com.deadshot.android.projectneostore.ui.products.ProductsViewModel
-import com.deadshot.android.projectneostore.utils.toastLong
 import timber.log.Timber
 
 class ProductDetailFragment : Fragment() {

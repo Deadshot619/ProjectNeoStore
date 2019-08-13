@@ -1,7 +1,5 @@
 package com.deadshot.android.projectneostore.models
 
-import com.deadshot.android.projectneostore.R
-import com.deadshot.android.projectneostore.utils.TABLES
 import com.squareup.moshi.Json
 
 data class ProductDetail(

@@ -42,7 +42,7 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
 
     val productCategory = Transformations.map(properties){
         app.applicationContext.getString(R.string.display_category_name,
-            when (it.productCategoryId){
+            when (it?.productCategoryId){
                 TABLES -> "Tables"
                 CHAIRS -> "Chairs"
                 SOFAS -> "Sofas"
@@ -53,7 +53,7 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
     }
 
     val productPrice = Transformations.map(properties) {
-        app.applicationContext.getString(R.string.display_price, it.price)
+        app.applicationContext.getString(R.string.display_price, it?.price)
     }
 
     /**

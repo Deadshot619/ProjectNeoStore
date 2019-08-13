@@ -16,7 +16,13 @@
                 type="com.deadshot.android.projectneostore.models.ProductImage"/>
     </data>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_layout"
+            app:showLayout="@{productDetailViewModel.status}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.productDetail.ProductDetailFragment" android:background="#E7E7E7">
@@ -182,4 +188,13 @@
                 android:layout_marginStart="8dp" android:textSize="14sp" app:layout_constraintTop_toTopOf="@+id/btn_buy_now"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+            android:id="@+id/status_image"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:loadingProductsStatus="@{productDetailViewModel.status}"
+    />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
