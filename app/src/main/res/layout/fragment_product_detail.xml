@@ -10,6 +10,10 @@
         <variable
                 name="property"
                 type="com.deadshot.android.projectneostore.models.ProductDetail"/>
+
+        <variable
+                name="propertyImage"
+                type="com.deadshot.android.projectneostore.models.ProductImage"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,7 +115,7 @@
                         android:contentDescription="@string/cd_share_btn"/>
                 <ImageView
                         android:layout_width="250dp"
-                        app:imgUrl="@{property.productImages[0].imageUrl}"
+                        app:imgUrl="@{propertyImage.imageUrl}"
                         android:layout_height="250dp" tools:src="@tools:sample/backgrounds/scenic"
                         android:id="@+id/iv_selected_product_image"
                         app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"

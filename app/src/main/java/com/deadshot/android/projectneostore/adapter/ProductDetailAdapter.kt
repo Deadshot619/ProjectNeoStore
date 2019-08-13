@@ -14,7 +14,7 @@ import com.deadshot.android.projectneostore.models.ProductList
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class ProductDetailAdapter(): ListAdapter<ProductImage, ProductDetailAdapter.ProductDetailViewHolder>(DiffCallback){
+class ProductDetailAdapter(private val onClickListener: OnClickListener): ListAdapter<ProductImage, ProductDetailAdapter.ProductDetailViewHolder>(DiffCallback){
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of [ProductImage]
      * has been updated.
@@ -54,7 +54,13 @@ class ProductDetailAdapter(): ListAdapter<ProductImage, ProductDetailAdapter.Pro
     override fun onBindViewHolder(holder: ProductDetailViewHolder, position: Int) {
         val productImage = getItem(position)
         holder.bind(productImage)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(productImage)
+        }
     }
 
+    class OnClickListener(val clickListener: (productImage: ProductImage) -> Unit){
+        fun onClick(productImage: ProductImage) = clickListener(productImage)
+    }
 
 }

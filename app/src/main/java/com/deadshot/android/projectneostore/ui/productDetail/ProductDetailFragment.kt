@@ -15,9 +15,11 @@ import androidx.navigation.fragment.navArgs
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
+import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentProductDetailBinding
 import com.deadshot.android.projectneostore.ui.products.ProductsModelFactory
 import com.deadshot.android.projectneostore.ui.products.ProductsViewModel
+import com.deadshot.android.projectneostore.utils.toastLong
 import timber.log.Timber
 
 class ProductDetailFragment : Fragment() {
@@ -48,10 +50,13 @@ class ProductDetailFragment : Fragment() {
         productDetailViewModel.properties.observe(this, Observer {
             it?.let {
                 binding.property = it
+                binding.propertyImage = it.productImages[0]
             }
         })
 
-        binding.rvProductImages.adapter = ProductDetailAdapter()
+        binding.rvProductImages.adapter = ProductDetailAdapter(ProductDetailAdapter.OnClickListener {
+            binding.propertyImage = it
+        })
 
         return binding.root
     }
