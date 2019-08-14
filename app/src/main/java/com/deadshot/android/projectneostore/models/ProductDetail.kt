@@ -1,7 +1,11 @@
 package com.deadshot.android.projectneostore.models
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
+import androidx.lifecycle.LiveData
 
+@Parcelize
 data class ProductDetail(
     @Json(name = "cost") var price: Int,
     var created: String,
@@ -14,4 +18,4 @@ data class ProductDetail(
     var rating: Int,
     @Json(name = "view_count") var viewCount: Int,
     @Json(name = "product_images") var productImages: List<ProductImage>
-)
+): Parcelable
