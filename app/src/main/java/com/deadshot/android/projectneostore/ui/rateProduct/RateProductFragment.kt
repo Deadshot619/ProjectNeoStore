@@ -35,7 +35,7 @@ class RateProductFragment : DialogFragment() {
         binding.rateProductViewModel = rateProductViewModel
 
 
-        
+
         return binding.root
     }
 

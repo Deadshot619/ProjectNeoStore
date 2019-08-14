@@ -28,6 +28,13 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
     val properties: LiveData<ProductDetail>
         get() = _properties
 
+    /**
+     * Status of Rate Button
+     */
+    private val _rateButtonStatus = MutableLiveData<Boolean>()
+    val rateButtonStatus: LiveData<Boolean>
+        get() = _rateButtonStatus
+
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -85,6 +92,20 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
         }
     }
 
+    /**
+     * Changes value of [_rateButtonStatus] to true when Rate Button is clicked
+     */
+    fun onClickRateButton(){
+        _rateButtonStatus.value = true
+    }
+
+
+    /**
+     * Changes value of [_rateButtonStatus] to null when Rate Button is clicked
+     */
+    fun onClickRateButtonDone(){
+        _rateButtonStatus.value = null
+    }
     /**
      * When the [ViewModel] is finished, we cancel our coroutine [viewModelJob], which tells the
      * Retrofit service to stop.

@@ -7,9 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentProductDetailBinding
+import com.deadshot.android.projectneostore.ui.rateProduct.RateProductFragment
 import timber.log.Timber
+
+private const val RATE_PRODUCT = "Rate Product"
 
 class ProductDetailFragment : Fragment() {
 
@@ -45,6 +51,15 @@ class ProductDetailFragment : Fragment() {
 
         binding.rvProductImages.adapter = ProductDetailAdapter(ProductDetailAdapter.OnClickListener {
             binding.propertyImage = it
+        })
+
+        productDetailViewModel.rateButtonStatus.observe(this, Observer {
+            it?.let {
+                if (it){
+                    RateProductFragment().show((activity as StoreFlowActivity).supportFragmentManager, RATE_PRODUCT)
+                    productDetailViewModel.onClickRateButtonDone()
+                }
+            }
         })
 
         return binding.root
