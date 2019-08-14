@@ -16,6 +16,7 @@ import com.deadshot.android.projectneostore.ui.rateProduct.RateProductFragment
 import timber.log.Timber
 
 private const val RATE_PRODUCT = "Rate Product"
+private const val PRODUCT_DETAIL = "productDetail"
 
 class ProductDetailFragment : Fragment() {
 
@@ -49,25 +50,31 @@ class ProductDetailFragment : Fragment() {
             }
         })
 
+        /**
+         * Set Recycler View
+         */
         binding.rvProductImages.adapter = ProductDetailAdapter(ProductDetailAdapter.OnClickListener {
             binding.propertyImage = it
         })
 
+        /**
+         * Checks if the Rate button is pressed
+         */
         productDetailViewModel.rateButtonStatus.observe(this, Observer {
             it?.let {
                 if (it){
+                    /**
+                     * Make a parcelable bundle of type [ProductDetail]
+                     */
                     val args = Bundle()
-                    args.run {
-                        putString("productName", productDetailViewModel.properties.value?.productName)
-                        putString("productImage", productDetailViewModel.properties.value?.productImages?.get(0)?.imageUrl)
-                        putInt("productRating", productDetailViewModel.properties.value?.rating!!)
-//                        put
-                    }
+                    args.putParcelable(PRODUCT_DETAIL, productDetailViewModel.properties.value)
+
+                    /**
+                     * Create a Dialog for Rating
+                     */
                     val dialog = RateProductFragment()
-                    dialog.run {
-                        arguments = args
-                        show((activity as StoreFlowActivity).supportFragmentManager, RATE_PRODUCT)
-                    }
+                    dialog.arguments = args
+                    dialog.show((activity as StoreFlowActivity).supportFragmentManager, RATE_PRODUCT)
                     productDetailViewModel.onClickRateButtonDone()
                 }
             }

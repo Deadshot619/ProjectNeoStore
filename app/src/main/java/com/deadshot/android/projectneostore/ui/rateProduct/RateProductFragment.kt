@@ -11,11 +11,16 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentRateProductBinding
+import com.deadshot.android.projectneostore.models.ProductDetail
+import com.deadshot.android.projectneostore.models.ProductImage
 import timber.log.Timber
+
+private const val PRODUCT_DETAIL = "productDetail"
 
 class RateProductFragment : DialogFragment() {
 
     private lateinit var rateProductViewModel: RateProductViewModel
+    private lateinit var rateProductModelFactory: RateProductModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +35,14 @@ class RateProductFragment : DialogFragment() {
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-        rateProductViewModel = ViewModelProviders.of(this).get(RateProductViewModel::class.java)
+        //Get product details from ProductDetail fragment
+        val productDetail = arguments?.getParcelable<ProductDetail>(PRODUCT_DETAIL)
+
+        rateProductModelFactory = RateProductModelFactory(productDetail = productDetail!!)
+        rateProductViewModel = ViewModelProviders.of(this, rateProductModelFactory).get(RateProductViewModel::class.java)
 
         binding.rateProductViewModel = rateProductViewModel
 
-        binding.tvProductName.text = arguments!!.getString("productName")
 
         return binding.root
     }
