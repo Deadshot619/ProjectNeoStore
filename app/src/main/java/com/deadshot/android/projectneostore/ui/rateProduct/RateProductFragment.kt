@@ -34,7 +34,7 @@ class RateProductFragment : DialogFragment() {
 
         binding.rateProductViewModel = rateProductViewModel
 
-
+        binding.tvProductName.text = arguments!!.getString("productName")
 
         return binding.root
     }

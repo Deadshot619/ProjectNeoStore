@@ -56,7 +56,18 @@ class ProductDetailFragment : Fragment() {
         productDetailViewModel.rateButtonStatus.observe(this, Observer {
             it?.let {
                 if (it){
-                    RateProductFragment().show((activity as StoreFlowActivity).supportFragmentManager, RATE_PRODUCT)
+                    val args = Bundle()
+                    args.run {
+                        putString("productName", productDetailViewModel.properties.value?.productName)
+                        putString("productImage", productDetailViewModel.properties.value?.productImages?.get(0)?.imageUrl)
+                        putInt("productRating", productDetailViewModel.properties.value?.rating!!)
+//                        put
+                    }
+                    val dialog = RateProductFragment()
+                    dialog.run {
+                        arguments = args
+                        show((activity as StoreFlowActivity).supportFragmentManager, RATE_PRODUCT)
+                    }
                     productDetailViewModel.onClickRateButtonDone()
                 }
             }

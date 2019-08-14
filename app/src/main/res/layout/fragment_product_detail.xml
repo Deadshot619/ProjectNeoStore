@@ -77,11 +77,14 @@
                     android:numStars="5"
                     android:rating="@{property.rating}"
                     tools:style="@android:style/Widget.Material.RatingBar.Small"
-                    tools:targetApi="lollipop" android:isIndicator="true"
-                    android:focusable="auto" android:clickable="false"
+                    tools:targetApi="lollipop"
+                    android:isIndicator="true"
+                    android:focusable="auto"
+                    android:clickable="false"
                     style="@android:style/Widget.Material.Light.RatingBar.Small"
                     app:layout_constraintStart_toEndOf="@+id/tv_product_producer"
-                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_product_producer"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_product_producer"/>
 
@@ -120,14 +123,16 @@
                         app:layout_constraintBottom_toBottomOf="@+id/tv_price"
                         android:contentDescription="@string/cd_share_btn"/>
                 <ImageView
-                        android:layout_width="250dp"
                         app:imgUrl="@{propertyImage.imageUrl}"
-                        android:layout_height="250dp" tools:src="@tools:sample/backgrounds/scenic"
+                        tools:src="@tools:sample/backgrounds/scenic"
                         android:id="@+id/iv_selected_product_image"
-                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tv_price"
-                        android:adjustViewBounds="true" android:contentDescription="@string/cd_product_image"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_price"
+                        style="@style/productImage"/>
                 <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -183,10 +188,15 @@
                 android:text="@string/btn_rate"
                 android:onClick="@{() -> productDetailViewModel.onClickRateButton()}"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="@+id/btn_buy_now"
-                android:layout_marginEnd="16dp" android:id="@+id/btn_rate"
-                app:layout_constraintStart_toEndOf="@+id/btn_buy_now" app:layout_constraintHorizontal_bias="0.5"
-                android:layout_marginStart="8dp" android:textSize="14sp" app:layout_constraintTop_toTopOf="@+id/btn_buy_now"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_buy_now"
+                android:layout_marginEnd="16dp"
+                android:id="@+id/btn_rate"
+                app:layout_constraintStart_toEndOf="@+id/btn_buy_now"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginStart="8dp"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="@+id/btn_buy_now"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ImageView

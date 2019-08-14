@@ -54,6 +54,12 @@
         <item name="android:textSize">49sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="productImage">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">250dp</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:contentDescription">@string/cd_product_image</item>
+    </style>
 
 
 </resources>
