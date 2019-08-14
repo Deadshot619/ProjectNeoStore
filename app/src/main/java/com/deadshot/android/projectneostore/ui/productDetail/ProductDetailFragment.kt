@@ -46,7 +46,7 @@ class ProductDetailFragment : Fragment() {
         productDetailViewModel.properties.observe(this, Observer {
             it?.let {
                 binding.property = it
-                binding.propertyImage = it.productImages[0]
+                binding.propertyImage = it.productImages?.get(0)
             }
         })
 
@@ -60,6 +60,9 @@ class ProductDetailFragment : Fragment() {
         /**
          * Checks if the Rate button is pressed
          */
+        val dialog by lazy {
+            RateProductFragment()
+        }
         productDetailViewModel.rateButtonStatus.observe(this, Observer {
             it?.let {
                 if (it){
@@ -72,13 +75,13 @@ class ProductDetailFragment : Fragment() {
                     /**
                      * Create a Dialog for Rating
                      */
-                    val dialog = RateProductFragment()
                     dialog.arguments = args
                     dialog.show((activity as StoreFlowActivity).supportFragmentManager, RATE_PRODUCT)
                     productDetailViewModel.onClickRateButtonDone()
                 }
             }
         })
+
 
         return binding.root
     }
