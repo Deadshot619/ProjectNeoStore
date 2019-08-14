@@ -1,4 +1,4 @@
-package com.deadshot.android.projectneostore
+package com.deadshot.android.projectneostore.utils
 
 import android.view.View
 import android.widget.ImageView
@@ -7,11 +7,11 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.models.ProductImage
 import com.deadshot.android.projectneostore.models.ProductList
-import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
 
 /**
  * Uses the Glide library to load an image by URL into an [ImageView]
