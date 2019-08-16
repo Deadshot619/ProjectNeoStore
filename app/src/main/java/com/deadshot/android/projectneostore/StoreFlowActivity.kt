@@ -26,6 +26,7 @@ class StoreFlowActivity : AppCompatActivity() {
          */
         drawerLayout = binding.drawerLayout
         val navController = this.findNavController(R.id.myNavHostStoreFlowFragment)
+        setSupportActionBar(binding.toolbar)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
@@ -34,6 +35,8 @@ class StoreFlowActivity : AppCompatActivity() {
          * Code to hide Nav Drawer in destinations other than start destination
          */
         navController.addOnDestinationChangedListener { controller, destination, _ ->
+            val toolBar = supportActionBar ?: return@addOnDestinationChangedListener
+            toolBar.setDisplayShowTitleEnabled(true)
             if (destination.id == controller.graph.startDestination)
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             else
