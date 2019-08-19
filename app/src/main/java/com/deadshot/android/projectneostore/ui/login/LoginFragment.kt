@@ -58,8 +58,10 @@ class LoginFragment : Fragment(), AuthListener {
         binding.loginViewModel = loginViewModel
 
 
-
-        loginViewModel.authListener = this
+        /**
+         * authListener for showing Toast from Viewmodel/Repo
+         */
+        loginViewModel.authListener.value = this
 
         binding.tvLoginPageSignUp.setOnClickListener (
             Navigation.createNavigateOnClickListener(LoginFragmentDirections.actionLoginFragment2ToSignUpFragment2())
@@ -74,9 +76,11 @@ class LoginFragment : Fragment(), AuthListener {
             }
         })
 
+
         loginViewModel.progressBarStatus.observe(this, Observer {
             if (it){
-                requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 binding.progressBar.visibility = View.VISIBLE
 
             }else{
@@ -104,7 +108,7 @@ class LoginFragment : Fragment(), AuthListener {
     /**
      *  Save data in Shared Preferences
      */
-    fun saveData(firstName: String, lastName: String, email: String, phone: String, accessToken: String, dob: String){
+    private fun saveData(firstName: String, lastName: String, email: String, phone: String, accessToken: String, dob: String){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
         with(sharedPreferences.edit()){
             putString(FIRST_NAME, firstName)
