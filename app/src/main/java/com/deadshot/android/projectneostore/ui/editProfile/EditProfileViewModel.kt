@@ -31,7 +31,7 @@ class EditProfileViewModel(
     }
 
     val checkUpdateSuccessful = editProfileRepository.checkUpdateSuccessful
-    var authListener= editProfileRepository.authListener
+    val authListener= editProfileRepository.authListener
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)

@@ -36,7 +36,7 @@ class SignUpFragment : Fragment(), AuthListener {
 
         binding.signUpViewModel = signUpViewModel
 
-        signUpViewModel.authListener = this
+        signUpViewModel.authListener.value = this
 
         return binding.root
     }
