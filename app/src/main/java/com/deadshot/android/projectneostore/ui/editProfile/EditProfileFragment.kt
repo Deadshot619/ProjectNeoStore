@@ -84,7 +84,7 @@ class EditProfileFragment : Fragment(), AuthListener {
             }
         })
 
-        editProfileViewModel.authListener = this
+        editProfileViewModel.authListener.value = this
         return binding.root
     }
 
