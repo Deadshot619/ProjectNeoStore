@@ -65,4 +65,5 @@
     <string name="display_category_name">Category - %s</string>
     <string name="display_price">\u20B9 %,d</string>
     <string name="btn_cancel">Cancel</string>
+    <string name="quantity">Qty. :</string>
 </resources>

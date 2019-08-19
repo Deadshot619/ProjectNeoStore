@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SpinnerAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +18,7 @@ import com.deadshot.android.projectneostore.databinding.FragmentProductQuantityB
 import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.toastShort
+import com.google.gson.internal.bind.ArrayTypeAdapter
 import timber.log.Timber
 
 private const val PRODUCT_DETAIL = "productDetail"
@@ -46,6 +50,9 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
 //        productQuantityViewModel.authListener.value = this
 
         binding.productQuantityViewModel = productQuantityViewModel
+
+        val spinnerValues = arrayOf("1", "2", "3", "more")
+        binding.spinnerQuantity.adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, spinnerValues)
 
         return binding.root
     }
