@@ -24,14 +24,14 @@ class RateProductsRepository (private val productDetail: ProductDetail){
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
                     _status.value = true
-                    authListener?.value?.onSuccess("${listResult.user_msg}")
+                    authListener.value?.onSuccess("${listResult.user_msg}")
                 }else{
                     _status.value = null
-                    authListener?.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                    authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                 }
             }catch (t: Throwable){
                 _status.value = null
-                authListener?.value?.onFailure("Failure : ${t.message}")
+                authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
             }
         }
