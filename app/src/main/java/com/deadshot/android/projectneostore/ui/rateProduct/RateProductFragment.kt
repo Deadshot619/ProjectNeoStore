@@ -43,7 +43,7 @@ class RateProductFragment : DialogFragment(), AuthListener {
         rateProductModelFactory = RateProductModelFactory(productDetail = productDetail!!)
         rateProductViewModel = ViewModelProviders.of(this, rateProductModelFactory).get(RateProductViewModel::class.java)
 
-        rateProductViewModel.authListener = this
+        rateProductViewModel.authListener.value = this
 
         binding.rateProductViewModel = rateProductViewModel
 
