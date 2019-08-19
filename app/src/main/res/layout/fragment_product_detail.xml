@@ -178,6 +178,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:text="@string/btn_buy_now" android:id="@+id/btn_buy_now"
+                android:onClick="@{() -> productDetailViewModel.onClickBuyNowButton()}"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintEnd_toStartOf="@+id/btn_rate"
                 android:layout_marginEnd="8dp"

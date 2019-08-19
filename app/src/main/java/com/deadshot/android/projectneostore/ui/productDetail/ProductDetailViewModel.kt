@@ -39,6 +39,10 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
     val rateButtonStatus: LiveData<Boolean>
         get() = _rateButtonStatus
 
+    private val _buyNowButtonStatus = MutableLiveData<Boolean>()
+    val buyNowButtonStatus: LiveData<Boolean>
+        get() = _buyNowButtonStatus
+
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -86,6 +90,20 @@ class ProductDetailViewModel(private val productId: Int, private val app: Applic
      */
     fun onClickRateButtonDone(){
         _rateButtonStatus.value = null
+    }
+
+    /**
+    * Changes value of [_buyNowButtonStatus] to true when Buy Now Button is clicked
+    */
+    fun onClickBuyNowButton(){
+        _buyNowButtonStatus.value = true
+    }
+
+    /**
+     * Changes value of [_buyNowButtonStatus] to null when Buy Now Button is clicked
+     */
+    fun onClickBuyNowButtonDone(){
+        _buyNowButtonStatus.value = null
     }
 
     /**

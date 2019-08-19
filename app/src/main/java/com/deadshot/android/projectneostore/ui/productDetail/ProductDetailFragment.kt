@@ -12,9 +12,11 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentProductDetailBinding
+import com.deadshot.android.projectneostore.ui.productQuantity.ProductQuantityFragment
 import com.deadshot.android.projectneostore.ui.rateProduct.RateProductFragment
 import timber.log.Timber
 
+private const val BUY_NOW = "Buy Now"
 private const val RATE_PRODUCT = "Rate Product"
 private const val PRODUCT_DETAIL = "productDetail"
 
@@ -82,6 +84,30 @@ class ProductDetailFragment : Fragment() {
             }
         })
 
+        /**
+         * Checks if the Buy Now button is pressed
+         */
+        val quantityDialog by lazy {
+            ProductQuantityFragment()
+        }
+        productDetailViewModel.buyNowButtonStatus.observe(this, Observer {
+            it?.let {
+                if (it){
+                    /**
+                     * Make a parcelable bundle of type [ProductDetail]
+                     */
+                    val args = Bundle()
+                    args.putParcelable(PRODUCT_DETAIL, productDetailViewModel.properties.value)
+
+                    /**
+                     * Create a Dialog for Rating
+                     */
+                    quantityDialog.arguments = args
+                    quantityDialog.show((activity as StoreFlowActivity).supportFragmentManager, BUY_NOW)
+                    productDetailViewModel.onClickBuyNowButtonDone()
+                }
+            }
+        })
 
         return binding.root
     }
