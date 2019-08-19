@@ -16,10 +16,10 @@ class RateProductsRepository (private val productDetail: ProductDetail){
     val status: LiveData<Boolean>
         get() = _status
 
-    suspend fun rateProduct(){
+    suspend fun rateProduct(rating: Int){
         withContext(Dispatchers.Main){
             val getPropertiesDeferred =
-                RateProductApi.retrofitService.setProductRating(product_id = productDetail.productId, rating = productDetail.rating)
+                RateProductApi.retrofitService.setProductRating(product_id = productDetail.productId, rating = rating)
             try {
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){

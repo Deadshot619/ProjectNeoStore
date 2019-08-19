@@ -1,17 +1,12 @@
 package com.deadshot.android.projectneostore.ui.rateProduct
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.ProductDetail
-import com.deadshot.android.projectneostore.network.RateProductApi
 import com.deadshot.android.projectneostore.repository.RateProductsRepository
-import com.deadshot.android.projectneostore.ui.AuthListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class RateProductViewModel(val productDetail: ProductDetail) : ViewModel(){
 
@@ -27,7 +22,7 @@ class RateProductViewModel(val productDetail: ProductDetail) : ViewModel(){
 
     fun onClickRateBtn(){
         coroutineScope.launch {
-            rateProductsRepository.rateProduct()
+            rateProductsRepository.rateProduct(productDetail.rating.toInt())
         }
     }
 

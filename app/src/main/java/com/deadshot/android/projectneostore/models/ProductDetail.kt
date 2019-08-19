@@ -15,7 +15,7 @@ data class ProductDetail(
     @Json(name = "name") var productName: String,
     var producer: String,
     @Json(name = "product_category_id") var productCategoryId: Int,
-    var rating: Int,
+    var rating: Float,
     @Json(name = "view_count") var viewCount: Int,
     @Json(name = "product_images") var productImages: List<ProductImage>?
 ): Parcelable
