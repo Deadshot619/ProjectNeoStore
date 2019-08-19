@@ -3,8 +3,10 @@ package com.deadshot.android.projectneostore.ui.products
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.deadshot.android.projectneostore.models.ProductList
 import com.deadshot.android.projectneostore.network.ProductListApi
+import com.deadshot.android.projectneostore.repository.ProductsRepository
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
 import com.deadshot.android.projectneostore.utils.TABLES
 import kotlinx.coroutines.CoroutineScope
@@ -16,50 +18,27 @@ import timber.log.Timber
 class ProductsViewModel(private val productValue: Int) : ViewModel(){
 
     /**
+     * Create an instance of ProductsRepository
+     */
+    private val productsRepository = ProductsRepository(productValue)
+
+    /**
      * Status for Error checking
      */
-    private val _status = MutableLiveData<LoadingProductsStatus>()
-    val status: LiveData<LoadingProductsStatus>
-        get() = _status
+    val status = productsRepository.status
 
-    private val _properties = MutableLiveData<List<ProductList>>()
-    val properties: LiveData<List<ProductList>>
-        get() = _properties
+    val properties = productsRepository.properties
 
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     /**
-     * Call getMarsRealEstateProperties() on init so we can display status immediately.
+     * Call productsRepository.loadProducts() on init so we can display status immediately.
      */
     init {
-        getProductListProperties()
-    }
-
-    /**
-     * Gets Products information from the ProductList API Retrofit service and updates the
-     * [ProductList] [List] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
-     * await to get the result of the transaction.
-     */
-    private fun getProductListProperties(){
-        coroutineScope.launch{
-            val getPropertiesDeferred = ProductListApi.retrofitService
-                .getProductList(productCategoryId = (productValue.toString()), limit = 100, page = null)
-            try {
-                val listResult = getPropertiesDeferred.await()
-                _status.value = LoadingProductsStatus.LOADING
-                if (listResult.status == 200){
-                    _status.value = LoadingProductsStatus.DONE
-                    _properties.value = listResult.products
-                }else{
-                    _status.value = LoadingProductsStatus.ERROR
-                }
-            }catch (t: Throwable){
-                Timber.i("Exception : ${t.message}\n${t.localizedMessage}")
-                _status.value = LoadingProductsStatus.ERROR
-//                _properties.value = ArrayList()
-            }
+        viewModelScope.launch {
+            productsRepository.loadProducts()
         }
     }
 
