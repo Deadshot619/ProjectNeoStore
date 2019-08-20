@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:paddingStart="16dp" android:paddingEnd="16dp">
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
 
         <ImageView
@@ -75,9 +76,12 @@
                 tools:targetApi="lollipop" android:isIndicator="true"
                 android:focusable="auto" android:clickable="false"
                 style="@android:style/Widget.Material.Light.RatingBar.Small"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="1.0"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintVertical_bias="1.0"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

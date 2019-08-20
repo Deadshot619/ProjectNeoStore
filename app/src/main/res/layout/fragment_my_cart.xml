@@ -45,7 +45,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/view_horizontalLine"
-                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/rv_my_cart_items"/>
+                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/rv_my_cart_items"
+                tools:listitem="@layout/layout_my_cart_item"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
