@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.deadshot.android.projectneostore.models.MyCartResponse
 import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.models.SingleProductInfo
+import com.deadshot.android.projectneostore.network.DeleteItemApi
 import com.deadshot.android.projectneostore.network.MyCartApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
@@ -31,7 +32,6 @@ class MyCartRepository(private val access_token: String) {
     val propertiesMyCartResponse: LiveData<MyCartResponse>
         get() = _propertiesMyCartResponse
 
-
     /**
      * Gets MyCart information from the [MyCartApi] Retrofit service and updates the
      * [SingleProductInfo] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
@@ -53,6 +53,29 @@ class MyCartRepository(private val access_token: String) {
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                     _status.value = LoadingProductsStatus.ERROR
                     _properties.value = null
+                }
+            }catch (t: Throwable){
+                authListener.value?.onFailure("Failure : ${t.message}")
+                Timber.i("Failure : ${t.message}")
+            }
+        }
+    }
+
+    /**
+     * Deletes a item from cart from the [DeleteItemApi] Retrofit service and updates the
+     * [] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
+     * await to get the result of the transaction.
+     */
+    suspend fun deleteFromCart(productId: Int){
+        withContext(Dispatchers.Main){
+            val getPropertiesDeferred = DeleteItemApi.retrofitService
+                .deleteItemFromCart(access_token = access_token, productId = productId.toString())
+            try {
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200){
+                    authListener.value?.onSuccess("${listResult.user_msg}")
+                }else{
+                    authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                 }
             }catch (t: Throwable){
                 authListener.value?.onFailure("Failure : ${t.message}")
