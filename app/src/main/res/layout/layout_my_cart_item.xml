@@ -3,7 +3,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+                name="property"
+                type="com.deadshot.android.projectneostore.models.ProductsInfo"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="vertical"
@@ -20,9 +22,12 @@
                 tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/iv_product_image"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:contentDescription="@string/cd_product_image"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/cd_product_image"
+                app:imgUrl="@{property.product.productImages}"/>
 
         <TextView
+                android:text="@{property.product.productName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_name"
@@ -35,6 +40,7 @@
                 android:textColor="#000000"/>
 
         <TextView
+                android:text="@{property.product.productCategory}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_category"
@@ -44,10 +50,11 @@
                 android:textSize="12sp"
                 tools:text="(Table)"/>
         <TextView
-                android:text="26,000"
+                android:text="@{String.format(@string/display_price, property.product.productPrice)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_price"
+                tools:text="Rs. 25,000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/iv_delete_item"
