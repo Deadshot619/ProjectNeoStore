@@ -64,6 +64,7 @@
 
     <string name="display_category_name">Category - %s</string>
     <string name="display_price">\u20B9 %,d</string>
+    <string name="display_price_float">\u20B9 %,.2f</string>
     <string name="btn_cancel">Cancel</string>
     <string name="quantity">Qty. :</string>
     <string name="total">Total :</string>
