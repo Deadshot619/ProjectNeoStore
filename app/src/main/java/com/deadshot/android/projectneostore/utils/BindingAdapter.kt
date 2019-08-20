@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.adapter.MyCartAdapter
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.models.ProductImage
 import com.deadshot.android.projectneostore.models.ProductList
+import com.deadshot.android.projectneostore.models.ProductsInfo
 
 /**
  * Uses the Glide library to load an image by URL into an [ImageView]
@@ -44,6 +46,15 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<ProductList>?){
 @BindingAdapter("listProductDetailImage")
 fun bindProductDetailRecyclerView(recyclerView: RecyclerView, data: List<ProductImage>?){
     val adapter = recyclerView.adapter as ProductDetailAdapter
+    adapter.submitList(data)
+}
+
+/**
+ * When there is no [ProductsInfo] data (data is null), hide the [RecyclerView], otherwise show it.
+ */
+@BindingAdapter("listProductsInfo")
+fun bindMyCartRecyclerView(recyclerView: RecyclerView, data: List<ProductsInfo>?){
+    val adapter = recyclerView.adapter as MyCartAdapter
     adapter.submitList(data)
 }
 
