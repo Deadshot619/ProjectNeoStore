@@ -66,4 +66,6 @@
     <string name="display_price">\u20B9 %,d</string>
     <string name="btn_cancel">Cancel</string>
     <string name="quantity">Qty. :</string>
+    <string name="total">Total :</string>
+    <string name="btn_order_now">Order Now</string>
 </resources>
