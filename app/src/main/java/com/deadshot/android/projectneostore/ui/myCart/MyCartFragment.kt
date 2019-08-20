@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.adapter.MyCartAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyCartBinding
 import com.deadshot.android.projectneostore.utils.*
 import timber.log.Timber
@@ -31,13 +32,15 @@ class MyCartFragment : Fragment() {
         //load data from shared preferences
         loadData()
 
-        myCartViewModel = ViewModelProviders.of(this).get(MyCartViewModel::class.java)
+        myCartModelFactory = MyCartModelFactory(access_token = access_token)
+        myCartViewModel = ViewModelProviders.of(this, myCartModelFactory).get(MyCartViewModel::class.java)
 
         //set lifecyle owner
         binding.lifecycleOwner = this
 
         binding.myCartViewModel = myCartViewModel
 
+//        binding.rvMyCartItems.adapter = MyCartAdapter()
 
         return binding.root
     }

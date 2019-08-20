@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class MyCartViewModel : ViewModel(){
+class MyCartViewModel(private val accessToken: String) : ViewModel(){
     /**
      * Create an instance of MyCartRepository
      */
