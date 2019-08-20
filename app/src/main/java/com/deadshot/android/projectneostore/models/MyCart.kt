@@ -7,13 +7,13 @@ data class SingleProductInfo(
     @Json(name = "id") val productId: Int,
     @Json(name = "name") val productName: String,
     @Json(name = "product_category") val productCategory: String,
-    @Json(name = "product_Images") val productImages: String,
+    @Json(name = "product_images") val productImages: String,
     @Json(name = "sub_total") val subTotal: Int
 )
 
 data class ProductsInfo(
     val id: Int,
-    @Json(name = "id") val productId: Int,
+    @Json(name = "product_id") val productId: Int,
     val quantity: Int,
     val product: SingleProductInfo
 )
