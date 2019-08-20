@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:title="@string/title_my_cart" android:id="@+id/myCart"
+    <item android:title="@string/title_my_cart" android:id="@+id/myCartFragment"
           android:icon="@drawable/ic_shopping_cart_black_24dp"/>
     <item android:id="@+id/tablesFragment" android:title="@string/title_tables" android:icon="@drawable/table"/>
     <item android:title="@string/title_sofas" android:id="@+id/sofasFragment" android:icon="@drawable/sofa"/>

@@ -104,4 +104,7 @@
         <argument android:name="productId" app:argType="integer"/>
         <argument android:name="productName" app:argType="string"/>
     </fragment>
+    <fragment android:id="@+id/myCartFragment"
+              android:name="com.deadshot.android.projectneostore.ui.myCart.MyCartFragment"
+              android:label="@string/title_my_cart"/>
 </navigation>
