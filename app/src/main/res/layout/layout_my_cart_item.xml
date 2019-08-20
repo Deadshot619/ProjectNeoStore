@@ -50,7 +50,7 @@
                 android:textSize="12sp"
                 tools:text="(Table)"/>
         <TextView
-                android:text="@{String.format(@string/display_price, property.product.productPrice)}"
+                android:text="@{String.format(@string/display_price, property.product.subTotal)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_product_price"

@@ -14,6 +14,7 @@ import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.models.ProductImage
 import com.deadshot.android.projectneostore.models.ProductList
 import com.deadshot.android.projectneostore.models.ProductsInfo
+import com.deadshot.android.projectneostore.models.SingleProductInfo
 
 /**
  * Uses the Glide library to load an image by URL into an [ImageView]
@@ -50,7 +51,7 @@ fun bindProductDetailRecyclerView(recyclerView: RecyclerView, data: List<Product
 }
 
 /**
- * When there is no [ProductsInfo] data (data is null), hide the [RecyclerView], otherwise show it.
+ * When there is no [SingleProductInfo] data (data is null), hide the [RecyclerView], otherwise show it.
  */
 @BindingAdapter("listProductsInfo")
 fun bindMyCartRecyclerView(recyclerView: RecyclerView, data: List<ProductsInfo>?){

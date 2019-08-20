@@ -1,11 +1,8 @@
 package com.deadshot.android.projectneostore.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.network.AddToCartApi
-import com.deadshot.android.projectneostore.network.AddToCartApiService
 import com.deadshot.android.projectneostore.ui.AuthListener
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber

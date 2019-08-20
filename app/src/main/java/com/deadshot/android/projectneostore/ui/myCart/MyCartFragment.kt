@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.MyCartAdapter
@@ -40,7 +42,9 @@ class MyCartFragment : Fragment() {
 
         binding.myCartViewModel = myCartViewModel
 
-//        binding.rvMyCartItems.adapter = MyCartAdapter()
+        // Adds divider to each recycler view item
+        binding.rvMyCartItems.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        binding.rvMyCartItems.adapter = MyCartAdapter()
 
         return binding.root
     }
