@@ -101,3 +101,27 @@ fun bindDetailStatus(layout: View, status: LoadingProductsStatus?){
         }
     }
 }
+
+@BindingAdapter("hideCart")
+fun bindHideCart(layout: View, cartStatus: EnumCart?){
+    when(cartStatus){
+        EnumCart.CARTEMPTY -> {
+            layout.visibility = View.VISIBLE
+        }
+        EnumCart.CARTNOTEMPTY -> {
+            layout.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("showCart")
+fun bindShowCart(layout: View, cartStatus: EnumCart?){
+    when(cartStatus){
+        EnumCart.CARTEMPTY -> {
+            layout.visibility = View.GONE
+        }
+        EnumCart.CARTNOTEMPTY -> {
+            layout.visibility = View.VISIBLE
+        }
+    }
+}

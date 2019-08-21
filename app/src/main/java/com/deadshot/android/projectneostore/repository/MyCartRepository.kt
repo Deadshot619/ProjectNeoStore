@@ -8,6 +8,7 @@ import com.deadshot.android.projectneostore.models.SingleProductInfo
 import com.deadshot.android.projectneostore.network.DeleteItemApi
 import com.deadshot.android.projectneostore.network.MyCartApi
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.utils.EnumCart
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -23,6 +24,11 @@ class MyCartRepository(private val access_token: String) {
     private val _status = MutableLiveData<LoadingProductsStatus>()
     val status: LiveData<LoadingProductsStatus>
         get() = _status
+
+    private val _cartStatus = MutableLiveData<EnumCart>()
+    val cartStatus: LiveData<EnumCart>
+        get() = _cartStatus
+
 
     private val _properties = MutableLiveData<List<ProductsInfo>>()
     val propertiesProductInfo: LiveData<List<ProductsInfo>>
@@ -50,11 +56,16 @@ class MyCartRepository(private val access_token: String) {
                 val listResult = getPropertiesDeferred.await()
                 _status.value = LoadingProductsStatus.LOADING
                 if (listResult.status == 200){
-                    _propertiesMyCartResponse.value = listResult
-                    _properties.value = listResult.productsInfo
-                    Timber.i(listResult.productsInfo.toString())
-                    _status.value = LoadingProductsStatus.DONE
-                    //this function stops reloading the page
+                    if (listResult.productsInfo.isNullOrEmpty()){
+                        _cartStatus.value = EnumCart.CARTEMPTY
+                    }else {
+                        _propertiesMyCartResponse.value = listResult
+                        _properties.value = listResult.productsInfo
+                        Timber.i(listResult.productsInfo.toString())
+                        _status.value = LoadingProductsStatus.DONE
+                        //this function stops reloading the page
+                        _cartStatus.value = EnumCart.CARTNOTEMPTY
+                    }
                     deleteItemfailed()
                 }else{
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")

@@ -18,6 +18,7 @@ const val SOFAS = 3
 const val CUPBOARDS = 4
 
 enum class LoadingProductsStatus{ LOADING, ERROR, DONE }
+enum class EnumCart{ CARTEMPTY, CARTNOTEMPTY }
 enum class EnumProductList{ TABLES, SOFAS, CHAIRS, CUPBOARDS }
 
 fun Fragment.toastShort(message: String){

@@ -74,4 +74,5 @@
     <string name="action_remove">Remove</string>
     <string name="action_cancel">Cancel</string>
     <string name="remove_message">Are you sure you want to remove this item?</string>
+    <string name="cart_empty">Cart Empty!</string>
 </resources>

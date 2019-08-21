@@ -27,6 +27,11 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
 
     val reloadCartStatus = myCartRepository.reloadCartStatus
 
+    /**
+     * to check whether cart is empty or not
+     */
+    val cartStatus = myCartRepository.cartStatus
+
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
