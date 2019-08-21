@@ -12,8 +12,13 @@ import com.deadshot.android.projectneostore.models.SingleProductInfo
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
+ *
+ * @param clickDeleteListener : reference to a clickListener for data binding to know where to call onCLick.
+ * (- Our goal is to get this click event out of the fragment, so we won't define the clickListener here.
+ *  - Instead we'll just let the fragment pass a listener to us.
+ *  - This way our adapter doesn't care about how clicks get handled, it just takes a callback)
  */
-class MyCartAdapter : ListAdapter<ProductsInfo, MyCartAdapter.MyCartViewHolder>(DiffCallback){
+class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener) : ListAdapter<ProductsInfo, MyCartAdapter.MyCartViewHolder>(DiffCallback){
 
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of [SingleProductInfo]
@@ -35,8 +40,12 @@ class MyCartAdapter : ListAdapter<ProductsInfo, MyCartAdapter.MyCartViewHolder>(
      * layout_may_cart, which nicely gives it access to the full [SingleProductInfo] information.
      */
     class MyCartViewHolder(private var binding: LayoutMyCartItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(productsInfo: ProductsInfo){
+        fun bind(
+            productsInfo: ProductsInfo,
+            clickDeleteListener: OnClickDeleteListener
+        ){
             binding.property = productsInfo
+            binding.clickListener = clickDeleteListener
             binding.executePendingBindings()
         }
     }
@@ -47,6 +56,11 @@ class MyCartAdapter : ListAdapter<ProductsInfo, MyCartAdapter.MyCartViewHolder>(
 
     override fun onBindViewHolder(holder: MyCartViewHolder, position: Int) {
         val productsInfo= getItem(position)
-        holder.bind(productsInfo)
+        //tell databinding about our clickListener, pass clickListener to viewholder
+        holder.bind(productsInfo, clickDeleteListener)
+    }
+
+    class OnClickDeleteListener(val clickListener: (productId: Int) -> Unit){
+        fun onClick(productsInfo: ProductsInfo) = clickListener(productsInfo.productId)
     }
 }

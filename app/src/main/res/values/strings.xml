@@ -70,4 +70,8 @@
     <string name="total">Total :</string>
     <string name="btn_order_now">Order Now</string>
     <string name="cd_delete_item">Delete Item</string>
+    <string name="remove_item">Remove Item</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="remove_message">Are you sure you want to remove this item?</string>
 </resources>

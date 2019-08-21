@@ -1,12 +1,14 @@
 package com.deadshot.android.projectneostore.ui.myCart
 
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +17,7 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.MyCartAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyCartBinding
 import com.deadshot.android.projectneostore.utils.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 
 class MyCartFragment : Fragment() {
@@ -44,7 +47,16 @@ class MyCartFragment : Fragment() {
 
         // Adds divider to each recycler view item
         binding.rvMyCartItems.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-        binding.rvMyCartItems.adapter = MyCartAdapter()
+        binding.rvMyCartItems.adapter = MyCartAdapter(MyCartAdapter.OnClickDeleteListener {
+            val builder = MaterialAlertDialogBuilder(context!!)
+                .setTitle(R.string.remove_item)
+                .setMessage(R.string.remove_message)
+                .setPositiveButton(R.string.action_remove){_,_ -> Toast.makeText(context, "Remove", Toast.LENGTH_LONG).show()}
+                .setNegativeButton(R.string.action_cancel){_,_ -> Toast.makeText(context, "Cancel", Toast.LENGTH_LONG).show()}
+                .create()
+            builder.show()
+
+        })
 
         return binding.root
     }
