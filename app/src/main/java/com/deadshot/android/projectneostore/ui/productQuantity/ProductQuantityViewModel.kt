@@ -1,5 +1,6 @@
 package com.deadshot.android.projectneostore.ui.productQuantity
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.repository.AddToCartRepository
@@ -17,6 +18,8 @@ class ProductQuantityViewModel(val access_token: String, val productDetail: Prod
     private var _quantity = "1"
 
     val authListener = addToCartRepository.authListener
+
+    val status = addToCartRepository.status
 
     private var viewModelJob = Job()
 
