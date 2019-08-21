@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
@@ -46,6 +47,16 @@ class RateProductFragment : DialogFragment(), AuthListener {
         rateProductViewModel.authListener.value = this
 
         binding.rateProductViewModel = rateProductViewModel
+
+        /**
+         * if product is rated successfully, then dismiss the fragment
+         */
+        rateProductViewModel.status.observe(this, Observer {
+            it?.let {
+                if (it)
+                    dismiss()
+            }
+        })
 
         return binding.root
     }

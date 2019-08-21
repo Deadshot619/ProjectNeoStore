@@ -23,8 +23,8 @@ class RateProductsRepository (private val productDetail: ProductDetail){
             try {
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
-                    _status.value = true
                     authListener.value?.onSuccess("${listResult.user_msg} : $rating")
+                    _status.value = true
                 }else{
                     _status.value = null
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
