@@ -65,6 +65,8 @@ class MyCartFragment : Fragment(), AuthListener {
             builder.show()
         })
 
+
+
         myCartViewModel.reloadCartStatus.observe(this, Observer {
             /**
              * Loads the cart when reload cart status is true

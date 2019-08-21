@@ -75,4 +75,14 @@
     <string name="action_cancel">Cancel</string>
     <string name="remove_message">Are you sure you want to remove this item?</string>
     <string name="cart_empty">Cart Empty!</string>
+
+    <string-array name="items">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
 </resources>

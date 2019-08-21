@@ -63,12 +63,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/iv_delete_item"
         />
+
         <Spinner
+                android:id="@+id/spinner_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner_quantity"
+                android:overScrollMode="ifContentScrolls"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_product_image"
-                app:layout_constraintStart_toStartOf="@+id/tv_product_category"/>
+                app:layout_constraintStart_toStartOf="@+id/tv_product_category" />
         <ImageView
                 android:onClick="@{() -> clickListener.onClick(property)}"
                 android:layout_width="wrap_content"

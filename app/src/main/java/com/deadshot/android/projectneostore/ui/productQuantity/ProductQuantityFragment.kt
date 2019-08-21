@@ -58,19 +58,23 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
 
         binding.productQuantityViewModel = productQuantityViewModel
 
-        val spinnerValues = arrayOf("1", "2", "3", "4", "5", "6", "7")
-        binding.spinnerQuantity.adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, spinnerValues)
+        binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(context!!, R.array.items, android.R.layout.simple_list_item_1)
         binding.spinnerQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 /**
                  * Default value of item as 1
                  */
-                productQuantityViewModel.setQuantity(spinnerValues[1])
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    productQuantityViewModel.setQuantity(spinnerValues[position])
+                productQuantityViewModel.setQuantity(parent?.getItemAtPosition(0).toString())
             }
 
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                productQuantityViewModel.setQuantity(parent?.getItemAtPosition(position).toString())
+            }
         }
 
         productQuantityViewModel.status.observe(this, Observer {

@@ -65,10 +65,10 @@ class MyCartRepository(private val access_token: String) {
                         _propertiesMyCartResponse.value = listResult
                         _properties.value = listResult.productsInfo
                         Timber.i(listResult.productsInfo.toString())
-                        //this function stops reloading the page
                         _cartStatus.value = EnumCart.CARTNOTEMPTY
                     }
                     _status.value = LoadingProductsStatus.DONE
+                    //this function stops reloading the page
                     deleteItemfailed()
                 }else{
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")

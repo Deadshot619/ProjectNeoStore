@@ -2,9 +2,11 @@ package com.deadshot.android.projectneostore.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.LayoutMyCartItemBinding
 import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.models.SingleProductInfo
@@ -45,6 +47,16 @@ class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener) : ListAdapte
             clickDeleteListener: OnClickDeleteListener
         ){
             binding.property = productsInfo
+            /**
+             * Set spinner items for each viewHolder
+             */
+            binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(
+                binding.root.context ,
+                R.array.items ,
+                android.R.layout.simple_list_item_1
+            )
+            //set selected quantity in spinner from db
+            binding.spinnerQuantity.setSelection(productsInfo.quantity - 1)
             binding.clickListener = clickDeleteListener
             binding.executePendingBindings()
         }
