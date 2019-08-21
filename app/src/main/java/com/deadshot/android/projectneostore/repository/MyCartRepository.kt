@@ -32,6 +32,12 @@ class MyCartRepository(private val access_token: String) {
     val propertiesMyCartResponse: LiveData<MyCartResponse>
         get() = _propertiesMyCartResponse
 
+
+    private val _reloadCartStatus = MutableLiveData<Boolean>()
+    val reloadCartStatus: LiveData<Boolean>
+        get() = _reloadCartStatus
+
+
     /**
      * Gets MyCart information from the [MyCartApi] Retrofit service and updates the
      * [SingleProductInfo] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
@@ -48,15 +54,20 @@ class MyCartRepository(private val access_token: String) {
                     _properties.value = listResult.productsInfo
                     Timber.i(listResult.productsInfo.toString())
                     _status.value = LoadingProductsStatus.DONE
-
+                    //this function stops reloading the page
+                    deleteItemfailed()
                 }else{
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                     _status.value = LoadingProductsStatus.ERROR
                     _properties.value = null
+                    //this function stops reloading the page
+                    deleteItemfailed()
                 }
             }catch (t: Throwable){
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
+                //this function stops reloading the page
+                deleteItemfailed()
             }
         }
     }
@@ -74,13 +85,30 @@ class MyCartRepository(private val access_token: String) {
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
                     authListener.value?.onSuccess("${listResult.user_msg}")
+                    deleteItemDone()
                 }else{
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                    deleteItemfailed()
                 }
             }catch (t: Throwable){
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
+                deleteItemfailed()
             }
         }
+    }
+
+    /**
+     * Function to reload the page
+     */
+    fun deleteItemDone() {
+        _reloadCartStatus.value = true
+    }
+
+    /**
+     * Function to stop reloading the page
+     */
+    fun deleteItemfailed() {
+        _reloadCartStatus.value = null
     }
 }
