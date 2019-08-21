@@ -57,7 +57,7 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
 
         binding.productQuantityViewModel = productQuantityViewModel
 
-        val spinnerValues = arrayOf("1", "2", "3", "more")
+        val spinnerValues = arrayOf("1", "2", "3", "4", "5", "6", "7", "8")
         binding.spinnerQuantity.adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, spinnerValues)
         binding.spinnerQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -68,14 +68,7 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                /**
-                 * if item selected is not "more", then set the quantity
-                 */
-                if (spinnerValues[position] != "more")
                     productQuantityViewModel.setQuantity(spinnerValues[position])
-                else
-                    productQuantityViewModel.setQuantity(spinnerValues[1])
-
             }
 
         }
