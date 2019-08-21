@@ -83,7 +83,9 @@ fun bindStatus(statusImageView: ImageView, status: LoadingProductsStatus?) {
 }
 
 /**
- * This binding adapter displays/hides a View.
+ * These binding adapters displays/hides a View.
+ */
+/**
  * When display is loading/error it hides the View
  * When loading is done succesfully, it shows the View
  */
@@ -113,6 +115,7 @@ fun bindHideCart(layout: View, cartStatus: EnumCart?){
         }
     }
 }
+
 
 @BindingAdapter("showCart")
 fun bindShowCart(layout: View, cartStatus: EnumCart?){

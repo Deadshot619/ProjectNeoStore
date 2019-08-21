@@ -25,6 +25,9 @@ class MyCartRepository(private val access_token: String) {
     val status: LiveData<LoadingProductsStatus>
         get() = _status
 
+    /**
+     * Status to check whether cart is empty
+     */
     private val _cartStatus = MutableLiveData<EnumCart>()
     val cartStatus: LiveData<EnumCart>
         get() = _cartStatus
@@ -62,10 +65,10 @@ class MyCartRepository(private val access_token: String) {
                         _propertiesMyCartResponse.value = listResult
                         _properties.value = listResult.productsInfo
                         Timber.i(listResult.productsInfo.toString())
-                        _status.value = LoadingProductsStatus.DONE
                         //this function stops reloading the page
                         _cartStatus.value = EnumCart.CARTNOTEMPTY
                     }
+                    _status.value = LoadingProductsStatus.DONE
                     deleteItemfailed()
                 }else{
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
@@ -75,6 +78,7 @@ class MyCartRepository(private val access_token: String) {
                     deleteItemfailed()
                 }
             }catch (t: Throwable){
+                _status.value = LoadingProductsStatus.ERROR
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
                 //this function stops reloading the page

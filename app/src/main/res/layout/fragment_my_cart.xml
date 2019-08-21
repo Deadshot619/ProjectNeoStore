@@ -62,8 +62,10 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- Layout to show When cart is empty -->
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 app:hideCart="@{myCartViewModel.cartStatus}"
                 android:layout_height="match_parent"
                 android:id="@+id/view_empty_cart">
@@ -93,5 +95,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_empty_cart" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+                android:id="@+id/status_image"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:loadingProductsStatus="@{myCartViewModel.status}"
+                />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
