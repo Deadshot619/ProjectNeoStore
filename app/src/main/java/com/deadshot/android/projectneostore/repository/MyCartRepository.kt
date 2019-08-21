@@ -6,6 +6,7 @@ import com.deadshot.android.projectneostore.models.MyCartResponse
 import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.models.SingleProductInfo
 import com.deadshot.android.projectneostore.network.DeleteItemApi
+import com.deadshot.android.projectneostore.network.EditCartApi
 import com.deadshot.android.projectneostore.network.MyCartApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.EnumCart
@@ -49,7 +50,7 @@ class MyCartRepository(private val access_token: String) {
 
     /**
      * Gets MyCart information from the [MyCartApi] Retrofit service and updates the
-     * [SingleProductInfo] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
+     * [ProductsInfo] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
      * await to get the result of the transaction.
      */
     suspend fun getCartDetails(){
@@ -109,6 +110,29 @@ class MyCartRepository(private val access_token: String) {
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
                 deleteItemfailed()
+            }
+        }
+    }
+
+    /**
+     * Edit MyCart information from the [EditCartApi] Retrofit service and updates the
+     * [] [LiveData]. The Retrofit service returns a coroutine Deferred, which we
+     * await to get the result of the transaction.
+     */
+    suspend fun editCart(productId: Int, quantity: Int){
+        withContext(Dispatchers.Main){
+            val getPropertiesDeferred = EditCartApi.retrofitService
+                .addToCart(access_token = access_token, productId = productId.toString(), quantity = quantity.toString())
+            try {
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200){
+                    authListener.value?.onSuccess("${listResult.user_msg}")
+                }else{
+                    authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                }
+            }catch (t: Throwable){
+                authListener.value?.onFailure("Failure : ${t.message}")
+                Timber.i("Failure : ${t.message}")
             }
         }
     }
