@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Toast
+import androidx.core.view.contains
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.MyCartAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyCartBinding
+import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -63,9 +66,13 @@ class MyCartFragment : Fragment(), AuthListener {
                     .create()
             }
             builder.show()
-        })
-
-
+        },
+            object : MyCartAdapter.OnSelectedItemListener{
+                override fun onItemSelected(productsInfo: ProductsInfo, position: Int) {
+                    myCartViewModel.editCart(productsInfo.productId, position+1)
+                    Timber.i("OnItemClickListener : $position")
+                }
+            })
 
         myCartViewModel.reloadCartStatus.observe(this, Observer {
             /**
@@ -76,7 +83,7 @@ class MyCartFragment : Fragment(), AuthListener {
                     myCartViewModel.loadCart()
             }
         })
-
+        //myCartViewModel.loadCart()
 
         myCartViewModel.authListener.value = this
         return binding.root

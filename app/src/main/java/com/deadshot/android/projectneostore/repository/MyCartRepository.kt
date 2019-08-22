@@ -33,7 +33,6 @@ class MyCartRepository(private val access_token: String) {
     val cartStatus: LiveData<EnumCart>
         get() = _cartStatus
 
-
     private val _properties = MutableLiveData<List<ProductsInfo>>()
     val propertiesProductInfo: LiveData<List<ProductsInfo>>
         get() = _properties
@@ -42,7 +41,9 @@ class MyCartRepository(private val access_token: String) {
     val propertiesMyCartResponse: LiveData<MyCartResponse>
         get() = _propertiesMyCartResponse
 
-
+    /**
+     * Status to check whether cart should be reloaded
+     */
     private val _reloadCartStatus = MutableLiveData<Boolean>()
     val reloadCartStatus: LiveData<Boolean>
         get() = _reloadCartStatus
@@ -55,7 +56,9 @@ class MyCartRepository(private val access_token: String) {
      */
     suspend fun getCartDetails(){
         withContext(Dispatchers.Main){
+
             val getPropertiesDeferred = MyCartApi.retrofitService.getMyCartDetails(access_token = access_token)
+
             try {
                 val listResult = getPropertiesDeferred.await()
                 _status.value = LoadingProductsStatus.LOADING
@@ -121,18 +124,23 @@ class MyCartRepository(private val access_token: String) {
      */
     suspend fun editCart(productId: Int, quantity: Int){
         withContext(Dispatchers.Main){
+
             val getPropertiesDeferred = EditCartApi.retrofitService
                 .addToCart(access_token = access_token, productId = productId.toString(), quantity = quantity.toString())
+
             try {
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
                     authListener.value?.onSuccess("${listResult.user_msg}")
+                    deleteItemDone()
                 }else{
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                    deleteItemfailed()
                 }
             }catch (t: Throwable){
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
+                deleteItemfailed()
             }
         }
     }

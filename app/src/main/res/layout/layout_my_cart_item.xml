@@ -10,6 +10,7 @@
         <variable
                 name="clickListener"
                 type="com.deadshot.android.projectneostore.adapter.MyCartAdapter.OnClickDeleteListener" />
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="vertical"
@@ -65,6 +66,7 @@
         />
 
         <Spinner
+                android:entries="@array/items"
                 android:id="@+id/spinner_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

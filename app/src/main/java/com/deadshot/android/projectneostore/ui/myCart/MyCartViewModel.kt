@@ -55,6 +55,15 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
         }
     }
 
+    /**
+     * Edit cart
+     */
+    fun editCart(productId: Int, quantity: Int){
+        coroutineScope.launch {
+            myCartRepository.editCart(productId, quantity)
+        }
+    }
+
     fun deleteItemDone(){
         myCartRepository.deleteItemDone()
     }

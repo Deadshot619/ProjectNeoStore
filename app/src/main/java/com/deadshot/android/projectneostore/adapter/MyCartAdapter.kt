@@ -1,15 +1,17 @@
 package com.deadshot.android.projectneostore.adapter
 
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.LayoutMyCartItemBinding
 import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.models.SingleProductInfo
+import timber.log.Timber
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -20,7 +22,8 @@ import com.deadshot.android.projectneostore.models.SingleProductInfo
  *  - Instead we'll just let the fragment pass a listener to us.
  *  - This way our adapter doesn't care about how clicks get handled, it just takes a callback)
  */
-class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener) : ListAdapter<ProductsInfo, MyCartAdapter.MyCartViewHolder>(DiffCallback){
+class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener,
+                    val listener: OnSelectedItemListener) : ListAdapter<ProductsInfo, MyCartAdapter.MyCartViewHolder>(DiffCallback){
 
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of [SingleProductInfo]
@@ -43,20 +46,45 @@ class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener) : ListAdapte
      */
     class MyCartViewHolder(private var binding: LayoutMyCartItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            productsInfo: ProductsInfo,
-            clickDeleteListener: OnClickDeleteListener
+            productsInfo: ProductsInfo ,
+            clickDeleteListener: OnClickDeleteListener ,
+            listener: OnSelectedItemListener
         ){
             binding.property = productsInfo
             /**
              * Set spinner items for each viewHolder
-             */
-            binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(
-                binding.root.context ,
-                R.array.items ,
-                android.R.layout.simple_list_item_1
-            )
+/             */
+//            binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(
+//                binding.root.context ,
+//                R.array.items ,
+//                android.R.layout.simple_list_item_1
+//            )
             //set selected quantity in spinner from db
-            binding.spinnerQuantity.setSelection(productsInfo.quantity - 1)
+            binding.spinnerQuantity.setSelection(productsInfo.quantity - 1, false)
+            binding.spinnerQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                //remember the position of spinner
+                private var mLastSpinnerPosition = productsInfo.quantity - 1
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>? ,
+                    view: View? ,
+                    position: Int ,
+                    id: Long
+                ) {
+                    //if current position is same as last position then return
+                    //else call onItemSelected
+                    if (mLastSpinnerPosition == position) {
+                        return
+                    }
+                    listener.onItemSelected(productsInfo , position)
+                    mLastSpinnerPosition = position
+
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+            }
             binding.clickListener = clickDeleteListener
             binding.executePendingBindings()
         }
@@ -69,10 +97,17 @@ class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener) : ListAdapte
     override fun onBindViewHolder(holder: MyCartViewHolder, position: Int) {
         val productsInfo= getItem(position)
         //tell databinding about our clickListener, pass clickListener to viewholder
-        holder.bind(productsInfo, clickDeleteListener)
+        holder.bind(productsInfo, clickDeleteListener, listener)
     }
 
     class OnClickDeleteListener(val clickListener: (productId: Int) -> Unit){
         fun onClick(productsInfo: ProductsInfo) = clickListener(productsInfo.productId)
+    }
+
+    /**
+     * Interface to call in the [AdapterView.OnItemSelectedListener] & passed on to fragment to implement
+     */
+    interface OnSelectedItemListener{
+        fun onItemSelected(productsInfo: ProductsInfo, position: Int)
     }
 }
