@@ -81,11 +81,14 @@ class LoginFragment : Fragment(), AuthListener {
             if (it){
                 requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                
                 binding.progressBar.visibility = View.VISIBLE
+//                binding.mainLayout.alpha = 0.2F
 
             }else{
                 requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 binding.progressBar.visibility = View.INVISIBLE
+//                binding.mainLayout.alpha = 1F
             }
         })
 

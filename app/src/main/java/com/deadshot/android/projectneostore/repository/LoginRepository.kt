@@ -21,6 +21,9 @@ class LoginRepository {
     val loginCheck: LiveData<Boolean>
         get() = _loginCheck
 
+    /**
+     * Check Progress bar status
+     */
     private val _progressBarStatus = MutableLiveData<Boolean>()
     val progressBarStatus: LiveData<Boolean>
         get() = _progressBarStatus
@@ -46,10 +49,12 @@ class LoginRepository {
                 }else{
                     authListener.value?.onFailure("Login Unsuccessful\nError ${listResult.status} : ${listResult.user_msg}")
                     Timber.i("Error ${listResult.status} : ${listResult.message}")
+                    hideProgressBar()
                 }
             }catch (t: Throwable){
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
+                hideProgressBar()
             }
         }
     }
