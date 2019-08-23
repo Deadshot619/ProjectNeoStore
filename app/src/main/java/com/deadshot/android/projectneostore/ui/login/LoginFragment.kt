@@ -20,6 +20,7 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentLoginBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 
 
@@ -76,19 +77,26 @@ class LoginFragment : Fragment(), AuthListener {
             }
         })
 
+        /**
+         * Lazily create a Progress Dialog
+         */
+        val progressDialog by lazy{
+            MaterialAlertDialogBuilder(context)
+                .setView(R.layout.layout_loading)
+                .setCancelable(false)
+                .create()
+        }
 
         loginViewModel.progressBarStatus.observe(this, Observer {
             if (it){
-                requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                
-                binding.progressBar.visibility = View.VISIBLE
-//                binding.mainLayout.alpha = 0.2F
-
+//                requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+//                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                //Show Progress Dialog
+                progressDialog.show()
             }else{
-                requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                binding.progressBar.visibility = View.INVISIBLE
-//                binding.mainLayout.alpha = 1F
+//                requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                //Hide Progress Dialog
+                progressDialog.dismiss()
             }
         })
 
