@@ -16,7 +16,5 @@ class LoginFlowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_flow)
 
-
-//        Paper.init(applicationContext)
     }
 }

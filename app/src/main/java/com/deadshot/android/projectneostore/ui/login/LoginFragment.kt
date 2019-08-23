@@ -46,6 +46,9 @@ class LoginFragment : Fragment(), AuthListener {
          */
         (activity as LoginFlowActivity).supportActionBar?.hide()
 
+        //Load data from Shared Preference
+        loadData()
+
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil
@@ -57,6 +60,16 @@ class LoginFragment : Fragment(), AuthListener {
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         binding.loginViewModel = loginViewModel
+
+        /**
+         * Skip login if email & password is empty
+         */
+        if (email != null){
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToStoreFlowActivity())
+            loginViewModel.loginDone()
+            //Manually popping off Login Flow Activity
+            (activity as LoginFlowActivity).finish()
+        }
 
 
         /**
@@ -137,10 +150,10 @@ class LoginFragment : Fragment(), AuthListener {
     /**
      * Load data from shared preferences
      */
-    fun loadData(){
+    private fun loadData() {
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        email = sharedPreferences.getString(EMAIL, getString(R.string.default_value))
-        password = sharedPreferences.getString(PASSWORD, getString(R.string.default_value))
+        email = sharedPreferences.getString(EMAIL,null)
+        password = sharedPreferences.getString(PASSWORD, null)
     }
 
 
