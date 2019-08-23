@@ -72,4 +72,8 @@
     <style name="TextAppearance.TextCartEmpty" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="TextAppearance.LogoutDialogText" parent="Theme.MaterialComponents.Dialog.Alert">
+
+    </style>
 </resources>

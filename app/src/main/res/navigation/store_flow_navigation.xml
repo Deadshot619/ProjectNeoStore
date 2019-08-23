@@ -107,4 +107,16 @@
     <fragment android:id="@+id/myCartFragment"
               android:name="com.deadshot.android.projectneostore.ui.myCart.MyCartFragment"
               android:label="@string/title_my_cart"/>
+    <activity
+            android:id="@+id/loginFlowActivity"
+            android:name="com.deadshot.android.projectneostore.LoginFlowActivity"
+            android:label="LoginFlowActivity" />
+    <dialog
+            android:id="@+id/logoutFragment"
+            android:name="com.deadshot.android.projectneostore.ui.logout.LogoutFragment"
+            android:label="LogoutFragment" >
+        <action
+                android:id="@+id/action_logoutFragment_to_loginFlowActivity"
+                app:destination="@id/loginFlowActivity" />
+    </dialog>
 </navigation>

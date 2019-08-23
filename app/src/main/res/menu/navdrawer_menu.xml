@@ -14,7 +14,8 @@
           android:icon="@drawable/ic_pin_drop_black_24dp"/>
     <item android:title="@string/title_my_orders" android:id="@+id/myOrders"
           android:icon="@drawable/ic_unarchive_black_24dp"/>
-    <item android:title="@string/title_logout"
-          android:id="@+id/logout"
-          android:icon="@drawable/logout_icon"/>
+    <item
+            android:id="@+id/logoutFragment"
+            android:icon="@drawable/logout_icon"
+            android:title="@string/title_logout" />
 </menu>

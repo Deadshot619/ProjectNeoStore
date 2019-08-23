@@ -37,7 +37,7 @@
     <string name="title_logout">Logout</string>
     <string name="title_reset_password">Reset Password</string>
     <string name="userImage">User Image</string>
-    <string name="cd_userImage"/>
+    <string name="cd_userImage" />
     <string name="userRealName">John Doe</string>
     <string name="userEmail">JohnDoe@gmail.com</string>
     <string name="dob">Date of Birth</string>
@@ -76,6 +76,7 @@
     <string name="remove_message">Are you sure you want to remove this item?</string>
     <string name="cart_empty">Cart Empty!</string>
     <string name="loading">Loading...</string>
+    <string name="logout_question_text">Are you sure you want to logout?</string>
 
     <string-array name="items">
         <item> 1 </item>

@@ -40,6 +40,7 @@ class HomeScreenFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_screen, container, false)
         binding.lifecycleOwner = this
 
+        //Load Data from Shared Preferences
         loadData()
 
         homeScreenViewModel = ViewModelProviders.of(this).get(HomeScreenViewModel::class.java)
@@ -94,7 +95,7 @@ class HomeScreenFragment : Fragment() {
                 super.onOptionsItemSelected(item)
     }
 
-    fun loadData(){
+    private fun loadData(){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
         firstName = sharedPreferences.getString(FIRST_NAME, getString(R.string.default_value))
         lastName = sharedPreferences.getString(LAST_NAME, getString(R.string.default_value))
