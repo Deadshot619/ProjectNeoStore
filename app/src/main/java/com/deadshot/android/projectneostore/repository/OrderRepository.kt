@@ -2,8 +2,10 @@ package com.deadshot.android.projectneostore.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.deadshot.android.projectneostore.models.OrderDetail
 import com.deadshot.android.projectneostore.models.OrderList
 import com.deadshot.android.projectneostore.models.ProductsInfo
+import com.deadshot.android.projectneostore.network.OrderDetailApi
 import com.deadshot.android.projectneostore.network.OrderListApi
 import com.deadshot.android.projectneostore.network.OrderNowApi
 import com.deadshot.android.projectneostore.ui.AuthListener
@@ -22,6 +24,10 @@ class OrderRepository (private val access_token: String){
     private val _propertiesOrderList = MutableLiveData<List<OrderList>>()
     val propertiesOrderList: LiveData<List<OrderList>>
         get() = _propertiesOrderList
+
+    private val _propertiesOrderDetail = MutableLiveData<OrderDetail>()
+    val propertiesOrderDetail: LiveData<OrderDetail>
+    get() = _propertiesOrderDetail
 
     suspend fun placeOrder(access_token: String, address: String){
         withContext(Dispatchers.Main){
@@ -63,6 +69,32 @@ class OrderRepository (private val access_token: String){
                 }
             }catch (t: Throwable){
                 _propertiesOrderList.value = null
+                authListener.value?.onFailure("Failure : ${t.message}")
+                Timber.i("Failure : ${t.message}")
+                _statusOrderList.value = LoadingProductsStatus.ERROR
+            }
+        }
+    }
+
+    suspend fun getOrderDetail(orderId: Int){
+        withContext(Dispatchers.Main){
+            val getPropertiesDeferred = OrderDetailApi.retrofitService
+                .getOrderDetail(access_token = access_token, orderId = orderId)
+
+            try {
+                _statusOrderList.value = LoadingProductsStatus.LOADING
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200){
+                    _propertiesOrderDetail.value = listResult.orderDetail
+                    authListener.value?.onSuccess("${listResult.user_msg}")
+                    _statusOrderList.value = LoadingProductsStatus.DONE
+                }else{
+                    _propertiesOrderDetail.value = null
+                    authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                    _statusOrderList.value = LoadingProductsStatus.ERROR
+                }
+            }catch (t: Throwable){
+                _propertiesOrderDetail.value = null
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
                 _statusOrderList.value = LoadingProductsStatus.ERROR

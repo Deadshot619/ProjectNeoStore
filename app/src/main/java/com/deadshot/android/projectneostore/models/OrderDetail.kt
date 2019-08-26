@@ -22,7 +22,7 @@ data class OrderDetail(
 
 data class OrderDetailResponse(
     val status: Int,
-    @Json(name = "data") val orderDetail: List<OrderDetail>?,
+    @Json(name = "data") val orderDetail: OrderDetail?,
     val message: String?,
     val user_msg: String?
 )
