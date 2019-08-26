@@ -7,6 +7,9 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
 
+/**
+ * A public interface that exposes the [orderNow] method
+ */
 interface OrderNowApiService {
     @FormUrlEncoded
     @POST("order")
@@ -16,6 +19,9 @@ interface OrderNowApiService {
     ): Deferred<CommonResponse>
 }
 
+/**
+ * A public Api object that exposes the lazy-initialized Retrofit service
+ */
 object OrderNowApi{
     val retrofitService: OrderNowApiService by lazy {
         retrofit_moshi.create(OrderNowApiService::class.java)
