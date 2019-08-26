@@ -12,14 +12,14 @@ import com.deadshot.android.projectneostore.models.OrderList
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class OrderListAdapter(): ListAdapter<OrderList , OrderListAdapter.OrderListViewHolder>(DiffCallback){
+class OrderListAdapter(private val onClickListener: OnClickListener): ListAdapter<OrderList , OrderListAdapter.OrderListViewHolder>(DiffCallback){
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int): OrderListViewHolder {
         return OrderListViewHolder(LayoutMyOrdersBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: OrderListViewHolder , position: Int) {
         val orderList = getItem(position)
-        holder.bind(orderList)
+        holder.bind(orderList, onClickListener)
     }
 
     /**
@@ -43,11 +43,17 @@ class OrderListAdapter(): ListAdapter<OrderList , OrderListAdapter.OrderListView
      */
     class OrderListViewHolder(private var binding: LayoutMyOrdersBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(
-            orderList: OrderList
+            orderList: OrderList,
+            onClickListener: OnClickListener
         ){
             binding.orderList = orderList
+            binding.clickListener = onClickListener
             binding.executePendingBindings()
         }
+    }
+
+    class OnClickListener(val clickListener: (orderList: OrderList) -> Unit){
+        fun onClick(orderList: OrderList) = clickListener(orderList)
     }
 
 }
