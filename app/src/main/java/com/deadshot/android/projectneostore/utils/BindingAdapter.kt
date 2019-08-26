@@ -9,12 +9,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.MyCartAdapter
+import com.deadshot.android.projectneostore.adapter.OrderListAdapter
 import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
-import com.deadshot.android.projectneostore.models.ProductImage
-import com.deadshot.android.projectneostore.models.ProductList
-import com.deadshot.android.projectneostore.models.ProductsInfo
-import com.deadshot.android.projectneostore.models.SingleProductInfo
+import com.deadshot.android.projectneostore.models.*
 
 /**
  * Uses the Glide library to load an image by URL into an [ImageView]
@@ -58,6 +56,16 @@ fun bindMyCartRecyclerView(recyclerView: RecyclerView, data: List<ProductsInfo>?
     val adapter = recyclerView.adapter as MyCartAdapter
     adapter.submitList(data)
 }
+
+/**
+ * When there is no [OrderList] data (data is null), hide the [RecyclerView], otherwise show it.
+ */
+@BindingAdapter("listOrderList")
+fun bindOrderListRecyclerView(recyclerView: RecyclerView, data: List<OrderList>?){
+    val adapter = recyclerView.adapter as OrderListAdapter
+    adapter.submitList(data)
+}
+
 
 /**
  * This binding adapter displays the [LoadingProductsStatus] of the network request in an image view.  When
