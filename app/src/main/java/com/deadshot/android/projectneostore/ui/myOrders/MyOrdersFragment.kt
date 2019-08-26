@@ -18,6 +18,7 @@ import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
 import com.deadshot.android.projectneostore.utils.toastShort
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -37,6 +38,7 @@ class MyOrdersFragment : Fragment(), AuthListener {
         inflater: LayoutInflater , container: ViewGroup? ,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.plant(Timber.DebugTree())
         // Inflate the layout for this fragment
         val binding =  FragmentMyOrdersBinding.inflate(inflater)
 

@@ -122,5 +122,18 @@
     <fragment
             android:id="@+id/myOrdersFragment"
             android:name="com.deadshot.android.projectneostore.ui.myOrders.MyOrdersFragment"
-            android:label="@string/title_my_orders" />
+            android:label="@string/title_my_orders" >
+        <action
+                android:id="@+id/action_myOrdersFragment_to_orderDetailFragment"
+                app:destination="@id/orderDetailFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:popUpTo="@+id/myOrdersFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/orderDetailFragment"
+            android:name="com.deadshot.android.projectneostore.ui.orderDetail.OrderDetailFragment"
+            android:label="OrderDetailFragment" />
 </navigation>
