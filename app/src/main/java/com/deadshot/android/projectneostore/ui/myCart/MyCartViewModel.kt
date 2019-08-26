@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.repository.MyCartRepository
+import com.deadshot.android.projectneostore.repository.OrderRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -11,10 +12,17 @@ import kotlinx.coroutines.launch
 
 class MyCartViewModel(private val accessToken: String) : ViewModel(){
     /**
-     * Create an instance of MyCartRepository
+     * Lazily Create an instance of [MyCartRepository]
      */
     private val myCartRepository by lazy {
         MyCartRepository(accessToken)
+    }
+
+    /**
+     * Lazily Create an instance of [OrderRepository]
+     */
+    private val orderRepository by lazy {
+        OrderRepository(accessToken)
     }
 
     val authListener = myCartRepository.authListener
@@ -61,6 +69,12 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
     fun editCart(productId: Int, quantity: Int){
         coroutineScope.launch {
             myCartRepository.editCart(productId, quantity)
+        }
+    }
+
+    fun orderNow(){
+        coroutineScope.launch {
+            myCartRepository.placeOrder(access_token = accessToken, address = "201, Sukhjit Apt.")
         }
     }
 

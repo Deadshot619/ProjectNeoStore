@@ -83,7 +83,6 @@ class MyCartFragment : Fragment(), AuthListener {
                     myCartViewModel.loadCart()
             }
         })
-        //myCartViewModel.loadCart()
 
         myCartViewModel.authListener.value = this
         return binding.root
@@ -92,7 +91,7 @@ class MyCartFragment : Fragment(), AuthListener {
     /**
      * Load data from shared preferences
      */
-    fun loadData(){
+    private fun loadData(){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
         access_token = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
     }
