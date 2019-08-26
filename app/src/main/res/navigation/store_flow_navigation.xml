@@ -135,7 +135,7 @@
     <fragment
             android:id="@+id/orderDetailFragment"
             android:name="com.deadshot.android.projectneostore.ui.orderDetail.OrderDetailFragment"
-            android:label="OrderDetailFragment" >
+            android:label="Order Id : {order_id}" >
         <argument
                 android:name="order_id"
                 app:argType="integer" />

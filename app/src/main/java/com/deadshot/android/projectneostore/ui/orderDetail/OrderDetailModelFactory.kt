@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 
-class OrderDetailModelFactory (private val accessToken: String): ViewModelProvider.Factory{
+class OrderDetailModelFactory (private val accessToken: String, private val orderId: Int): ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(OrderDetailViewModel::class.java)){
-            return OrderDetailViewModel(accessToken) as T
+            return OrderDetailViewModel(accessToken, orderId) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

@@ -21,13 +21,8 @@ import timber.log.Timber
  */
 class OrderDetailFragment : Fragment() {
 
-    private val orderDetailViewModel by lazy {
-        ViewModelProviders.of(this, orderDetailModelFactory).get(OrderDetailViewModel::class.java)
-    }
-    private val orderDetailModelFactory by lazy {
-        OrderDetailModelFactory(access_token)
-    }
-
+    private lateinit var orderDetailViewModel: OrderDetailViewModel
+    private lateinit var orderDetailModelFactory: OrderDetailModelFactory
     private lateinit var access_token: String
 
     override fun onCreateView(
@@ -43,6 +38,11 @@ class OrderDetailFragment : Fragment() {
 
         //set lifecyle owner
         binding.lifecycleOwner = this
+
+        val arguments= OrderDetailFragmentArgs.fromBundle(arguments!!)
+
+        orderDetailModelFactory = OrderDetailModelFactory(access_token, arguments.orderId)
+        orderDetailViewModel =  ViewModelProviders.of(this , orderDetailModelFactory).get(OrderDetailViewModel::class.java)
 
         return binding.root
     }
