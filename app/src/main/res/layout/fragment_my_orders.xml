@@ -16,6 +16,7 @@
             tools:context=".ui.myOrders.MyOrdersFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+                app:listOrderList="@{myOrdersViewModel.propertiesOrderList}"
                 android:id="@+id/rv_my_order_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
