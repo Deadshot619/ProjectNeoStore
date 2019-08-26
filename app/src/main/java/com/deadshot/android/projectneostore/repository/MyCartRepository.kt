@@ -8,6 +8,7 @@ import com.deadshot.android.projectneostore.models.SingleProductInfo
 import com.deadshot.android.projectneostore.network.DeleteItemApi
 import com.deadshot.android.projectneostore.network.EditCartApi
 import com.deadshot.android.projectneostore.network.MyCartApi
+import com.deadshot.android.projectneostore.network.OrderNowApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.EnumCart
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
@@ -141,6 +142,31 @@ class MyCartRepository(private val access_token: String) {
                 authListener.value?.onFailure("Failure : ${t.message}")
                 Timber.i("Failure : ${t.message}")
                 deleteItemfailed()
+            }
+        }
+    }
+
+    suspend fun placeOrder(access_token: String, address: String) {
+        withContext(Dispatchers.Main) {
+            val getPropertiesDeferred = OrderNowApi.retrofitService
+                .orderNow(access_token = access_token , address = address)
+
+            try {
+                val listResult = getPropertiesDeferred.await()
+                if (listResult.status == 200) {
+                    authListener.value?.onSuccess("${listResult.user_msg}")
+                    deleteItemDone()
+//                    _status.value = true
+                } else {
+                    authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
+                    deleteItemfailed()
+//                    _status.value = false
+                }
+            } catch (t: Throwable) {
+                authListener.value?.onFailure("Failure : ${t.message}")
+                Timber.i("Failure : ${t.message}")
+                deleteItemfailed()
+//                _status.value = false
             }
         }
     }
