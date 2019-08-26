@@ -12,14 +12,16 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentOrderDetailBinding
+import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
+import com.deadshot.android.projectneostore.utils.toastShort
 import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
-class OrderDetailFragment : Fragment() {
+class OrderDetailFragment : Fragment(), AuthListener {
 
     private lateinit var orderDetailViewModel: OrderDetailViewModel
     private lateinit var orderDetailModelFactory: OrderDetailModelFactory
@@ -44,6 +46,8 @@ class OrderDetailFragment : Fragment() {
         orderDetailModelFactory = OrderDetailModelFactory(access_token, arguments.orderId)
         orderDetailViewModel =  ViewModelProviders.of(this , orderDetailModelFactory).get(OrderDetailViewModel::class.java)
 
+
+        orderDetailViewModel.authListener.value = this
         return binding.root
     }
 
@@ -54,4 +58,17 @@ class OrderDetailFragment : Fragment() {
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE , Context.MODE_PRIVATE) ?: return
         access_token = sharedPreferences.getString(ACCESS_TOKEN , getString(R.string.default_value))!!
     }
+
+    override fun onStarted() {
+        toastShort("Login Started")
+    }
+
+    override fun onSuccess(message: String) {
+        toastShort(message)
+    }
+
+    override fun onFailure(message: String) {
+        toastShort(message)
+    }
+
 }

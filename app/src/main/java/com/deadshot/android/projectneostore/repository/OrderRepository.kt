@@ -66,6 +66,7 @@ class OrderRepository (private val access_token: String){
                     _propertiesOrderList.value = null
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                     _statusOrderList.value = LoadingProductsStatus.ERROR
+
                 }
             }catch (t: Throwable){
                 _propertiesOrderList.value = null
@@ -88,10 +89,12 @@ class OrderRepository (private val access_token: String){
                     _propertiesOrderDetail.value = listResult.orderDetail
                     authListener.value?.onSuccess("${listResult.user_msg}")
                     _statusOrderList.value = LoadingProductsStatus.DONE
+                    Timber.i("${listResult.toString()}")
                 }else{
                     _propertiesOrderDetail.value = null
                     authListener.value?.onFailure("Error ${listResult.status} : ${listResult.user_msg}")
                     _statusOrderList.value = LoadingProductsStatus.ERROR
+                    Timber.i("${listResult.toString()}")
                 }
             }catch (t: Throwable){
                 _propertiesOrderDetail.value = null

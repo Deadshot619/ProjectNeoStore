@@ -68,6 +68,7 @@ class MyOrdersFragment : Fragment(), AuthListener {
         })
 
 
+        myOrdersViewModel.authListener.value = this
         return binding.root
     }
 
