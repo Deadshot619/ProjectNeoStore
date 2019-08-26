@@ -4,6 +4,7 @@ import com.deadshot.android.projectneostore.models.OrderListResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Query
 
 /**
  * A public interface that exposes the [getOrderList] method
