@@ -29,7 +29,6 @@ class LoginFragment : Fragment(), AuthListener {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
 
-    //TODO(Make this use in auto_login)
     private var email: String? = null
     private var password: String? = null
 
@@ -146,7 +145,6 @@ class LoginFragment : Fragment(), AuthListener {
     }
 
 
-    //TODO(Make this use in auto_login)
     /**
      * Load data from shared preferences
      */

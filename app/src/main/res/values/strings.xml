@@ -10,8 +10,6 @@
     <string name="email">Email ID</string>
     <string name="firstName">First Name</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lastName">Last Name</string>
     <string name="comnfirmPassword">Confirm Password</string>
     <string name="male">Male</string>
