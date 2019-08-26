@@ -42,7 +42,7 @@ class MyOrdersFragment : Fragment(), AuthListener {
 
         //set lifecyle owner
         binding.lifecycleOwner = this
-
+        binding.myOrdersViewModel = myOrdersViewModel
 
         return binding.root
     }

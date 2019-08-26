@@ -4,7 +4,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+                name="orderList"
+                type="com.deadshot.android.projectneostore.models.OrderList" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +38,8 @@
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/order_id"
+                tools:text="@string/order_id"
+                android:text="@{String.format(@string/order_id, orderList.id)}"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/order_date"
+                tools:text="@string/order_date"
+                android:text="@{String.format(@string/order_date, orderList.created)}"
                 app:layout_constraintStart_toStartOf="@+id/tv_order_id"
                 app:layout_constraintTop_toBottomOf="@+id/tv_order_id" />
 
@@ -55,7 +59,8 @@
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/display_price"
+                tools:text="@string/display_price"
+                android:text="@{String.format(@string/display_price, orderList.price)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_order_date"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/tv_order_id"

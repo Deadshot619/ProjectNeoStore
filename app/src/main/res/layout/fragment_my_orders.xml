@@ -5,7 +5,9 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+                name="myOrdersViewModel"
+                type="com.deadshot.android.projectneostore.ui.myOrders.MyOrdersViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
