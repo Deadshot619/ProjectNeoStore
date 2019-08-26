@@ -114,9 +114,13 @@
     <dialog
             android:id="@+id/logoutFragment"
             android:name="com.deadshot.android.projectneostore.ui.logout.LogoutFragment"
-            android:label="LogoutFragment" >
+            android:label="@string/title_logout">
         <action
                 android:id="@+id/action_logoutFragment_to_loginFlowActivity"
                 app:destination="@id/loginFlowActivity" />
     </dialog>
+    <fragment
+            android:id="@+id/myOrdersFragment"
+            android:name="com.deadshot.android.projectneostore.ui.myOrders.MyOrdersFragment"
+            android:label="@string/title_my_orders" />
 </navigation>

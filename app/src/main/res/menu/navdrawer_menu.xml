@@ -12,7 +12,7 @@
           android:icon="@drawable/ic_person_white_24dp"/>
     <item android:title="@string/title_store_locator" android:id="@+id/storeLocator"
           android:icon="@drawable/ic_pin_drop_black_24dp"/>
-    <item android:title="@string/title_my_orders" android:id="@+id/myOrders"
+    <item android:title="@string/title_my_orders" android:id="@+id/myOrdersFragment"
           android:icon="@drawable/ic_unarchive_black_24dp"/>
     <item
             android:id="@+id/logoutFragment"

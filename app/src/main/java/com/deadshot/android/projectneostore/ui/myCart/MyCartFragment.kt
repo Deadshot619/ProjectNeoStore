@@ -88,13 +88,13 @@ class MyCartFragment : Fragment(), AuthListener {
         return binding.root
     }
 
-    /**
-     * Load data from shared preferences
-     */
-    private fun loadData(){
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        access_token = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
-    }
+        /**
+         * Load data from shared preferences
+         */
+        private fun loadData(){
+            val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
+            access_token = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
+        }
 
     override fun onStarted() {
         toastShort("Login Started")
