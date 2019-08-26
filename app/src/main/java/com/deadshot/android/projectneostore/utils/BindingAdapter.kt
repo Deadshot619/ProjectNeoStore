@@ -2,6 +2,7 @@ package com.deadshot.android.projectneostore.utils
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -133,6 +134,40 @@ fun bindShowCart(layout: View, cartStatus: EnumCart?){
         }
         EnumCart.CARTNOTEMPTY -> {
             layout.visibility = View.VISIBLE
+        }
+    }
+}
+
+/**
+ * This adapter shows/hides the progressBar depending on [LoadingProductsStatus]
+ */
+@BindingAdapter("statusProgressBar")
+fun bindProgressBar(progressBar: ProgressBar, status: LoadingProductsStatus?){
+    when(status){
+        LoadingProductsStatus.LOADING -> {
+            progressBar.visibility = View.VISIBLE
+        }
+        LoadingProductsStatus.ERROR -> {
+            progressBar.visibility = View.GONE
+        }
+        LoadingProductsStatus.DONE -> {
+            progressBar.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("loadingOrdersStatus")
+fun bindOrderNetworkStatus(statusImageView: ImageView, status: LoadingProductsStatus?) {
+    when (status) {
+        LoadingProductsStatus.LOADING -> {
+            statusImageView.visibility = View.GONE
+        }
+        LoadingProductsStatus.ERROR -> {
+            statusImageView.visibility = View.VISIBLE
+            statusImageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        LoadingProductsStatus.DONE -> {
+            statusImageView.visibility = View.GONE
         }
     }
 }

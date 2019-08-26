@@ -16,7 +16,7 @@ class MyOrdersViewModel(accessToken: String) : ViewModel(){
     }
 
     val authListener = orderRepository.authListener
-    val status = orderRepository.status
+    val statusOrderList = orderRepository.statusOrderList
 
     val propertiesOrderList = orderRepository.propertiesOrderList
 
