@@ -2,10 +2,7 @@ package com.deadshot.android.projectneostore.network
 
 import com.deadshot.android.projectneostore.models.CommonResponse
 import kotlinx.coroutines.Deferred
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * A public interface that exposes the [orderNow] method
@@ -15,7 +12,7 @@ interface OrderNowApiService {
     @POST("order")
     fun orderNow(
         @Header("access_token") access_token: String,
-        @Query("address") address: String
+        @Field("address") address: String
     ): Deferred<CommonResponse>
 }
 
