@@ -1,6 +1,9 @@
 package com.deadshot.android.projectneostore.ui.myOrders
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.deadshot.android.projectneostore.models.OrderList
 import com.deadshot.android.projectneostore.repository.OrderRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -41,5 +44,17 @@ class MyOrdersViewModel(accessToken: String) : ViewModel(){
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    private val _navigateToOrderDetail = MutableLiveData<Int>()
+    val navigateToOrderDetail: LiveData<Int>
+    get() = _navigateToOrderDetail
+
+    fun onOrderItemClicked(id: Int) {
+        _navigateToOrderDetail.value = id
+    }
+
+    fun onOrderItemNavigated(){
+        _navigateToOrderDetail.value = null
     }
 }
