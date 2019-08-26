@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.adapter.OrderListAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyOrdersBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
@@ -43,6 +46,10 @@ class MyOrdersFragment : Fragment(), AuthListener {
         //set lifecyle owner
         binding.lifecycleOwner = this
         binding.myOrdersViewModel = myOrdersViewModel
+
+        // Adds divider to each recycler view item
+        binding.rvMyOrderList.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        binding.rvMyOrderList.adapter = OrderListAdapter()
 
         return binding.root
     }

@@ -51,8 +51,8 @@ class MyCartFragment : Fragment(), AuthListener {
         binding.myCartViewModel = myCartViewModel
 
 
-        // Adds divider to each recycler view item
-        binding.rvMyCartItems.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+            // Adds divider to each recycler view item
+            binding.rvMyCartItems.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         binding.rvMyCartItems.adapter = MyCartAdapter(MyCartAdapter.OnClickDeleteListener {
             /**
              * Lazily build a Alert Dialog
