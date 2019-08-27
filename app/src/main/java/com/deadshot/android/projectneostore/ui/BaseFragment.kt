@@ -7,16 +7,16 @@ import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
 import com.deadshot.android.projectneostore.utils.toastShort
 
-class BaseFragment : Fragment(), AuthListener{
+open class BaseFragment : Fragment(), AuthListener{
 
-    private lateinit var access_token: String
+    protected lateinit var accessToken: String
 
     /**
      * Load data from shared preferences
      */
-    private fun loadAccessToken(){
+    protected fun loadAccessToken(){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE , Context.MODE_PRIVATE) ?: return
-        access_token = sharedPreferences.getString(ACCESS_TOKEN , getString(R.string.default_value))!!
+        accessToken = sharedPreferences.getString(ACCESS_TOKEN , getString(R.string.default_value))!!
     }
 
     override fun onStarted() {

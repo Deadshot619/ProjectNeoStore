@@ -18,6 +18,7 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.OrderListAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyOrdersBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
 import com.deadshot.android.projectneostore.utils.toastShort
@@ -26,16 +27,14 @@ import timber.log.Timber
 /**
  * A simple [Fragment] subclass.
  */
-class MyOrdersFragment : Fragment(), AuthListener {
+class MyOrdersFragment : BaseFragment() {
 
     private val myOrdersViewModel by lazy {
         ViewModelProviders.of(this, myOrdersModelFactory).get(MyOrdersViewModel::class.java)
     }
     private val myOrdersModelFactory by lazy {
-        MyOrdersModelFactory(accessToken = access_token)
+        MyOrdersModelFactory(accessToken = accessToken)
     }
-
-    private lateinit var access_token: String
 
     override fun onCreateView(
         inflater: LayoutInflater , container: ViewGroup? ,
@@ -46,7 +45,7 @@ class MyOrdersFragment : Fragment(), AuthListener {
         val binding =  FragmentMyOrdersBinding.inflate(inflater)
 
         //load data from shared preferences
-        loadData()
+        loadAccessToken()
 
         //set lifecyle owner
         binding.lifecycleOwner = this
@@ -67,30 +66,7 @@ class MyOrdersFragment : Fragment(), AuthListener {
             }
         })
 
-
         myOrdersViewModel.authListener.value = this
         return binding.root
     }
-
-    /**
-     * Load data from shared preferences
-     */
-    private fun loadData(){
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE , Context.MODE_PRIVATE) ?: return
-        access_token = sharedPreferences.getString(ACCESS_TOKEN , getString(R.string.default_value))!!
-    }
-
-    override fun onStarted() {
-        toastShort("Login Started")
-    }
-
-    override fun onSuccess(message: String) {
-        toastShort(message)
-    }
-
-    override fun onFailure(message: String) {
-        toastShort(message)
-    }
-
-
 }
