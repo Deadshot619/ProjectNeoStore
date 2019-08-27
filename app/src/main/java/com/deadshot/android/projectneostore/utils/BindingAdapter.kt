@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.deadshot.android.projectneostore.R
-import com.deadshot.android.projectneostore.adapter.MyCartAdapter
-import com.deadshot.android.projectneostore.adapter.OrderListAdapter
-import com.deadshot.android.projectneostore.adapter.ProductDetailAdapter
-import com.deadshot.android.projectneostore.adapter.ProductsAdapter
+import com.deadshot.android.projectneostore.adapter.*
 import com.deadshot.android.projectneostore.models.*
 
 /**
@@ -67,6 +64,11 @@ fun bindOrderListRecyclerView(recyclerView: RecyclerView, data: List<OrderList>?
     adapter.submitList(data)
 }
 
+@BindingAdapter("listOrderDetail")
+fun bindOrderDetailRecyclerView(recyclerView: RecyclerView, data: List<ProductsInOrder>?){
+    val adapter = recyclerView.adapter as OrderDetailAdapter
+    adapter.submitList(data)
+}
 
 /**
  * This binding adapter displays the [LoadingProductsStatus] of the network request in an image view.  When
