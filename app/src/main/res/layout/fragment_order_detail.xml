@@ -13,7 +13,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
+                app:showLayout="@{orderDetailViewModel.statusOrderList}"
                 android:id="@+id/main_layout"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".ui.orderDetail.OrderDetailFragment">
@@ -31,23 +34,25 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <androidx.core.widget.ContentLoadingProgressBar-->
-<!--                android:id="@+id/progress_bar"-->
-<!--                android:visibility="gone"-->
-<!--                tools:visibility="gone"-->
-<!--                style="@android:style/Widget.Material.Light.ProgressBar"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:indeterminate="true"-->
-<!--                tools:targetApi="lollipop" />-->
-<!--        <ImageView-->
-<!--                android:id="@+id/status_image"-->
-<!--                android:visibility="gone"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:contentDescription="@string/cd_load_status" />-->
+        <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar"
+                app:statusProgressBar="@{orderDetailViewModel.statusOrderList}"
+                android:visibility="visible"
+                tools:visibility="visible"
+                style="@android:style/Widget.Material.Light.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                tools:targetApi="lollipop" />
+        <ImageView
+                android:id="@+id/status_image"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:loadingProductsStatus="@{orderDetailViewModel.statusOrderList}"
+                android:contentDescription="@string/cd_load_status" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
