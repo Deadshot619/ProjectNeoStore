@@ -109,7 +109,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:loadingProductsStatus="@{orderDetailViewModel.statusOrderList}"
+                app:loadingOrdersStatus="@{orderDetailViewModel.statusOrderList}"
                 android:contentDescription="@string/cd_load_status" />
 
 

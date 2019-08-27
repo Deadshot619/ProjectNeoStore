@@ -48,21 +48,13 @@
                 app:layout_constraintEnd_toStartOf="@+id/spinner_quantity"
                 app:layout_constraintHorizontal_chainStyle="packed"/>
 
-        <Spinner
+        <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_quantity"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:fadeScrollbars="false"
-                android:gravity="center"
-                android:isScrollContainer="true"
-                android:orientation="vertical"
-                android:overScrollMode="ifContentScrolls"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbarSize="5dp"
-                android:verticalScrollbarPosition="right"
-                app:layout_constrainedHeight="false"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_enter_quantity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

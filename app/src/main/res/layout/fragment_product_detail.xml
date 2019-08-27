@@ -23,6 +23,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_layout"
             app:showLayout="@{productDetailViewModel.status}"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.productDetail.ProductDetailFragment" android:background="#E7E7E7">
@@ -203,6 +204,17 @@
                 app:layout_constraintTop_toTopOf="@+id/btn_buy_now"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar"
+                app:statusProgressBar="@{productDetailViewModel.status}"
+                android:visibility="visible"
+                tools:visibility="visible"
+                style="@android:style/Widget.Material.Light.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                tools:targetApi="lollipop" />
     <ImageView
             android:id="@+id/status_image"
             android:layout_gravity="center"

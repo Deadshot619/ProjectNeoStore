@@ -34,9 +34,13 @@ class LoginViewModel : ViewModel(){
         when {
             email.isNullOrEmpty() || password.isNullOrEmpty() -> {
                 authListener.value?.onFailure("Invalid Email or Password $email $password")
+                loginRepository.hideProgressBar()
                 return
             }
-            !isEmailValid(email!!) -> authListener.value?.onFailure("Invalid Email")
+            !isEmailValid(email!!) -> {
+                authListener.value?.onFailure("Invalid Email")
+                loginRepository.hideProgressBar()
+            }
             else -> coroutineScope.launch {  loginRepository.checkLogin(email = email, password = password) }
         }
     }

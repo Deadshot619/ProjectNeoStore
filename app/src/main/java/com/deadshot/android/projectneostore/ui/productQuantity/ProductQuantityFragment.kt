@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentProductQuantityBinding
 import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.ui.AuthListener
@@ -58,7 +59,7 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
 
         binding.productQuantityViewModel = productQuantityViewModel
 
-        binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(context!!, R.array.items, android.R.layout.simple_list_item_1)
+        binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(context!!, R.array.items, android.R.layout.simple_dropdown_item_1line)
         binding.spinnerQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 /**
