@@ -78,6 +78,7 @@
     <string name="order_id">Order ID : %d</string>
     <string name="order_date">Ordered Date : %s</string>
     <string name="cd_load_status">Error</string>
+    <string name="quantity_format">Qty : %d</string>
 
     <string-array name="items">
         <item> 1 </item>
@@ -90,6 +91,4 @@
         <item> 8 </item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

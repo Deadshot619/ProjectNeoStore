@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@{productsInOrder.quantity}"
+                android:text="@{String.format(@string/quantity_format, productsInOrder.quantity)}"
                 tools:text="QTY : 2"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_product_image"
                 app:layout_constraintStart_toEndOf="@+id/iv_product_image" />

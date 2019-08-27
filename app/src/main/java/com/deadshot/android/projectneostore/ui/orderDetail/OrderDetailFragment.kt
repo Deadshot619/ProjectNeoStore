@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.adapter.OrderDetailAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentOrderDetailBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
@@ -48,6 +51,11 @@ class OrderDetailFragment : Fragment(), AuthListener {
         orderDetailViewModel =  ViewModelProviders.of(this , orderDetailModelFactory).get(OrderDetailViewModel::class.java)
 
         binding.orderDetailViewModel = orderDetailViewModel
+
+        // Adds divider to each recycler view item
+        binding.rvOrderDetail.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        binding.rvOrderDetail.adapter = OrderDetailAdapter()
+
 
         orderDetailViewModel.authListener.value = this
         return binding.root
