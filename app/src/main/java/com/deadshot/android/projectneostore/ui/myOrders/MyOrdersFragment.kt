@@ -41,7 +41,7 @@ class MyOrdersFragment : Fragment(), AuthListener {
         inflater: LayoutInflater , container: ViewGroup? ,
         savedInstanceState: Bundle?
     ): View? {
-        Timber.plant(Timber.DebugTree())
+//        Timber.plant(Timber.DebugTree())
         // Inflate the layout for this fragment
         val binding =  FragmentMyOrdersBinding.inflate(inflater)
 
