@@ -41,11 +41,13 @@ class OrderDetailFragment : Fragment(), AuthListener {
         //set lifecyle owner
         binding.lifecycleOwner = this
 
+        //get arguments from bundle passed from calling Fragment
         val arguments= OrderDetailFragmentArgs.fromBundle(arguments!!)
 
         orderDetailModelFactory = OrderDetailModelFactory(access_token, arguments.orderId)
         orderDetailViewModel =  ViewModelProviders.of(this , orderDetailModelFactory).get(OrderDetailViewModel::class.java)
 
+        binding.orderDetailViewModel = orderDetailViewModel
 
         orderDetailViewModel.authListener.value = this
         return binding.root
