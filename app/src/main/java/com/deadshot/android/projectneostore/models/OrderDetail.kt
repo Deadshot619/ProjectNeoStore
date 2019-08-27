@@ -21,8 +21,5 @@ data class OrderDetail(
 )
 
 data class OrderDetailResponse(
-    val status: Int,
-    @Json(name = "data") val orderDetail: OrderDetail?,
-    val message: String?,
-    val user_msg: String?
-)
+    @Json(name = "data") val orderDetail: OrderDetail?
+): CommonResponse()

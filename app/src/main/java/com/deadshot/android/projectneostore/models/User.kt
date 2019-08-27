@@ -23,8 +23,5 @@ data class UpdateUser(
 )
 
 data class UserDetails(
-    var status: Int,
-    var data: AccountDataResponse,
-    var message: String,
-    var user_msg: String
-)
+    var data: AccountDataResponse
+): CommonResponse()

@@ -20,8 +20,5 @@ data class ProductList(
 )
 
 data class ProductListResponse(
-    val status: Int,
-    @Json(name = "data") val products: List<ProductList>,
-    val message: String?,
-    val user_msg: String?
-)
+    @Json(name = "data") val products: List<ProductList>
+): CommonResponse()

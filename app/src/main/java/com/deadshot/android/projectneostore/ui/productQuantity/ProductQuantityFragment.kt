@@ -59,7 +59,8 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
 
         binding.productQuantityViewModel = productQuantityViewModel
 
-        binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(context!!, R.array.items, android.R.layout.simple_dropdown_item_1line)
+        binding.spinnerQuantity.adapter = ArrayAdapter
+            .createFromResource(context!!, R.array.items, android.R.layout.simple_dropdown_item_1line)
         binding.spinnerQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 /**

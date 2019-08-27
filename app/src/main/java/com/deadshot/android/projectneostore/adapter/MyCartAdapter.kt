@@ -51,14 +51,7 @@ class MyCartAdapter(val clickDeleteListener: OnClickDeleteListener,
             listener: OnSelectedItemListener
         ){
             binding.property = productsInfo
-            /**
-             * Set spinner items for each viewHolder
-/             */
-//            binding.spinnerQuantity.adapter = ArrayAdapter.createFromResource(
-//                binding.root.context ,
-//                R.array.items ,
-//                android.R.layout.simple_list_item_1
-//            )
+
             //set selected quantity in spinner from db
             binding.spinnerQuantity.setSelection(productsInfo.quantity - 1, false)
             binding.spinnerQuantity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{

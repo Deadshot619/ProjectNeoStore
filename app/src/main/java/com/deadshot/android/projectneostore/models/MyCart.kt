@@ -19,10 +19,7 @@ data class ProductsInfo(
 )
 
 data class MyCartResponse(
-    val status: Int,
     @Json(name = "data") val productsInfo: List<ProductsInfo>?,
     val count: Int?,
-    val total: Float?,
-    val message: String?,
-    val user_msg: String?
-)
+    val total: Float?
+): CommonResponse()

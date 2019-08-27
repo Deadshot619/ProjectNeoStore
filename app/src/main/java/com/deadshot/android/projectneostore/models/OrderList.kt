@@ -9,8 +9,5 @@ data class OrderList(
 )
 
 data class OrderListResponse(
-    val status: Int,
-    @Json(name = "data") val orderList: List<OrderList>?,
-    val message: String?,
-    val user_msg: String?
-)
+    @Json(name = "data") val orderList: List<OrderList>?
+): CommonResponse()
