@@ -16,12 +16,13 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentEditProfileBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import timber.log.Timber
 import java.util.*
 
 
-class EditProfileFragment : Fragment(), AuthListener {
+class EditProfileFragment : BaseFragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
     private lateinit var editProfileViewModel: EditProfileViewModel
@@ -32,14 +33,14 @@ class EditProfileFragment : Fragment(), AuthListener {
         savedInstanceState: Bundle?
     ): View? {
         // Add Timber to fragment
-        Timber.plant(Timber.DebugTree())
+//        Timber.plant(Timber.DebugTree())
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_profile, container, false)
         binding.lifecycleOwner = this
 
+        //Retrieve Values from arguments
         val args = EditProfileFragmentArgs.fromBundle(arguments!!)
-//        Timber.i("${args.dob} ${args.email} ${args.firstName}")
 
         editProfileModelFactory = EditProfileModelFactory(
             args.firstName,
@@ -72,7 +73,7 @@ class EditProfileFragment : Fragment(), AuthListener {
 
         editProfileViewModel.checkUpdateSuccessful.observe(this, androidx.lifecycle.Observer {
             if (it){
-                saveData(
+                saveUserData(
                     firstName = editProfileViewModel.first_name,
                     lastName = editProfileViewModel.last_name,
                     email = editProfileViewModel.email_id,
@@ -86,32 +87,5 @@ class EditProfileFragment : Fragment(), AuthListener {
 
         editProfileViewModel.authListener.value = this
         return binding.root
-    }
-
-    /**
-     *  Save data in Shared Preferences
-     */
-    fun saveData(firstName: String, lastName: String, email: String, phone: String, dob: String){
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        with(sharedPreferences.edit()){
-            putString(FIRST_NAME, firstName)
-            putString(LAST_NAME, lastName)
-            putString(EMAIL, email)
-            putString(PHONE_NUMBER, phone)
-            putString(DOB, dob)
-            apply()
-        }
-    }
-
-    override fun onStarted() {
-        toastShort("SignUp Started")
-    }
-
-    override fun onSuccess(message: String) {
-        toastShort(message)
-    }
-
-    override fun onFailure(message: String) {
-        toastShort(message)
     }
 }

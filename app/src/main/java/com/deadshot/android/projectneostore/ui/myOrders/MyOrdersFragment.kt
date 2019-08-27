@@ -1,28 +1,19 @@
 package com.deadshot.android.projectneostore.ui.myOrders
 
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.OrderListAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyOrdersBinding
-import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.ui.BaseFragment
-import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
-import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
-import com.deadshot.android.projectneostore.utils.toastShort
-import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
