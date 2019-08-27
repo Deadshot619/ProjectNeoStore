@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentHomeScreenBinding
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import com.smarteist.autoimageslider.IndicatorAnimations
 import com.smarteist.autoimageslider.SliderAnimations
@@ -20,14 +21,10 @@ import kotlinx.android.synthetic.main.activity_store_flow.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 import timber.log.Timber
 
-class HomeScreenFragment : Fragment() {
+class HomeScreenFragment : BaseFragment(){
 
     private lateinit var binding : FragmentHomeScreenBinding
     private lateinit var homeScreenViewModel: HomeScreenViewModel
-
-    private lateinit var firstName: String
-    private lateinit var lastName: String
-    private lateinit var email: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +38,7 @@ class HomeScreenFragment : Fragment() {
         binding.lifecycleOwner = this
 
         //Load Data from Shared Preferences
-        loadData()
+        loadUserData()
 
         homeScreenViewModel = ViewModelProviders.of(this).get(HomeScreenViewModel::class.java)
         binding.homeScreenViewModel = homeScreenViewModel
@@ -93,12 +90,5 @@ class HomeScreenFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) ||
                 super.onOptionsItemSelected(item)
-    }
-
-    private fun loadData(){
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        firstName = sharedPreferences.getString(FIRST_NAME, getString(R.string.default_value))
-        lastName = sharedPreferences.getString(LAST_NAME, getString(R.string.default_value))
-        email = sharedPreferences.getString(EMAIL, getString(R.string.default_value))
     }
 }

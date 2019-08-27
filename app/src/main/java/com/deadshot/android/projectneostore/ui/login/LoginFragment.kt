@@ -19,18 +19,16 @@ import com.deadshot.android.projectneostore.LoginFlowActivity
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentLoginBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 
 
-class LoginFragment : Fragment(), AuthListener {
+class LoginFragment : BaseFragment() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
-
-    private var email: String? = null
-    private var password: String? = null
 
     @SuppressLint("Range")
     override fun onCreateView(
@@ -46,7 +44,7 @@ class LoginFragment : Fragment(), AuthListener {
         (activity as LoginFlowActivity).supportActionBar?.hide()
 
         //Load data from Shared Preference
-        loadData()
+        loadAuthData()
 
         // Inflate the layout for this fragment
         binding =
@@ -114,7 +112,7 @@ class LoginFragment : Fragment(), AuthListener {
 
         loginViewModel.userData.observe(this, Observer {
             if (it != null){
-                saveData(
+                saveAuthData(
                     firstName = it.first_name,
                     lastName = it.last_name,
                     email = it.email,
@@ -127,33 +125,6 @@ class LoginFragment : Fragment(), AuthListener {
 
         return binding.root
     }
-
-    /**
-     *  Save data in Shared Preferences
-     */
-    private fun saveData(firstName: String, lastName: String, email: String, phone: String, accessToken: String, dob: String){
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        with(sharedPreferences.edit()){
-            putString(FIRST_NAME, firstName)
-            putString(LAST_NAME, lastName)
-            putString(EMAIL, email)
-            putString(PHONE_NUMBER, phone)
-            putString(ACCESS_TOKEN, accessToken)
-            putString(DOB, dob)
-            apply()
-        }
-    }
-
-
-    /**
-     * Load data from shared preferences
-     */
-    private fun loadData() {
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        email = sharedPreferences.getString(EMAIL,null)
-        password = sharedPreferences.getString(PASSWORD, null)
-    }
-
 
     override fun onStarted() {
         toastShort("Login Started")
