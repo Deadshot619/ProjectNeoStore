@@ -9,19 +9,46 @@
                 type="com.deadshot.android.projectneostore.ui.orderDetail.OrderDetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.orderDetail.OrderDetailFragment">
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.orderDetail.OrderDetailFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_order_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar"
+                app:statusProgressBar="@{}"
+                android:visibility="visible"
+                tools:visibility="gone"
+                style="@android:style/Widget.Material.Light.ProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/order_id"
-                android:text="@{orderDetailViewModel.propertiesOrderDetail.address}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                tools:targetApi="lollipop" />
+        <ImageView
+                android:id="@+id/status_image"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:loadingProductsStatus="@{}"
+                android:contentDescription="@string/cd_load_status" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
