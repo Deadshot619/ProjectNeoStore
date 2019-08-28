@@ -12,59 +12,78 @@
                 type="com.deadshot.android.projectneostore.ui.homeScreen.HomeScreenViewModel"/>
     </data>
 
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.homeScreen.HomeScreenFragment">
 
+
         <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/imageSlider"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:sliderAnimationDuration="600"
                 app:sliderAutoCycleDirection="right"
+                app:sliderAutoCycleEnabled="true"
                 app:sliderCircularHandlerEnabled="true"
                 app:sliderIndicatorAnimationDuration="600"
                 app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorMargin="16dp"
                 app:sliderIndicatorOrientation="horizontal"
                 app:sliderIndicatorPadding="3dp"
                 app:sliderIndicatorRadius="2dp"
                 app:sliderIndicatorSelectedColor="@color/colorPrimary"
+
                 app:sliderIndicatorUnselectedColor="#fff"
                 app:sliderScrollTimeInSec="3"
-                app:sliderStartAutoCycle="true"
-                app:sliderAutoCycleEnabled="true"
-
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:sliderStartAutoCycle="true">
 
         </com.smarteist.autoimageslider.SliderView>
+
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/tableicon"
                 android:id="@+id/iv_tables"
-                android:onClick="@{() -> homeScreenViewModel.onClickNavigateToTables()}"
-                android:contentDescription="@string/cd_tables"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/iv_sofas"
-                app:layout_constraintHorizontal_chainStyle="packed" android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/imageSlider"
-                app:layout_constraintBottom_toTopOf="@+id/iv_chairs" app:layout_constraintVertical_chainStyle="packed"
-                android:layout_marginBottom="8dp"/>
-        <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/chairsicon"
-                android:id="@+id/iv_chairs"
-                android:onClick="@{() -> homeScreenViewModel.onClickNavigateToChairs()}"
-                android:contentDescription="@string/cd_chairs"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/cd_tables"
+                android:onClick="@{() -> homeScreenViewModel.onClickNavigateToTables()}"
+                app:layout_constraintBottom_toTopOf="@+id/iv_chairs"
+                app:layout_constraintEnd_toStartOf="@+id/iv_sofas"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/iv_cupboards"
-                app:layout_constraintHorizontal_chainStyle="packed" android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/iv_tables" app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="8dp" android:layout_marginStart="16dp"
-                app:layout_constraintVertical_bias="1.0" app:layout_constraintVertical_chainStyle="packed"/>
+                app:layout_constraintTop_toBottomOf="@+id/imageSlider"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/tableicon" />
+
+        <ImageView
+                android:id="@+id/iv_chairs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/cd_chairs"
+                android:onClick="@{() -> homeScreenViewModel.onClickNavigateToChairs()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_cupboards"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_tables"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/chairsicon" />
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp" app:srcCompat="@drawable/cupboardicon"
@@ -87,5 +106,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/iv_tables" app:layout_constraintVertical_bias="0.0"
                 android:layout_marginEnd="16dp"/>
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
