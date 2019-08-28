@@ -48,8 +48,7 @@
                 android:id="@+id/tv_product_producer"
                 app:layout_constraintStart_toStartOf="@+id/tv_product_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_product_name"
-                android:textColor="#4F4F4F"
-                android:textSize="12sp"
+                android:textAppearance="?attr/textAppearanceOverline"
                 tools:text="Aaron Table Center"/>
         <TextView
                 android:text="@{String.format(@string/display_price, property.price)}"
