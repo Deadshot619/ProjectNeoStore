@@ -39,7 +39,7 @@
 
         <TextView
                 android:id="@+id/tv_order_id"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/order_id"

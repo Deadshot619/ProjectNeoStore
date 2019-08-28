@@ -22,256 +22,285 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="ExtraText"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp" android:paddingTop="16dp">
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                tools:ignore="ExtraText">
 
             //Appname "Store"
+
             <TextView
-                    android:text="@string/app_second_name"
+                    android:id="@+id/tv_AppSecondName"
+                    style="@style/TextSyleAppName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_AppSecondName"
+                    android:text="@string/app_second_name"
                     android:textColor="@android:color/black"
-                    app:layout_constraintStart_toEndOf="@+id/tv_AppFirstName"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    style="@style/TextSyleAppName"/>
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_AppFirstName"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             //Appname "Neo"
+
             <TextView
-                    android:text="@string/app_first_name"
+                    android:id="@+id/tv_AppFirstName"
+                    style="@style/TextSyleAppName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_AppFirstName"
+                    android:text="@string/app_first_name"
                     android:textColor="@android:color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_AppSecondName"
-                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tv_AppSecondName"
-                    style="@style/TextSyleAppName"/>
+                    app:layout_constraintEnd_toStartOf="@+id/tv_AppSecondName"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             //First Name
+
             <com.google.android.material.textfield.TextInputLayout
-                    android:hint="@string/firstName"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_AppSecondName"
-                    app:layout_constraintStart_toStartOf="@+id/tv_AppFirstName"
-                    style="@style/CustomInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_AppSecondName"
                     android:id="@+id/et_FirstNameInputLayout"
-                    app:boxStrokeColor="#99FFFFFF"
-                    app:hintTextColor="#99FFFFFF"
-                    app:helperTextTextColor="#99FFFFFF"
-                    app:layout_constraintWidth_max="wrap"
-                    app:layout_constraintWidth_min="wrap"
+                    style="@style/CustomInputLayout"
+                    android:layout_marginTop="32dp"
+                    android:hint="@string/firstName"
                     android:maxWidth="500dp"
                     android:minWidth="300dp"
+                    android:textColorHint="#DBFFFFFF"
+                    app:boxBackgroundColor="#33FFFFFF"
+                    app:boxStrokeColor="#99FFFFFF"
+                    app:helperTextTextColor="#99FFFFFF"
+                    app:hintTextColor="#99FFFFFF"
+                    app:layout_constrainedWidth="false"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_AppSecondName"
+                    app:layout_constraintStart_toStartOf="@+id/tv_AppFirstName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_AppSecondName"
                     app:layout_constraintWidth_default="wrap"
-                    app:layout_constrainedWidth="false" android:textColorHint="#DBFFFFFF"
-                    app:boxBackgroundColor="#33FFFFFF" android:layout_marginTop="32dp">
+                    app:layout_constraintWidth_max="wrap"
+                    app:layout_constraintWidth_min="wrap">
+
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_FirstNameInputEditLayout"
+                        style="@style/InnerMaterialEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/InnerMaterialEditText"
                         android:inputType="textPersonName"
-                        android:text="@={signUpViewModel.firstName}"/>
+                        android:text="@={signUpViewModel.firstName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             //Second Name
+
             <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:hint="@string/lastName"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/et_FirstNameInputLayout"
-                    app:layout_constraintEnd_toEndOf="@+id/et_FirstNameInputLayout"
                     android:id="@+id/et_SecondNameInputLayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_FirstNameInputLayout"
+                    android:hint="@string/lastName"
                     android:textColorHint="#DBFFFFFF"
+                    app:boxBackgroundColor="#33FFFFFF"
                     app:boxStrokeColor="#CCFFFFFF"
-                    app:hintTextColor="#CCFFFFFF"
                     app:helperTextTextColor="#99FFFFFF"
-                    app:boxBackgroundColor="#33FFFFFF">
+                    app:hintTextColor="#CCFFFFFF"
+                    app:layout_constraintEnd_toEndOf="@+id/et_FirstNameInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/et_FirstNameInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/et_FirstNameInputLayout">
+
                 <com.google.android.material.textfield.TextInputEditText
+                        style="@style/InnerMaterialEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="@style/InnerMaterialEditText"
                         android:inputType="textPersonName"
-                        android:text="@={signUpViewModel.lastName}"/>
+                        android:text="@={signUpViewModel.lastName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             //Email id
+
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_EmailIdInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
                     android:hint="@string/email"
-                    app:layout_constraintStart_toStartOf="@+id/et_SecondNameInputLayout"
+                    android:textColorHint="#DBFFFFFF"
+                    app:boxBackgroundColor="#33FFFFFF"
+                    app:boxStrokeColor="#CCFFFFFF"
+                    app:helperTextTextColor="#99FFFFFF"
+                    app:hintTextColor="#CCFFFFFF"
                     app:layout_constraintEnd_toEndOf="@+id/et_SecondNameInputLayout"
                     app:layout_constraintHorizontal_bias="1.0"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/et_EmailIdInputLayout"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_SecondNameInputLayout"
-                    android:textColorHint="#DBFFFFFF"
-                    app:boxStrokeColor="#CCFFFFFF"
-                    app:hintTextColor="#CCFFFFFF"
-                    app:helperTextTextColor="#99FFFFFF"
-                    app:boxBackgroundColor="#33FFFFFF">
+                    app:layout_constraintStart_toStartOf="@+id/et_SecondNameInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/et_SecondNameInputLayout">
+
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_emailIdInputTextLayout"
+                        style="@style/InnerMaterialEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="@style/InnerMaterialEditText"
                         android:inputType="textPersonName"
-                        android:text="@={signUpViewModel.emailId}"/>
+                        android:text="@={signUpViewModel.emailId}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             //Password
+
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_passwordInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    app:counterTextColor="@android:color/white"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:textColorHint="#DBFFFFFF"
-                    android:id="@+id/et_passwordInputLayout"
-                    app:boxStrokeColor="#CCFFFFFF"
-                    app:hintTextColor="#CCFFFFFF"
-                    app:passwordToggleEnabled="true"
-                    app:helperTextTextColor="@android:color/white"
-                    app:boxBackgroundMode="outline" app:counterEnabled="false" app:boxBackgroundColor="#33FFFFFF"
-                    app:layout_constraintStart_toStartOf="@+id/et_EmailIdInputLayout"
-                    app:layout_constraintEnd_toEndOf="@+id/et_EmailIdInputLayout"
                     android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
+                    android:hint="@string/password"
+                    android:textColorHint="#DBFFFFFF"
+                    app:boxBackgroundColor="#33FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="#CCFFFFFF"
+                    app:counterEnabled="false"
+                    app:counterTextColor="@android:color/white"
+                    app:helperTextTextColor="@android:color/white"
+                    app:hintTextColor="#CCFFFFFF"
+                    app:layout_constraintEnd_toEndOf="@+id/et_EmailIdInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/et_EmailIdInputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/et_EmailIdInputLayout"
+                    app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@android:color/white">
+
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordInputEditLayout"
+                        style="@style/InnerMaterialEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        style="@style/InnerMaterialEditText"
-                        android:text="@={signUpViewModel.password}"/>
+                        android:text="@={signUpViewModel.password}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             //Confirm Password
+
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_confirmPasswordInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/confirm_password"
-                    app:counterTextColor="@android:color/white"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:textColorHint="#DBFFFFFF"
-                    android:id="@+id/et_confirmPasswordInputLayout"
-                    app:boxStrokeColor="#CCFFFFFF"
-                    app:hintTextColor="#CCFFFFFF"
-                    app:passwordToggleEnabled="true"
-                    app:helperTextTextColor="@android:color/white"
-                    app:boxBackgroundMode="outline" app:counterEnabled="false" app:boxBackgroundColor="#33FFFFFF"
                     android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-                    app:layout_constraintStart_toStartOf="@+id/et_passwordInputLayout"
+                    android:hint="@string/confirm_password"
+                    android:textColorHint="#DBFFFFFF"
+                    app:boxBackgroundColor="#33FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="#CCFFFFFF"
+                    app:counterEnabled="false"
+                    app:counterTextColor="@android:color/white"
+                    app:helperTextTextColor="@android:color/white"
+                    app:hintTextColor="#CCFFFFFF"
                     app:layout_constraintEnd_toEndOf="@+id/et_passwordInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/et_passwordInputLayout"
                     app:layout_constraintTop_toBottomOf="@+id/et_passwordInputLayout"
+                    app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@android:color/white">
+
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_confirmPasswordInputEditLayout"
+                        style="@style/InnerMaterialEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        style="@style/InnerMaterialEditText"
-                        android:text="@={signUpViewModel.confirmPassword}"/>
+                        android:text="@={signUpViewModel.confirmPassword}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             //Gender
+
             <RadioGroup
-                    android:layout_width="0dp"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="@+id/et_confirmPasswordInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_confirmPasswordInputLayout"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
                     android:id="@+id/rg_gender"
-                    app:layout_constraintStart_toStartOf="@+id/et_confirmPasswordInputLayout">
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/et_confirmPasswordInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/et_confirmPasswordInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/et_confirmPasswordInputLayout">
+
                 <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/male"
                         android:id="@+id/rb_male"
                         style="@style/customMaterialRadioButtonText"
-                        android:layout_weight="1"
-                        android:textSize="18sp"
-                        android:gravity="center|center_horizontal"
-                        android:onClick="@{() -> signUpViewModel.onGenderMaleRadioBtnClick()}"/>
-                <com.google.android.material.radiobutton.MaterialRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/female"
-                        style="@style/customMaterialRadioButtonText"
-                        android:id="@+id/rb_female" android:layout_weight="1" android:textSize="18sp"
+                        android:layout_weight="1"
                         android:gravity="center|center_horizontal"
-                        android:onClick="@{() -> signUpViewModel.onGenderFemaleRadioBtnClick()}"/>
+                        android:onClick="@{() -> signUpViewModel.onGenderMaleRadioBtnClick()}"
+                        android:text="@string/male"
+                        android:textSize="18sp" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_female"
+                        style="@style/customMaterialRadioButtonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_horizontal"
+                        android:onClick="@{() -> signUpViewModel.onGenderFemaleRadioBtnClick()}"
+                        android:text="@string/female"
+                        android:textSize="18sp" />
             </RadioGroup>
 
             //Phone Number
+
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_phoneInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
                     android:hint="@string/phone"
-                    app:layout_constraintStart_toStartOf="@+id/rg_gender"
+                    android:textColorHint="#DBFFFFFF"
+                    app:boxBackgroundColor="#33FFFFFF"
+                    app:boxStrokeColor="#CCFFFFFF"
+                    app:helperTextTextColor="#99FFFFFF"
+                    app:hintTextColor="#CCFFFFFF"
                     app:layout_constraintEnd_toEndOf="@+id/rg_gender"
                     app:layout_constraintHorizontal_bias="1.0"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/et_phoneInputLayout"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/rg_gender"
-                    android:textColorHint="#DBFFFFFF"
-                    app:boxStrokeColor="#CCFFFFFF"
-                    app:hintTextColor="#CCFFFFFF"
-                    app:helperTextTextColor="#99FFFFFF"
-                    app:boxBackgroundColor="#33FFFFFF">
+                    app:layout_constraintStart_toStartOf="@+id/rg_gender"
+                    app:layout_constraintTop_toBottomOf="@+id/rg_gender">
+
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_phoneInputEditLayout"
+                        style="@style/InnerMaterialEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="@style/InnerMaterialEditText"
+                        android:digits="0123456789"
                         android:inputType="phone"
-                        android:text="@={signUpViewModel.phoneNumber}"
-                        android:digits="0123456789"/>
+                        android:text="@={signUpViewModel.phoneNumber}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             //Terms and conditions
+
             <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/cb_termsAndConditions"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    android:text="@string/termsAndConditions"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/et_phoneInputLayout"
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
+                    android:onClick="@{() -> signUpViewModel.onTcClick()}"
+                    android:text="@string/termsAndConditions"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/et_phoneInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout"
-                    android:onClick="@{() -> signUpViewModel.onTcClick()}"/>
+                    app:layout_constraintStart_toStartOf="@+id/et_phoneInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout" />
 
             //Register button
+
             <com.google.android.material.button.MaterialButton
-                    android:text="@string/register"
+                    android:id="@+id/btn_register"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btn_register"
+                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
+                    android:onClick="@{() -> signUpViewModel.onSignUpBtnClick()}"
+                    android:text="@string/register"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     app:backgroundTint="@android:color/white"
                     app:layout_constraintEnd_toEndOf="@+id/et_phoneInputLayout"
-                    app:layout_constraintStart_toStartOf="@+id/et_phoneInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/cb_termsAndConditions"
                     app:layout_constraintHorizontal_bias="0.0"
-                    android:layout_marginTop="@dimen/MarginTopMaterialInputLayout"
-                    android:onClick="@{() -> signUpViewModel.onSignUpBtnClick()}"/>
+                    app:layout_constraintStart_toStartOf="@+id/et_phoneInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/cb_termsAndConditions" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
