@@ -79,6 +79,7 @@
     <string name="order_date">Ordered Date : %s</string>
     <string name="cd_load_status">Error</string>
     <string name="quantity_format">Qty : %d</string>
+    <string name="no_orders">No orders placed!</string>
 
     <string-array name="items">
         <item> 1 </item>

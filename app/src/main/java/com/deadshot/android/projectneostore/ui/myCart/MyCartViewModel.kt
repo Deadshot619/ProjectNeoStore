@@ -18,13 +18,6 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
         MyCartRepository(accessToken)
     }
 
-    /**
-     * Lazily Create an instance of [OrderRepository]
-     */
-    private val orderRepository by lazy {
-        OrderRepository(accessToken)
-    }
-
     val authListener = myCartRepository.authListener
 
     val status = myCartRepository.status

@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/main_layout"
-                app:showLayout="@{myOrdersViewModel.statusOrderList}"
+                app:showCart="@{myOrdersViewModel.hasOrderStatus}"
                 android:visibility="gone"
                 tools:visibility="visible"
                 android:layout_width="match_parent"
@@ -38,6 +38,40 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- Layout to show When cart is empty -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                app:hideCart="@{myOrdersViewModel.hasOrderStatus}"
+                android:layout_height="match_parent"
+                android:id="@+id/view_empty_cart">
+
+            <ImageView
+                    android:id="@+id/iv_empty_cart"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_empty_cart"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_empty_cart"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/tv_empty_cart"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:srcCompat="@drawable/order_empty" />
+
+            <TextView
+                    android:id="@+id/tv_empty_cart"
+                    style="@style/TextAppearance.TextCartEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/no_orders"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_empty_cart" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/progress_bar"
                 app:statusProgressBar="@{myOrdersViewModel.statusOrderList}"
@@ -48,6 +82,8 @@
                 android:layout_gravity="center"
                 android:indeterminate="true"
                 tools:targetApi="lollipop" />
+
+        <!--Image to show when there is error/no network-->
         <ImageView
                 android:visibility="gone"
                 android:id="@+id/status_image"

@@ -47,6 +47,7 @@
                 android:layout_gravity="center"
                 android:indeterminate="true"
                 tools:targetApi="lollipop" />
+
         <ImageView
                 android:id="@+id/status_image"
                 android:visibility="gone"

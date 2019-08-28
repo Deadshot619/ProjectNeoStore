@@ -20,6 +20,11 @@ class MyOrdersViewModel(accessToken: String) : ViewModel(){
 
     val authListener = orderRepository.authListener
     val statusOrderList = orderRepository.statusOrderList
+    /**
+     * to check whether order List is empty or not
+     */
+    val hasOrderStatus = orderRepository.hasOrderStatus
+
 
     val propertiesOrderList = orderRepository.propertiesOrderList
 

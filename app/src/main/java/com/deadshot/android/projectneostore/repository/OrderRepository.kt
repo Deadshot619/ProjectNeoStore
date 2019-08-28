@@ -9,6 +9,7 @@ import com.deadshot.android.projectneostore.network.OrderDetailApi
 import com.deadshot.android.projectneostore.network.OrderListApi
 import com.deadshot.android.projectneostore.network.OrderNowApi
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.utils.EnumCart
 import com.deadshot.android.projectneostore.utils.LoadingProductsStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -20,6 +21,13 @@ class OrderRepository (private val access_token: String){
     private val _statusOrderList = MutableLiveData<LoadingProductsStatus>()
     val statusOrderList: LiveData<LoadingProductsStatus>
         get() = _statusOrderList
+
+    /**
+     * Status to check whether cart is empty
+     */
+    private val _hasOrderStatus = MutableLiveData<EnumCart>()
+    val hasOrderStatus: LiveData<EnumCart>
+        get() = _hasOrderStatus
 
     private val _propertiesOrderList = MutableLiveData<List<OrderList>>()
     val propertiesOrderList: LiveData<List<OrderList>>
@@ -59,8 +67,13 @@ class OrderRepository (private val access_token: String){
                 _statusOrderList.value = LoadingProductsStatus.LOADING
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
-                    _propertiesOrderList.value = listResult.orderList
-                    authListener.value?.onSuccess("${listResult.user_msg}")
+                    if (listResult.orderList.isNullOrEmpty()){
+                        _hasOrderStatus.value = EnumCart.CARTEMPTY
+                    }else{
+                        _propertiesOrderList.value = listResult.orderList
+                        authListener.value?.onSuccess("${listResult.user_msg}")
+                        _hasOrderStatus.value = EnumCart.CARTNOTEMPTY
+                    }
                     _statusOrderList.value = LoadingProductsStatus.DONE
                 }else{
                     _propertiesOrderList.value = null
