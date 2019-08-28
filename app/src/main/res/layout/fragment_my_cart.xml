@@ -80,8 +80,8 @@
 
             <ImageView
                     android:id="@+id/iv_empty_cart"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_margin="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_empty_cart"
                     app:layout_constraintEnd_toEndOf="@+id/tv_empty_cart"
