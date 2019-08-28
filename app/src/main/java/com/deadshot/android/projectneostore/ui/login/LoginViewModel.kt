@@ -33,7 +33,7 @@ class LoginViewModel : ViewModel(){
         loginRepository.showProgressBar()
         when {
             email.isNullOrEmpty() || password.isNullOrEmpty() -> {
-                authListener.value?.onFailure("Invalid Email or Password $email $password")
+                authListener.value?.onFailure("Invalid Email or Password")
                 loginRepository.hideProgressBar()
                 return
             }

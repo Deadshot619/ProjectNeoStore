@@ -47,7 +47,7 @@ class LoginRepository {
                     authListener.value?.onSuccess(listResult.user_msg)
                     Timber.i(listResult.user_msg)
                 }else{
-                    authListener.value?.onFailure("Login Unsuccessful\nError ${listResult.status} : ${listResult.user_msg}")
+                    authListener.value?.onFailure("Login Unsuccessful : ${listResult.user_msg}")
                     Timber.i("Error ${listResult.status} : ${listResult.message}")
                     hideProgressBar()
                 }
