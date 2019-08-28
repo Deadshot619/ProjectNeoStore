@@ -19,16 +19,20 @@ import com.deadshot.android.projectneostore.LoginFlowActivity
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentLoginBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.BaseAuthListener
 import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : BaseAuthListener() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
+
+    private var emailId: String? = null
+    private var password: String? = null
 
     @SuppressLint("Range")
     override fun onCreateView(
@@ -61,7 +65,7 @@ class LoginFragment : BaseFragment() {
         /**
          * Skip login if email & password is empty
          */
-        if (email != null){
+        if (emailId != null){
             findNavController().navigate(LoginFragmentDirections.actionLoginFragment2ToStoreFlowActivity())
             loginViewModel.loginDone()
             //Manually popping off Login Flow Activity
@@ -99,17 +103,13 @@ class LoginFragment : BaseFragment() {
 
         loginViewModel.progressBarStatus.observe(this, Observer {
             if (it){
-//                requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-//                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                //Show Progress Dialog
                 progressDialog.show()
             }else{
-//                requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                //Hide Progress Dialog
-                progressDialog.dismiss()
+              progressDialog.dismiss()
             }
         })
 
+        //Save data in SharedPreference
         loginViewModel.userData.observe(this, Observer {
             if (it != null){
                 saveAuthData(
@@ -126,15 +126,28 @@ class LoginFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onStarted() {
-        toastShort("Login Started")
+    /**
+     *  Save data in Shared Preferences
+     */
+    private fun saveAuthData(firstName: String, lastName: String, email: String, phone: String, accessToken: String, dob: String){
+        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
+        with(sharedPreferences.edit()){
+            putString(FIRST_NAME, firstName)
+            putString(LAST_NAME, lastName)
+            putString(EMAIL, email)
+            putString(PHONE_NUMBER, phone)
+            putString(ACCESS_TOKEN, accessToken)
+            putString(DOB, dob)
+            apply()
+        }
     }
 
-    override fun onSuccess(message: String) {
-        toastShort("Login Success")
-    }
-
-    override fun onFailure(message: String) {
-        toastShort(message)
+    /**
+     * Load data from shared preferences
+     */
+    private fun loadAuthData() {
+        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
+        emailId = sharedPreferences.getString(EMAIL,null)
+        password = sharedPreferences.getString(PASSWORD, null)
     }
 }
