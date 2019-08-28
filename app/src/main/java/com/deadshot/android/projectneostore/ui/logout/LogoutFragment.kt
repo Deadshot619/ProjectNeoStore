@@ -39,9 +39,9 @@ class LogoutFragment : DialogFragment() {
         return binding.root
     }
 
+    //Clear SharedPreferences
     private fun clearSharedPreferences() {
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE , Context.MODE_PRIVATE) ?: return
         sharedPreferences.edit().clear().apply()
     }
-
 }

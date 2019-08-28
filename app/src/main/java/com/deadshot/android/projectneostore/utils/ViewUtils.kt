@@ -21,6 +21,9 @@ enum class LoadingProductsStatus{ LOADING, ERROR, DONE }
 enum class EnumCart{ CARTEMPTY, CARTNOTEMPTY }
 enum class EnumProductList{ TABLES, SOFAS, CHAIRS, CUPBOARDS }
 
+/**
+ * [toastShort] & [toastLong] are used in [BaseAuthListener]
+ */
 fun Fragment.toastShort(message: String){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
@@ -28,6 +31,7 @@ fun Fragment.toastShort(message: String){
 fun Fragment.toastLong(message: String){
     Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }
+
 
 /**
  * Check if Name is valid
