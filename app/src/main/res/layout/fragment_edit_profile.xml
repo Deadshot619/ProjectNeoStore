@@ -10,10 +10,17 @@
                 type="com.deadshot.android.projectneostore.ui.editProfile.EditProfileViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.editProfile.EditProfileFragment" tools:ignore="ExtraText" android:paddingStart="8dp"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.editProfile.EditProfileFragment"
+                tools:ignore="ExtraText"
+                android:paddingBottom="16dp"
+                android:paddingStart="8dp"
             android:paddingEnd="8dp">
 
         //User Image
@@ -168,4 +175,6 @@
                 android:text="@string/btn_submit" style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </layout>

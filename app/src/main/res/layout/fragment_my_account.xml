@@ -11,169 +11,176 @@
                 type="com.deadshot.android.projectneostore.ui.myAccount.MyAccountViewModel"/>
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.myAccount.MyAccountFragment" tools:ignore="ExtraText" android:paddingStart="8dp"
-            android:paddingEnd="8dp">
+            android:layout_height="match_parent">
 
-        //User Image
-        <androidx.cardview.widget.CardView
-                android:layout_width="134dp"
-                android:layout_height="134dp"
-                android:elevation="12dp"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                android:thicknessRatio="1.9"
-                android:layout_centerHorizontal="true"
-                app:cardCornerRadius="67dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardBackgroundColor="@color/colorPrimary" android:id="@+id/cardView">
-
-            <ImageView
-                    android:id="@+id/iv_userImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_person_white_24dp"
-                    android:scaleType="centerCrop" android:contentDescription="@string/cd_userImage"/>
-        </androidx.cardview.widget.CardView>
-
-        //First Name
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_FirstNameInputLayout"
-                android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:boxStrokeColor="@color/colorPrimary"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/cardView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:boxBackgroundMode="filled"
-                android:hint="@string/firstName"
-                android:textColorHint="@color/colorPrimary" app:helperTextEnabled="false">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_FirstNameInputEditLayout"
-                    android:text="@{myAccountViewModel.first_name}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:text="John" android:focusable="false" android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:paddingBottom="16dp"
+                tools:context=".ui.myAccount.MyAccountFragment"
+                tools:ignore="ExtraText" android:paddingStart="8dp"
+                android:paddingEnd="8dp">
 
-        //Last Name
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_LastNameInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:boxStrokeColor="@color/colorPrimary"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:boxBackgroundMode="filled"
-                android:hint="@string/lastName"
-                android:textColorHint="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/et_FirstNameInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_LastNameInputEditLayout"
-                    android:text="@{myAccountViewModel.last_name}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:text="Doe" android:focusable="false" android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            //User Image
+            <androidx.cardview.widget.CardView
+                    android:layout_width="134dp"
+                    android:layout_height="134dp"
+                    android:elevation="12dp"
+                    android:innerRadius="0dp"
+                    android:shape="ring"
+                    android:thicknessRatio="1.9"
+                    android:layout_centerHorizontal="true"
+                    app:cardCornerRadius="67dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:cardBackgroundColor="@color/colorPrimary" android:id="@+id/cardView">
 
-        //Email
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_emailIdInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:boxStrokeColor="@color/colorPrimary"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:boxBackgroundMode="filled"
-                android:hint="@string/email"
-                android:textColorHint="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/et_LastNameInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_emailIdInputTextLayout"
-                    android:text="@{myAccountViewModel.email_id}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:text="JohnDoe@gmail.com" android:focusable="false" android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                        android:id="@+id/iv_userImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_person_white_24dp"
+                        android:scaleType="centerCrop" android:contentDescription="@string/cd_userImage"/>
+            </androidx.cardview.widget.CardView>
 
-        //Phone Number
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_phoneInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:boxStrokeColor="@color/colorPrimary"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:boxBackgroundMode="filled"
-                android:hint="@string/phone"
-                android:textColorHint="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/et_emailIdInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_phoneInputEditLayout"
-                    android:text="@{myAccountViewModel.phone_number}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:text="9876543210" android:focusable="false" android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            //First Name
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_FirstNameInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:boxBackgroundMode="filled"
+                    android:hint="@string/firstName"
+                    android:textColorHint="@color/colorPrimary" app:helperTextEnabled="false">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_FirstNameInputEditLayout"
+                        android:text="@{myAccountViewModel.first_name}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:text="John" android:focusable="false" android:enabled="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        //DOB
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_dobInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:boxStrokeColor="@color/colorPrimary"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:boxBackgroundMode="filled"
-                android:hint="@string/dob"
-                android:textColorHint="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_dobInputTextLayout"
-                    android:text="@{myAccountViewModel.dob}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:text="01/09/1949" android:focusable="false" android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            //Last Name
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_LastNameInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:boxBackgroundMode="filled"
+                    android:hint="@string/lastName"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/et_FirstNameInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_LastNameInputEditLayout"
+                        android:text="@{myAccountViewModel.last_name}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:text="Doe" android:focusable="false" android:enabled="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_edit_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> myAccountViewModel.onClickEditProfile()}"
-                app:layout_constraintEnd_toEndOf="@+id/et_dobInputLayout" android:layout_marginEnd="8dp"
-                android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/et_dobInputLayout"
-                android:text="@string/btn_edit_profile" style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            //Email
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_emailIdInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:boxBackgroundMode="filled"
+                    android:hint="@string/email"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/et_LastNameInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_emailIdInputTextLayout"
+                        android:text="@{myAccountViewModel.email_id}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:text="JohnDoe@gmail.com" android:focusable="false" android:enabled="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            //Phone Number
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_phoneInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:boxBackgroundMode="filled"
+                    android:hint="@string/phone"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/et_emailIdInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_phoneInputEditLayout"
+                        android:text="@{myAccountViewModel.phone_number}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:text="9876543210" android:focusable="false" android:enabled="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            //DOB
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_dobInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:boxBackgroundMode="filled"
+                    android:hint="@string/dob"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/et_phoneInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_dobInputTextLayout"
+                        android:text="@{myAccountViewModel.dob}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:text="01/09/1949" android:focusable="false" android:enabled="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> myAccountViewModel.onClickEditProfile()}"
+                    app:layout_constraintEnd_toEndOf="@+id/et_dobInputLayout" android:layout_marginEnd="8dp"
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/et_dobInputLayout"
+                    android:text="@string/btn_edit_profile" style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
 
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_reset_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBaseline_toBaselineOf="@+id/btn_edit_profile"
-                android:text="@string/btn_reset_password"
-                android:onClick="@{() -> myAccountViewModel.onClickResetPassword()}"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                app:layout_constraintEnd_toStartOf="@+id/btn_edit_profile" android:layout_marginEnd="8dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_reset_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/btn_edit_profile"
+                    android:text="@string/btn_reset_password"
+                    android:onClick="@{() -> myAccountViewModel.onClickResetPassword()}"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_edit_profile" android:layout_marginEnd="8dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </layout>
