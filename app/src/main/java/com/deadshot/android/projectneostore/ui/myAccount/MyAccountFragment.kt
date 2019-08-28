@@ -14,21 +14,19 @@ import androidx.navigation.fragment.findNavController
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentMyAccountBinding
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.BaseAuthListener
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import timber.log.Timber
 
-class MyAccountFragment : Fragment(), AuthListener {
+class MyAccountFragment :BaseFragment(){
 
     private lateinit var binding: FragmentMyAccountBinding
     private lateinit var myAccountViewModel: MyAccountViewModel
     private lateinit var myAccountModelFactory: MyAccountModelFactory
 
-    private lateinit var firstName: String
-    private lateinit var lastName: String
-    private lateinit var email: String
     private lateinit var phone: String
     private lateinit var dob: String
-    private lateinit var access_token: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +37,10 @@ class MyAccountFragment : Fragment(), AuthListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_account, container, false)
 
         //load data from shared preference
-        loadData()
+        loadUserData()
 
         //Setup View Model
-        myAccountModelFactory = MyAccountModelFactory(firstName, lastName, email, phone, dob, access_token)
+        myAccountModelFactory = MyAccountModelFactory(firstName, lastName, email, phone, dob, accessToken)
         myAccountViewModel = ViewModelProviders.of(this, myAccountModelFactory)
             .get(MyAccountViewModel::class.java)
 
@@ -52,7 +50,7 @@ class MyAccountFragment : Fragment(), AuthListener {
         myAccountViewModel.navigateEditProfileCheck.observe(this, Observer {
             if (it) {
                 findNavController().navigate(MyAccountFragmentDirections.actionMyAccountFragmentToEditProfileFragment(
-                    email, dob, firstName, lastName, phone, access_token
+                    email, dob, firstName, lastName, phone, accessToken
                 ))
                 myAccountViewModel.navigateEditProfileDone()
             }
@@ -73,25 +71,13 @@ class MyAccountFragment : Fragment(), AuthListener {
     /**
      * Load data from shared preferences
      */
-    fun loadData(){
+    override fun loadUserData(){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        firstName = sharedPreferences.getString(FIRST_NAME, getString(R.string.default_value))
-        lastName = sharedPreferences.getString(LAST_NAME, getString(R.string.default_value))
-        email = sharedPreferences.getString(EMAIL, getString(R.string.default_value))
-        phone = sharedPreferences.getString(PHONE_NUMBER, getString(R.string.default_value))
-        dob = sharedPreferences.getString(DOB, getString(R.string.default_value))
-        access_token = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))
-    }
-
-    override fun onStarted() {
-        toastShort("SignUp Started")
-    }
-
-    override fun onSuccess(message: String) {
-        toastShort("SignUpSuccess")
-    }
-
-    override fun onFailure(message: String) {
-        toastShort(message)
+        firstName = sharedPreferences.getString(FIRST_NAME, getString(R.string.default_value))!!
+        lastName = sharedPreferences.getString(LAST_NAME, getString(R.string.default_value))!!
+        email = sharedPreferences.getString(EMAIL, getString(R.string.default_value))!!
+        phone = sharedPreferences.getString(PHONE_NUMBER, getString(R.string.default_value))!!
+        dob = sharedPreferences.getString(DOB, getString(R.string.default_value))!!
+        accessToken = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
     }
 }

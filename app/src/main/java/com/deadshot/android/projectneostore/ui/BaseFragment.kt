@@ -7,7 +7,6 @@ import com.deadshot.android.projectneostore.utils.*
 
 abstract class BaseFragment : BaseAuthListener(){
 
-
     protected lateinit var firstName: String
     protected lateinit var lastName: String
     protected lateinit var accessToken: String
@@ -37,7 +36,7 @@ abstract class BaseFragment : BaseAuthListener(){
     }
 
 
-    protected fun loadUserData(){
+    protected open fun loadUserData(){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
         firstName = sharedPreferences.getString(FIRST_NAME, getString(R.string.default_value))!!
         lastName = sharedPreferences.getString(LAST_NAME, getString(R.string.default_value))!!
