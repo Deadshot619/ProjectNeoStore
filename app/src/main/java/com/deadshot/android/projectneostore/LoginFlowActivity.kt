@@ -1,12 +1,9 @@
 package com.deadshot.android.projectneostore
 
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.deadshot.android.projectneostore.databinding.ActivityLoginFlowBinding
-import io.paperdb.Paper
 
 class LoginFlowActivity : AppCompatActivity() {
 

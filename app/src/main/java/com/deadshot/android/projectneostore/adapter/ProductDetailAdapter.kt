@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.deadshot.android.projectneostore.databinding.LayoutProductImageBinding
-import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.models.ProductImage
-import com.deadshot.android.projectneostore.models.ProductList
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]

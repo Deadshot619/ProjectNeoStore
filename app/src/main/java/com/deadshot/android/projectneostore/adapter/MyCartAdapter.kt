@@ -1,7 +1,6 @@
 package com.deadshot.android.projectneostore.adapter
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.deadshot.android.projectneostore.databinding.LayoutMyCartItemBinding
 import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.models.SingleProductInfo
-import timber.log.Timber
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]

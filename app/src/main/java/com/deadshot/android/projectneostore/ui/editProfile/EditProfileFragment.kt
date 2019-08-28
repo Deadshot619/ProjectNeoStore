@@ -2,23 +2,17 @@ package com.deadshot.android.projectneostore.ui.editProfile
 
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentEditProfileBinding
-import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.ui.BaseFragment
-import com.deadshot.android.projectneostore.utils.*
-import timber.log.Timber
 import java.util.*
 
 

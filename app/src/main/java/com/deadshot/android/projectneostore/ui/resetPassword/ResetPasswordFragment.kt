@@ -1,24 +1,17 @@
 package com.deadshot.android.projectneostore.ui.resetPassword
 
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentResetPasswordBinding
-import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.ui.BaseFragment
-import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
-import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
-import com.deadshot.android.projectneostore.utils.toastShort
-import timber.log.Timber
 
 class ResetPasswordFragment : BaseFragment() {
 

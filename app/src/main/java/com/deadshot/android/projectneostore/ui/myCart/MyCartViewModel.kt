@@ -1,10 +1,7 @@
 package com.deadshot.android.projectneostore.ui.myCart
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.repository.MyCartRepository
-import com.deadshot.android.projectneostore.repository.OrderRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

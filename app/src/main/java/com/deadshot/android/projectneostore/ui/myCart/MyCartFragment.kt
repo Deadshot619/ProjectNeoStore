@@ -1,28 +1,20 @@
 package com.deadshot.android.projectneostore.ui.myCart
 
 
-import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Toast
-import androidx.core.view.contains
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.MyCartAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyCartBinding
 import com.deadshot.android.projectneostore.models.ProductsInfo
-import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.ui.BaseFragment
-import com.deadshot.android.projectneostore.utils.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 

@@ -1,6 +1,5 @@
 package com.deadshot.android.projectneostore.network
 
-import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.models.ProductDetailResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.Field

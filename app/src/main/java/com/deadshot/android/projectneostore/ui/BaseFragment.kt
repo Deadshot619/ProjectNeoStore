@@ -1,7 +1,6 @@
 package com.deadshot.android.projectneostore.ui
 
 import android.content.Context
-import androidx.fragment.app.Fragment
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.utils.*
 

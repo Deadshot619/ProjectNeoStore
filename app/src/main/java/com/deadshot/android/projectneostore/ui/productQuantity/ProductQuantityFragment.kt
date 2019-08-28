@@ -3,28 +3,21 @@ package com.deadshot.android.projectneostore.ui.productQuantity
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.SpinnerAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-
 import com.deadshot.android.projectneostore.R
-import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentProductQuantityBinding
 import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.ACCESS_TOKEN
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
 import com.deadshot.android.projectneostore.utils.toastShort
-import com.google.gson.internal.bind.ArrayTypeAdapter
-import timber.log.Timber
 
 private const val PRODUCT_DETAIL = "productDetail"
 

@@ -2,7 +2,6 @@ package com.deadshot.android.projectneostore.ui.login
 
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.repository.LoginRepository
-import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.isEmailValid
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

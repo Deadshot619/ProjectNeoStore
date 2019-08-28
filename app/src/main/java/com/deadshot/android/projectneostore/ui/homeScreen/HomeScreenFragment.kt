@@ -1,10 +1,8 @@
 package com.deadshot.android.projectneostore.ui.homeScreen
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -14,7 +12,7 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentHomeScreenBinding
 import com.deadshot.android.projectneostore.ui.BaseFragment
-import com.deadshot.android.projectneostore.utils.*
+import com.deadshot.android.projectneostore.utils.EnumProductList
 import com.smarteist.autoimageslider.IndicatorAnimations
 import com.smarteist.autoimageslider.SliderAnimations
 import kotlinx.android.synthetic.main.activity_store_flow.*

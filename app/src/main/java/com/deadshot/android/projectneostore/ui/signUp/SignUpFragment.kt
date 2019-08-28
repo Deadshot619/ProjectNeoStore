@@ -2,19 +2,14 @@ package com.deadshot.android.projectneostore.ui.signUp
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentSignUpBinding
-import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.ui.BaseAuthListener
-import com.deadshot.android.projectneostore.utils.toastShort
-import timber.log.Timber
 
 class SignUpFragment : BaseAuthListener(){
     private lateinit var signUpViewModel: SignUpViewModel

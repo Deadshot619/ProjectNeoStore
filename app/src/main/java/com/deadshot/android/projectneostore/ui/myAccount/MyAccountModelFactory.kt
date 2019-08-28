@@ -2,7 +2,6 @@ package com.deadshot.android.projectneostore.ui.myAccount
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import java.lang.IllegalArgumentException
 
 class MyAccountModelFactory(
     private val firstName: String,

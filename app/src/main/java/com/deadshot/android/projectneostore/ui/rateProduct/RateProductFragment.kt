@@ -2,21 +2,16 @@ package com.deadshot.android.projectneostore.ui.rateProduct
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-
-import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentRateProductBinding
 import com.deadshot.android.projectneostore.models.ProductDetail
-import com.deadshot.android.projectneostore.models.ProductImage
 import com.deadshot.android.projectneostore.ui.AuthListener
 import com.deadshot.android.projectneostore.utils.toastShort
-import timber.log.Timber
 
 private const val PRODUCT_DETAIL = "productDetail"
 

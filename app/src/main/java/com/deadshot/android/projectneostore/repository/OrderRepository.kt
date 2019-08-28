@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.deadshot.android.projectneostore.models.OrderDetail
 import com.deadshot.android.projectneostore.models.OrderList
-import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.network.OrderDetailApi
 import com.deadshot.android.projectneostore.network.OrderListApi
 import com.deadshot.android.projectneostore.network.OrderNowApi

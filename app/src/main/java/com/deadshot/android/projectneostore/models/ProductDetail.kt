@@ -3,7 +3,6 @@ package com.deadshot.android.projectneostore.models
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
-import androidx.lifecycle.LiveData
 
 @Parcelize
 data class ProductDetail(

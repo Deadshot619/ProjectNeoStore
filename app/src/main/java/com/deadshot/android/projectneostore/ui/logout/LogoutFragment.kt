@@ -3,18 +3,14 @@ package com.deadshot.android.projectneostore.ui.logout
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
-
-import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.StoreFlowActivity
 import com.deadshot.android.projectneostore.databinding.FragmentLogoutBinding
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class LogoutFragment : DialogFragment() {
 

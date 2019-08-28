@@ -2,20 +2,17 @@ package com.deadshot.android.projectneostore.ui.products
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.adapter.ProductsAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentProductsListBinding
-
 import com.deadshot.android.projectneostore.utils.CHAIRS
-import com.deadshot.android.projectneostore.utils.toastLong
-import timber.log.Timber
 
 class ChairsFragment : Fragment() {
 

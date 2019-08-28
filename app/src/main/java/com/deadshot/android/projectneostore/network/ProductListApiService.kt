@@ -2,8 +2,6 @@ package com.deadshot.android.projectneostore.network
 
 import com.deadshot.android.projectneostore.models.ProductListResponse
 import kotlinx.coroutines.Deferred
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Query
 

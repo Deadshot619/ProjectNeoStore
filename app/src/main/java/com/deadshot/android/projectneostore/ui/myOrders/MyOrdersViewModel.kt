@@ -3,7 +3,6 @@ package com.deadshot.android.projectneostore.ui.myOrders
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.deadshot.android.projectneostore.models.OrderList
 import com.deadshot.android.projectneostore.repository.OrderRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -2,23 +2,16 @@ package com.deadshot.android.projectneostore
 
 import android.content.Context
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
 import com.deadshot.android.projectneostore.databinding.ActivityStoreFlowBinding
 import com.deadshot.android.projectneostore.utils.SHARED_PREFERENCE
 import io.paperdb.Paper
-import kotlinx.android.synthetic.main.activity_store_flow.*
 
 class StoreFlowActivity : AppCompatActivity() {
 

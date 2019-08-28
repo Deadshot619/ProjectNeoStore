@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.deadshot.android.projectneostore.models.MyCartResponse
 import com.deadshot.android.projectneostore.models.ProductsInfo
-import com.deadshot.android.projectneostore.models.SingleProductInfo
 import com.deadshot.android.projectneostore.network.DeleteItemApi
 import com.deadshot.android.projectneostore.network.EditCartApi
 import com.deadshot.android.projectneostore.network.MyCartApi

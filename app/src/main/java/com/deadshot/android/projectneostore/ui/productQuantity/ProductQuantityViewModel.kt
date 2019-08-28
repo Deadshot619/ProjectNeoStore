@@ -1,6 +1,5 @@
 package com.deadshot.android.projectneostore.ui.productQuantity
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.models.ProductDetail
 import com.deadshot.android.projectneostore.repository.AddToCartRepository

@@ -2,7 +2,6 @@ package com.deadshot.android.projectneostore.ui.editProfile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import java.lang.IllegalArgumentException
 
 class EditProfileModelFactory(
     private val firstName: String,

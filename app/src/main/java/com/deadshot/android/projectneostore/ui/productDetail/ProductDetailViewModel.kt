@@ -4,17 +4,17 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.R
-import com.deadshot.android.projectneostore.models.ProductDetail
-import com.deadshot.android.projectneostore.network.ProductDetailApi
 import com.deadshot.android.projectneostore.repository.ProductDetailRepository
-import com.deadshot.android.projectneostore.utils.*
+import com.deadshot.android.projectneostore.utils.CHAIRS
+import com.deadshot.android.projectneostore.utils.CUPBOARDS
+import com.deadshot.android.projectneostore.utils.SOFAS
+import com.deadshot.android.projectneostore.utils.TABLES
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class ProductDetailViewModel(private val productId: Int, private val app: Application) : ViewModel() {
 
