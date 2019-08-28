@@ -10,11 +10,17 @@
                 name="productsViewModel"
                 type="com.deadshot.android.projectneostore.ui.products.ProductsViewModel"/>
     </data>
-    
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.products.TablesFragment">
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main_layout"
+                app:showLayout="@{productsViewModel.status}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.products.TablesFragment">
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_products"
                 android:layout_width="match_parent"
@@ -27,16 +33,28 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/layout_product">
 
-
         </androidx.recyclerview.widget.RecyclerView>
-        <ImageView
-        android:id="@+id/status_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:loadingProductsStatus="@{productsViewModel.status}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar"
+                app:statusProgressBar="@{productsViewModel.status}"
+                android:visibility="visible"
+                tools:visibility="visible"
+                style="@android:style/Widget.Material.Light.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                tools:targetApi="lollipop" />
+        <ImageView
+                android:id="@+id/status_image"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:loadingOrdersStatus="@{productsViewModel.status}"
+                android:contentDescription="@string/cd_load_status" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
