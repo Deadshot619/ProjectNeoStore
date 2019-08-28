@@ -71,7 +71,7 @@ class OrderRepository (private val access_token: String){
                         _hasOrderStatus.value = EnumCart.CARTEMPTY
                     }else{
                         _propertiesOrderList.value = listResult.orderList
-                        authListener.value?.onSuccess("${listResult.user_msg}")
+//                        authListener.value?.onSuccess("${listResult.user_msg}")
                         _hasOrderStatus.value = EnumCart.CARTNOTEMPTY
                     }
                     _statusOrderList.value = LoadingProductsStatus.DONE
@@ -100,7 +100,7 @@ class OrderRepository (private val access_token: String){
                 val listResult = getPropertiesDeferred.await()
                 if (listResult.status == 200){
                     _propertiesOrderDetail.value = listResult.orderDetail
-                    authListener.value?.onSuccess("${listResult.user_msg}")
+//                    authListener.value?.onSuccess("${listResult.user_msg}")
                     _statusOrderList.value = LoadingProductsStatus.DONE
                     Timber.i("${listResult.toString()}")
                 }else{
