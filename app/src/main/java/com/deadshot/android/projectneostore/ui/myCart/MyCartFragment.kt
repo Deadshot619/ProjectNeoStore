@@ -21,15 +21,15 @@ import com.deadshot.android.projectneostore.adapter.MyCartAdapter
 import com.deadshot.android.projectneostore.databinding.FragmentMyCartBinding
 import com.deadshot.android.projectneostore.models.ProductsInfo
 import com.deadshot.android.projectneostore.ui.AuthListener
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 
-class MyCartFragment : Fragment(), AuthListener {
+class MyCartFragment : BaseFragment(){
 
     private lateinit var myCartViewModel: MyCartViewModel
     private lateinit var myCartModelFactory: MyCartModelFactory
-    private lateinit var access_token: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,9 +40,9 @@ class MyCartFragment : Fragment(), AuthListener {
         val binding = FragmentMyCartBinding.inflate(inflater)
 
         //load data from shared preferences
-        loadData()
+        loadAccessToken()
 
-        myCartModelFactory = MyCartModelFactory(access_token = access_token)
+        myCartModelFactory = MyCartModelFactory(access_token = accessToken)
         myCartViewModel = ViewModelProviders.of(this, myCartModelFactory).get(MyCartViewModel::class.java)
 
         //set lifecyle owner
@@ -51,8 +51,8 @@ class MyCartFragment : Fragment(), AuthListener {
         binding.myCartViewModel = myCartViewModel
 
 
-            // Adds divider to each recycler view item
-            binding.rvMyCartItems.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        // Adds divider to each recycler view item
+        binding.rvMyCartItems.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         binding.rvMyCartItems.adapter = MyCartAdapter(MyCartAdapter.OnClickDeleteListener {
             /**
              * Lazily build a Alert Dialog
@@ -86,24 +86,5 @@ class MyCartFragment : Fragment(), AuthListener {
 
         myCartViewModel.authListener.value = this
         return binding.root
-    }
-    /**
-     * Load data from shared preferences
-     */
-    private fun loadData(){
-        val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        access_token = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
-    }
-
-    override fun onStarted() {
-        toastShort("Login Started")
-    }
-
-    override fun onSuccess(message: String) {
-        toastShort(message)
-    }
-
-    override fun onFailure(message: String) {
-        toastShort(message)
     }
 }

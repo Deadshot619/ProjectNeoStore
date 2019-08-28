@@ -19,7 +19,7 @@ import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.deadshot.android.projectneostore.utils.*
 import timber.log.Timber
 
-class MyAccountFragment :BaseFragment(){
+class MyAccountFragment : BaseFragment(){
 
     private lateinit var binding: FragmentMyAccountBinding
     private lateinit var myAccountViewModel: MyAccountViewModel
