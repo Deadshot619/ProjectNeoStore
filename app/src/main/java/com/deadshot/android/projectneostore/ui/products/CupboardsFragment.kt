@@ -34,7 +34,7 @@ class CupboardsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //Add Timber
-        Timber.plant(Timber.DebugTree())
+//        Timber.plant(Timber.DebugTree())
 
         // Inflate the layout for this fragment
         val binding = FragmentTablesBinding.inflate(inflater)

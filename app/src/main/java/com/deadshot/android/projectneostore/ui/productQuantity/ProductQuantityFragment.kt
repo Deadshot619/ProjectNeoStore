@@ -32,14 +32,14 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
 
     private lateinit var productQuantityViewModel: ProductQuantityViewModel
     private lateinit var productQuantityModelFactory: ProductQuantityModelFactory
-    private lateinit var access_token: String
+    private lateinit var accessToken: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         //Add Timber
-        Timber.plant(Timber.DebugTree())
+//        Timber.plant(Timber.DebugTree())
 
         // Inflate the layout for this fragment
         val binding = FragmentProductQuantityBinding.inflate(inflater)
@@ -47,12 +47,12 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
-        loadData()
+        loadAccessToken()
 
         //Get product details from ProductDetail fragment
         val productDetail = arguments?.getParcelable<ProductDetail>(PRODUCT_DETAIL)
 
-        productQuantityModelFactory = ProductQuantityModelFactory(access_token = access_token, productDetail = productDetail!!)
+        productQuantityModelFactory = ProductQuantityModelFactory(access_token = accessToken, productDetail = productDetail!!)
         productQuantityViewModel = ViewModelProviders.of(this, productQuantityModelFactory).get(ProductQuantityViewModel::class.java)
 
 //        productQuantityViewModel.authListener.value = this
@@ -94,9 +94,9 @@ class ProductQuantityFragment : DialogFragment(), AuthListener {
     /**
      * Load data from shared preferences
      */
-    fun loadData(){
+    private fun loadAccessToken(){
         val sharedPreferences = activity?.getSharedPreferences(SHARED_PREFERENCE, Context.MODE_PRIVATE) ?: return
-        access_token = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
+        accessToken = sharedPreferences.getString(ACCESS_TOKEN, getString(R.string.default_value))!!
     }
 
     override fun onStarted() {
