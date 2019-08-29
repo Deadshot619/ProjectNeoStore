@@ -34,6 +34,8 @@
     <string name="title_my_orders">My Orders</string>
     <string name="title_logout">Logout</string>
     <string name="title_reset_password">Reset Password</string>
+    <string name="title_address_list">Address</string>
+    <string name="title_add_address">Add Address</string>
     <string name="userImage">User Image</string>
     <string name="cd_userImage" />
     <string name="userRealName">John Doe</string>

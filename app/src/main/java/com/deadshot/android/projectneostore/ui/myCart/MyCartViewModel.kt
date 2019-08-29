@@ -1,5 +1,7 @@
 package com.deadshot.android.projectneostore.ui.myCart
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deadshot.android.projectneostore.repository.MyCartRepository
 import kotlinx.coroutines.CoroutineScope
@@ -24,6 +26,11 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
     val propertiesMyCartResponse = myCartRepository.propertiesMyCartResponse
 
     val reloadCartStatus = myCartRepository.reloadCartStatus
+
+    private val _navigateToAddressStatus = MutableLiveData<Boolean>()
+    val navigateToAddressStatus: LiveData<Boolean>
+    get() = _navigateToAddressStatus
+
 
     /**
      * to check whether cart is empty or not
@@ -63,9 +70,10 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
     }
 
     fun orderNow(){
-        coroutineScope.launch {
-            myCartRepository.placeOrder(access_token = accessToken, address = "201, Sukhjit Apt.")
-        }
+        navigateToAddress()
+//        coroutineScope.launch {
+//            myCartRepository.placeOrder(access_token = accessToken, address = "201, Sukhjit Apt.")
+//        }
     }
 
     fun deleteItemDone(){
@@ -74,6 +82,14 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
 
     fun deleteItemfailed(){
         myCartRepository.deleteItemfailed()
+    }
+
+    fun navigateToAddress(){
+        _navigateToAddressStatus.value = true
+    }
+
+    fun navigateToAddressDone(){
+        _navigateToAddressStatus.value = false
     }
 
     /**

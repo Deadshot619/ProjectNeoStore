@@ -106,7 +106,16 @@
     </fragment>
     <fragment android:id="@+id/myCartFragment"
               android:name="com.deadshot.android.projectneostore.ui.myCart.MyCartFragment"
-              android:label="@string/title_my_cart"/>
+              android:label="@string/title_my_cart">
+        <action
+                android:id="@+id/action_myCartFragment_to_addressListFragment"
+                app:destination="@+id/addressListFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:popUpTo="@+id/myCartFragment" />
+    </fragment>
     <activity
             android:id="@+id/loginFlowActivity"
             android:name="com.deadshot.android.projectneostore.LoginFlowActivity"
@@ -140,4 +149,12 @@
                 android:name="order_id"
                 app:argType="integer" />
     </fragment>
+    <fragment
+            android:id="@+id/addressListFragment"
+            android:name="com.deadshot.android.projectneostore.ui.addressList.AddressListFragment"
+            android:label="@string/title_address_list" />
+    <fragment
+            android:id="@+id/addAddressFragment"
+            android:name="com.deadshot.android.projectneostore.ui.addAddress.AddAddressFragment"
+            android:label="AddAddressFragment" />
 </navigation>

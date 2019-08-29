@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.deadshot.android.projectneostore.R
@@ -73,6 +74,18 @@ class MyCartFragment : BaseFragment(){
             it?.let {
                 if (it)
                     myCartViewModel.loadCart()
+            }
+        })
+
+        /**
+         * Navigate to AddressList
+         */
+        myCartViewModel.navigateToAddressStatus.observe(this, Observer {
+            it?.let {
+                if (it){
+                    findNavController().navigate(MyCartFragmentDirections.actionMyCartFragmentToAddressListFragment())
+                    myCartViewModel.navigateToAddressDone()
+                }
             }
         })
 
