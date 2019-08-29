@@ -7,7 +7,11 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.addAddress.AddAddressFragment">
@@ -32,5 +36,161 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_begin="16dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--Address-->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_AddressInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/address"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toTopOf="@+id/guideline13">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_AddressInputEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="true"
+                    android:text=""
+                    tools:text="Opp. Central Police Station, Hospital Area." />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Apartment-->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_ApartmentInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/apartment"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/et_AddressInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_ApartmentInputEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="true"
+                    android:text=""
+                    tools:text="201, Sukhjit Apt." />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Country-->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_CountryInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/country"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/et_ApartmentInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_CountryInputEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="true"
+                    android:text=""
+                    tools:text="India" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--State-->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_StateInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/state"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/et_CountryInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_StateInputEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="true"
+                    android:text=""
+                    tools:text="Maharashtra" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--City-->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_CityInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/city"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/et_StateInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_CityInputEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="true"
+                    android:text=""
+                    tools:text="Sandhrust Road" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        Zip Code-->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_ZipCodeInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/zip_code"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/et_CityInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_ZipCodeInputEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:enabled="true"
+                    android:text=""
+                    tools:text="421003" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        Submit Button-->
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_submit"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_add_address"
+                app:layout_constraintEnd_toEndOf="@+id/et_ZipCodeInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/et_ZipCodeInputLayout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
