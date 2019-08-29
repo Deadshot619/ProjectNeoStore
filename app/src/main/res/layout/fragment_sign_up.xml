@@ -60,7 +60,7 @@
             //First Name
 
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_FirstNameInputLayout"
+                    android:id="@+id/et_StreetNameInputLayout"
                     style="@style/CustomInputLayout"
                     android:layout_marginTop="32dp"
                     android:hint="@string/firstName"
@@ -102,9 +102,9 @@
                     app:boxStrokeColor="#CCFFFFFF"
                     app:helperTextTextColor="#99FFFFFF"
                     app:hintTextColor="#CCFFFFFF"
-                    app:layout_constraintEnd_toEndOf="@+id/et_FirstNameInputLayout"
-                    app:layout_constraintStart_toStartOf="@+id/et_FirstNameInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/et_FirstNameInputLayout">
+                    app:layout_constraintEnd_toEndOf="@+id/et_StreetNameInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/et_StreetNameInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/et_StreetNameInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                         style="@style/InnerMaterialEditText"

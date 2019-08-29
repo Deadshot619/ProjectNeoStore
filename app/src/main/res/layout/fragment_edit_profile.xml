@@ -48,7 +48,7 @@
 
         //First Name
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_FirstNameInputLayout"
+                android:id="@+id/et_StreetNameInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -60,13 +60,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:boxBackgroundMode="filled"
                 android:hint="@string/firstName"
-                android:textColorHint="@color/colorPrimary" app:helperTextEnabled="false">
+                android:textColorHint="@color/colorPrimary"
+                app:helperTextEnabled="false">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_FirstNameInputEditLayout"
                     android:text="@={editProfileViewModel.first_name}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:text="John" android:enabled="true"/>
+                    tools:text="John"
+                    android:enabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         //Last Name
@@ -81,7 +83,7 @@
                 app:boxBackgroundMode="filled"
                 android:hint="@string/lastName"
                 android:textColorHint="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@+id/et_FirstNameInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/et_StreetNameInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
             <com.google.android.material.textfield.TextInputEditText
