@@ -50,6 +50,7 @@ dependencies {
     def version_retrofit_coroutines_adapter = "0.9.2"
     def version_glide = "4.9.0"
     def version_moshi = "1.8.0"
+    def version_room = "2.0.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -102,4 +103,8 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Room dependencies
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
 }
