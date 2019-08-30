@@ -6,6 +6,7 @@ import com.deadshot.android.projectneostore.models.UserDataResponse
 import com.deadshot.android.projectneostore.network.LoginApi
 import com.deadshot.android.projectneostore.ui.AuthListener
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
@@ -39,8 +40,10 @@ class LoginRepository {
     suspend fun checkLogin(email: String?, password: String?){
         withContext(Dispatchers.Main){
             val getPropertiesDeferred = LoginApi.retrofitService.checkLogin(email!!, password!!)
+
             try {
                 val listResult = getPropertiesDeferred.await()
+
                 if (listResult.status == 200){
                     _userData.value = listResult.data
                     _loginCheck.value = true

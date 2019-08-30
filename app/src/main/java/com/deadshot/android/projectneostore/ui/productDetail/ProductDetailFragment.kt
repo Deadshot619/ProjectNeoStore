@@ -36,7 +36,10 @@ class ProductDetailFragment : Fragment() {
         //Add Lifecycle owner to this fragment
         binding.lifecycleOwner = this
 
+
         val args = ProductDetailFragmentArgs.fromBundle(arguments!!)
+
+
         productDetailModelFactory = ProductDetailModelFactory(productId = args.productId, app = application)
         productDetailViewModel =
             ViewModelProviders.of(this, productDetailModelFactory).get(ProductDetailViewModel::class.java)

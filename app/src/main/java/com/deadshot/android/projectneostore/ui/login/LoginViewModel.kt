@@ -40,7 +40,9 @@ class LoginViewModel : ViewModel(){
                 authListener.value?.onFailure("Invalid Email")
                 loginRepository.hideProgressBar()
             }
-            else -> coroutineScope.launch {  loginRepository.checkLogin(email = email, password = password) }
+            else -> coroutineScope.launch {
+                loginRepository.checkLogin(email = email, password = password)
+            }
         }
     }
 
