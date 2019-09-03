@@ -152,9 +152,18 @@
     <fragment
             android:id="@+id/addressListFragment"
             android:name="com.deadshot.android.projectneostore.ui.addressList.AddressListFragment"
-            android:label="@string/title_address_list" />
+            android:label="@string/title_address_list" >
+        <action
+                android:id="@+id/action_addressListFragment_to_addAddressFragment"
+                app:destination="@id/addAddressFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"
+                app:popUpTo="@+id/addressListFragment" />
+    </fragment>
     <fragment
             android:id="@+id/addAddressFragment"
             android:name="com.deadshot.android.projectneostore.ui.addAddress.AddAddressFragment"
-            android:label="AddAddressFragment" />
+            android:label="@string/title_add_address" />
 </navigation>

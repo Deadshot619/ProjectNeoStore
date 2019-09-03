@@ -4,7 +4,10 @@ package com.deadshot.android.projectneostore.ui.addressList
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 
 import com.deadshot.android.projectneostore.R
@@ -21,22 +24,23 @@ class AddressListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentAddressListBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+
+        val addressListViewModel = ViewModelProviders.of(this).get(AddressListViewModel::class.java)
+
+        binding.addressListViewModel = addressListViewModel
+
+        addressListViewModel.navigateToAddAddress.observe(this, Observer {
+            it?.let {
+                if (it){
+                    findNavController().navigate(AddressListFragmentDirections.actionAddressListFragmentToAddAddressFragment())
+                    addressListViewModel.navigateToAddAddressDone()
+                }
+            }
+        })
 
 
 
-
-
-        setHasOptionsMenu(true)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu , inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.add_address_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) ||
-                super.onOptionsItemSelected(item)
     }
 }

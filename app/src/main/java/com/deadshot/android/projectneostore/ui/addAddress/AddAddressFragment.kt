@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.databinding.FragmentAddAddressBinding
@@ -21,7 +25,7 @@ class AddAddressFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentAddAddressBinding.inflate(inflater)
-
+        binding.lifecycleOwner = this
 
         return binding.root
     }
