@@ -10,23 +10,23 @@ data class Address(
     val addressId: Long = 0L,
 
     @ColumnInfo(name = "name")
-    val name: String,
+    val name: String = "",
 
     @ColumnInfo(name = "address")
-    val address: String,
+    val address: String = "",
 
     @ColumnInfo(name = "apartment")
-    val apartment: String,
+    val apartment: String = "",
 
     @ColumnInfo(name = "country")
-    val country: String,
+    val country: String = "",
 
     @ColumnInfo(name = "state")
-    val state: String,
+    val state: String = "",
 
     @ColumnInfo(name = "city")
-    val city: String,
+    val city: String = "",
 
     @ColumnInfo(name = "zip_code")
-    val zipCode: String
+    val zipCode: String = ""
 )
