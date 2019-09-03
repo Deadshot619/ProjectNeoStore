@@ -191,6 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/btn_add_address"
+                android:onClick="@{() -> addAddressViewModel.onClickAddAddress()}"
                 app:layout_constraintEnd_toEndOf="@+id/et_ZipCodeInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/et_ZipCodeInputLayout" />
         </androidx.constraintlayout.widget.ConstraintLayout>

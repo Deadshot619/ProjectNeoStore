@@ -4,11 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.deadshot.android.projectneostore.database.Address
 import com.deadshot.android.projectneostore.database.AddressDatabaseDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class AddressListViewModel(
     val database: AddressDatabaseDao ,
@@ -22,7 +20,7 @@ class AddressListViewModel(
     val viewModelJob = Job()
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private var addresses = database.getAllAddress()
+    var addresses = database.getAllAddress()
 
     init {
         initializeAddresses()
@@ -34,6 +32,17 @@ class AddressListViewModel(
         }
     }
 
+    fun deleteAddress(address: Address){
+        coroutineScope.launch {
+            deleteFromAddress(address)
+        }
+    }
+
+    private suspend fun deleteFromAddress(address: Address) {
+        withContext(Dispatchers.IO){
+            database.delete(address)
+        }
+    }
 
     fun navigateToAddAddress(){
         _navigateToAddAddress.value = true

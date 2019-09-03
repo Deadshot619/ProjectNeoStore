@@ -7,6 +7,10 @@
         <variable
                 name="address"
                 type="com.deadshot.android.projectneostore.database.Address" />
+
+        <variable
+                name="clickListener"
+                type="com.deadshot.android.projectneostore.adapter.AddressListAdapter.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
+                android:onClick="@{() -> clickListener.onClick(address)}"
                 app:layout_constraintBottom_toTopOf="@+id/guideline14"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintTop_toTopOf="@+id/guideline11"
