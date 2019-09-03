@@ -4,7 +4,9 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+                name="addAddressViewModel"
+                type="com.deadshot.android.projectneostore.ui.addAddress.AddAddressViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -57,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:text=""
+                    android:text="@={addAddressViewModel.address}"
                     tools:text="Opp. Central Police Station, Hospital Area." />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:text=""
+                    android:text="@={addAddressViewModel.apartment}"
                     tools:text="201, Sukhjit Apt." />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:text=""
+                    android:text="@={addAddressViewModel.country}"
                     tools:text="India" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:text=""
+                    android:text="@={addAddressViewModel.state}"
                     tools:text="Maharashtra" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,7 +155,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:text=""
+                    android:text="@={addAddressViewModel.city}"
                     tools:text="Sandhrust Road" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -177,7 +179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
-                    android:text=""
+                    android:text="@={addAddressViewModel.zipCode}"
                     tools:text="421003" />
         </com.google.android.material.textfield.TextInputLayout>
 
