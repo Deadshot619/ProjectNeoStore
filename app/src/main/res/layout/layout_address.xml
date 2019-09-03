@@ -4,7 +4,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+                name="address"
+                type="com.deadshot.android.projectneostore.database.Address" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 tools:text="Rajan 10"
+                android:text="@{address.country}"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -73,6 +76,7 @@
         <TextView
                 android:id="@+id/textView8"
                 android:layout_width="0dp"
+                android:text="@{address.state}"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 app:layout_constraintBottom_toTopOf="@+id/guideline14"

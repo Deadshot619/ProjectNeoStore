@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 
 import com.deadshot.android.projectneostore.R
+import com.deadshot.android.projectneostore.database.AddressDatabase
 import com.deadshot.android.projectneostore.databinding.FragmentAddressListBinding
 
 /**
@@ -24,11 +25,17 @@ class AddressListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentAddressListBinding.inflate(inflater)
-        binding.lifecycleOwner = this
 
-        val addressListViewModel = ViewModelProviders.of(this).get(AddressListViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+
+        val database = AddressDatabase.getInstance(application).addressDatabaseDao
+
+        val addressListModelFactory = AddressListModelFactory(database, application)
+        val addressListViewModel = ViewModelProviders.of(this, addressListModelFactory).get(AddressListViewModel::class.java)
 
         binding.addressListViewModel = addressListViewModel
+
+        binding.lifecycleOwner = this
 
         addressListViewModel.navigateToAddAddress.observe(this, Observer {
             it?.let {
