@@ -9,6 +9,9 @@ data class Address(
     @PrimaryKey(autoGenerate = true)
     val addressId: Long = 0L,
 
+    @ColumnInfo(name = "name")
+    val name: String,
+
     @ColumnInfo(name = "address")
     val address: String,
 
