@@ -39,6 +39,30 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_begin="16dp" />
 
+            <!-- Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_NameInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/name"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:helperTextEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                    app:layout_constraintStart_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toTopOf="@+id/guideline13">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_NameInputEditLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="true"
+                        android:text="@={addAddressViewModel.name}"
+                        tools:text="Pratiksha Mokashi" />
+            </com.google.android.material.textfield.TextInputLayout>
+
         <!--Address-->
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_AddressInputLayout"
@@ -52,7 +76,7 @@
                 app:helperTextEnabled="false"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
                 app:layout_constraintStart_toStartOf="@+id/guideline8"
-                app:layout_constraintTop_toTopOf="@+id/guideline13">
+                app:layout_constraintTop_toBottomOf="@+id/et_NameInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_AddressInputEditLayout"

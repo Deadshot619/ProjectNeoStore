@@ -104,5 +104,6 @@
     <string name="city">City</string>
     <string name="zip_code">Zip Code</string>
     <string name="btn_add_address">Add Address</string>
+    <string name="name">Name</string>
 
 </resources>

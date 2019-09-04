@@ -12,6 +12,7 @@ class AddAddressViewModel(
     val database: AddressDatabaseDao ,
     application: Application
 ) : AndroidViewModel(application){
+    var name: String = ""
     var address: String = ""
     var apartment: String = ""
     var country: String = ""

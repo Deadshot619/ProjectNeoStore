@@ -10,7 +10,8 @@ import com.deadshot.android.projectneostore.databinding.LayoutAddressBinding
 
 class AddressListAdapter(private val onClickListener: OnClickListener) : ListAdapter<Address, AddressListAdapter.ViewHolder>(DiffCallback){
 
-    var selectedPosition = -1
+    //Value to remember previous position of selected item
+    private var selectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int): ViewHolder {
         return from(parent)
