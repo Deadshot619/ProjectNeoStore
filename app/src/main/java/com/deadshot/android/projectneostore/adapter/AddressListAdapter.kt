@@ -8,14 +8,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.deadshot.android.projectneostore.database.Address
 import com.deadshot.android.projectneostore.databinding.LayoutAddressBinding
 
-class AddressListAdapter(val onClickListener: OnClickListener) : ListAdapter<Address, AddressListAdapter.ViewHolder>(DiffCallback){
+class AddressListAdapter(private val onClickListener: OnClickListener) : ListAdapter<Address, AddressListAdapter.ViewHolder>(DiffCallback){
+
+    var selectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int): ViewHolder {
-        return ViewHolder(LayoutAddressBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return from(parent)
+    }
+
+    private fun from(parent: ViewGroup): ViewHolder {
+     return ViewHolder(
+            LayoutAddressBinding.inflate(
+                LayoutInflater.from(parent.context) ,
+                parent ,
+                false
+                )
+            )
     }
 
     override fun onBindViewHolder(holder: ViewHolder , position: Int) {
         val address = getItem(position)
+        holder.bindRadioBtn(position)
         holder.bind(address, onClickListener)
     }
 
@@ -38,6 +51,16 @@ class AddressListAdapter(val onClickListener: OnClickListener) : ListAdapter<Add
             binding.address = item
             binding.clickListener = onClickListener
             binding.executePendingBindings()
+        }
+
+        internal fun bindRadioBtn(
+            position: Int
+        ) {
+            binding.layoutAddressMain.setOnClickListener {
+                selectedPosition = position
+                notifyDataSetChanged()
+            }
+            binding.radioButton.isChecked = selectedPosition == position
         }
     }
 
