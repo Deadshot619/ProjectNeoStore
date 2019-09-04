@@ -176,6 +176,8 @@ fun bindOrderNetworkStatus(statusImageView: ImageView, status: LoadingProductsSt
     }
 }
 
+
+//Bind address, apartment, city, etc.
 @BindingAdapter("bindAddress")
 fun TextView.bindAddress(item: Address?){
     item?.let{
@@ -183,6 +185,7 @@ fun TextView.bindAddress(item: Address?){
     }
 }
 
+//Bind address State & Country
 @BindingAdapter("bindPlace")
 fun TextView.bindPlace(item: Address?){
     item?.let {

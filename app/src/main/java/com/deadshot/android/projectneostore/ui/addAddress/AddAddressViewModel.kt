@@ -25,6 +25,9 @@ class AddAddressViewModel(
     val viewModelJob = Job()
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    /**
+     *
+     */
     fun onClickAddAddress(){
         coroutineScope.launch {
             addAddress()
