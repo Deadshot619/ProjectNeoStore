@@ -3,6 +3,7 @@ package com.deadshot.android.projectneostore.utils
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.*
+import com.deadshot.android.projectneostore.database.Address
 import com.deadshot.android.projectneostore.models.*
 
 /**
@@ -171,5 +173,19 @@ fun bindOrderNetworkStatus(statusImageView: ImageView, status: LoadingProductsSt
         LoadingProductsStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+    }
+}
+
+@BindingAdapter("bindAddress")
+fun TextView.bindAddress(item: Address?){
+    item?.let{
+        text =  "${item.address}, ${item.apartment}, ${it.city}, ${item.zipCode}"
+    }
+}
+
+@BindingAdapter("bindPlace")
+fun TextView.bindPlace(item: Address?){
+    item?.let {
+        text = "${item.state}, ${item.country}"
     }
 }

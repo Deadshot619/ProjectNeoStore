@@ -20,7 +20,7 @@ class AddAddressViewModel(
     var city: String = ""
     var zipCode: String = ""
 
-    var addressModel = MutableLiveData<Address>()
+//    var addressModel = MutableLiveData<Address>()
 
     val viewModelJob = Job()
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -33,7 +33,17 @@ class AddAddressViewModel(
 
     private suspend fun addAddress(){
         withContext(Dispatchers.IO){
-            database.insert(Address(address = address, apartment = apartment, country = country, state = state, city = city, zipCode = zipCode))
+            database.insert(
+                Address(
+                    name = name,
+                    address = address,
+                    apartment = apartment,
+                    country = country,
+                    state = state,
+                    city = city,
+                    zipCode = zipCode
+                )
+            )
         }
     }
 

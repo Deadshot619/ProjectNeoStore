@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 tools:text="Rajan 10"
-                android:text="@{address.country}"
+                android:text="@{address.name}"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -80,9 +80,9 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
         <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tv_address"
                 android:layout_width="0dp"
-                android:text="@{address.state}"
+                app:bindAddress="@{address}"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 app:layout_constraintBottom_toTopOf="@+id/guideline14"
@@ -91,6 +91,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_name"
                 app:layout_constraintVertical_bias="0.0"
                 tools:text="qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" />
+
+        <TextView
+                android:id="@+id/tv_place"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Maharashtra, India"
+                app:bindPlace="@{address}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                app:layout_constraintBottom_toTopOf="@+id/guideline14"
+                app:layout_constraintEnd_toEndOf="@+id/tv_address"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="@+id/tv_address"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
