@@ -70,10 +70,10 @@ class MyCartViewModel(private val accessToken: String) : ViewModel(){
     }
 
     fun orderNow(){
-        navigateToAddress()
-//        coroutineScope.launch {
-//            myCartRepository.placeOrder(access_token = accessToken, address = "201, Sukhjit Apt.")
-//        }
+//        navigateToAddress()
+        coroutineScope.launch {
+            myCartRepository.placeOrder(access_token = accessToken, address = "201, Sukhjit Apt.")
+        }
     }
 
     fun deleteItemDone(){

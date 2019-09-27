@@ -17,12 +17,13 @@ import com.deadshot.android.projectneostore.R
 import com.deadshot.android.projectneostore.adapter.AddressListAdapter
 import com.deadshot.android.projectneostore.database.AddressDatabase
 import com.deadshot.android.projectneostore.databinding.FragmentAddressListBinding
+import com.deadshot.android.projectneostore.ui.BaseFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * A simple [Fragment] subclass.
  */
-class AddressListFragment : Fragment() {
+class AddressListFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater , container: ViewGroup? ,
@@ -31,11 +32,13 @@ class AddressListFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentAddressListBinding.inflate(inflater)
 
+        loadAccessToken()
+
         val application = requireNotNull(this.activity).application
 
         val database = AddressDatabase.getInstance(application).addressDatabaseDao
 
-        val addressListModelFactory = AddressListModelFactory(database, application)
+        val addressListModelFactory = AddressListModelFactory(accessToken, database, application)
         val addressListViewModel = ViewModelProviders.of(this, addressListModelFactory).get(AddressListViewModel::class.java)
 
         binding.addressListViewModel = addressListViewModel
@@ -76,7 +79,6 @@ class AddressListFragment : Fragment() {
         addressListViewModel.addresses.observe(this, Observer {
             adapter.submitList(it)
         })
-
 
         return binding.root
     }

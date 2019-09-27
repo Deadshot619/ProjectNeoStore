@@ -6,12 +6,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.deadshot.android.projectneostore.database.Address
 import com.deadshot.android.projectneostore.database.AddressDatabaseDao
+import com.deadshot.android.projectneostore.repository.MyCartRepository
 import kotlinx.coroutines.*
 
 class AddressListViewModel(
+    val accessToken: String,
     val database: AddressDatabaseDao ,
     application: Application
 ) : AndroidViewModel(application){
+
+    /**
+     * Lazily Create an instance of [MyCartRepository]
+     */
+    private val myCartRepository by lazy {
+        MyCartRepository(accessToken)
+    }
 
     private val _navigateToAddAddress = MutableLiveData<Boolean>()
     val navigateToAddAddress: LiveData<Boolean>
@@ -29,6 +38,15 @@ class AddressListViewModel(
     private fun initializeAddresses() {
         coroutineScope.launch {
 
+        }
+    }
+
+    fun orderNow(address: Address?){
+//        navigateToAddress()
+        coroutineScope.launch {
+            address?.let {
+                myCartRepository.placeOrder(access_token = accessToken, address = address.address)
+            }
         }
     }
 
